@@ -1,0 +1,23 @@
+title handleTellScheduleRequest
+
+participantspacing equal
+
+actor "Trash Day User" as User
+participant "Trash Day\nSkill" as Trash Day
+
+User-#blue>Trash Day :"Tell me the schedule." (TellScheduleIntent)
+
+
+rbox over Trash Day: configNeeded=isConfigurationComplete()
+
+alt configNeeded != Null
+
+Trash Day->User: <Configuration Prompt>
+
+else configNeeded == Null
+
+rbox over Trash Day: tellSchedule()
+
+Trash Day->User:(tell, with card)\n\n**Text**:Pickup trash Tuesday at 7 A.M. and Friday at 7 A.M.\nPickup recycling on Friday at 7 A.M...\n**Card**:As of <day> and <time>\nPickup trash Tuesday at 7 A.M and Friday at 7 A.M..\nPickup recycling on Friday at 7 A.M...
+
+end

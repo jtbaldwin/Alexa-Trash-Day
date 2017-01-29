@@ -1,0 +1,34 @@
+title isConfigurationComplete
+
+participantspacing equal
+#participantspacing gives manual control of spacing between participants, equal: equal distance between all participants, number i.e. 20.5: minimum space
+
+actor "//function\ncaller//" as User
+participant "Trash Day\nSkill" as Trash Day
+
+rbox over Trash Day: //called from any request handler//
+
+rbox over Trash Day: schedule = loadSchedule(sessionDao, dynamoDao);\ntimeZone = loadTimeZone(sessionDao, dynamoDao);
+
+alt timeZone == null and schedule == null
+
+rbox over Trash Day: setScheduleConfigInProgress()\nrespondStartInitialConfiguration()
+Trash Day->User:(ask, with card)\n\n**Text**: Welcome to Trash Day. Please PhraseTimeZone.SET_VERBAL\n**Reprompt**: PhraseTimeZone.SET_REPROMPT\n**Card**: PhraseTimeZone.SET_CARD
+
+else timeZone == null
+
+rbox over Trash Day: askTimeZoneMissing()
+
+Trash Day->User: (ask, with card)\n\n**Text**: The time zone isn't configured yet.+PhraseTimeZone.SET_VERBAL\n**Reprompt**: PhraseTimeZone.SET_REPROMPT\n**Card**: PhraseTimeZone.SET_CARD
+
+else schedule == null or schedule.isEmpty()
+
+rbox over Trash Day: setScheduleConfigInProgress()\naskScheduleEmpty()
+
+Trash Day->User:(ask, no card)\n\n**Text**: The pickup schedule is empty. +PhraseSchedule.HELP_VERBAL_ALTER_SCHEDULE\n**Reprompt**: PhraseSchedule.HELP_REPROMPT_ALTER_SCHEDULE\n**Card**: PhraseSchedule.CARD_ALTER_SCHEDULE
+
+else Time Zone and Schedule Defined
+
+Trash Day->User: null (No Configuration Prompt)
+
+end

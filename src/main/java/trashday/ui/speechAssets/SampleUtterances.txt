@@ -1,0 +1,113 @@
+TellNextPickupIntent what's next
+TellNextPickupIntent what is next
+TellNextPickupIntent what is next pickup
+TellNextPickupIntent what's my next pickup
+TellNextPickupIntent what is my next pickup
+TellNextPickupIntent when is my next pickup
+TellNextPickupIntent get me the next pickup
+TellNextPickupIntent tell me the next pickup
+TellNextPickupIntent give me the next pickup
+
+TellNextPickupIntent when is next {PickupName} pickup
+TellNextPickupIntent when is next my {PickupName} pickup
+TellNextPickupIntent is it {PickupName} day
+TellNextPickupIntent is it my {PickupName} day
+TellNextPickupIntent when does the {PickupName} go out
+TellNextPickupIntent when does my {PickupName} go out
+TellNextPickupIntent get my next {PickupName} pickup
+TellNextPickupIntent tell me my next {PickupName} pickup
+TellNextPickupIntent give me my next {PickupName} pickup
+TellNextPickupIntent to get my next {PickupName} pickup
+TellNextPickupIntent to tell me my next {PickupName} pickup
+TellNextPickupIntent to give me my next {PickupName} pickup
+
+TellScheduleIntent tell me the schedule
+TellScheduleIntent tell me the pickup schedule
+TellScheduleIntent what's the schedule
+TellScheduleIntent what is the schedule
+TellScheduleIntent what's the pickup schedule
+TellScheduleIntent what is the pickup schedule
+
+UpdateScheduleIntent alter schedule
+UpdateScheduleIntent change schedule
+UpdateScheduleIntent update schedule
+UpdateScheduleIntent modify schedule
+UpdateScheduleIntent alter my schedule
+UpdateScheduleIntent change my schedule
+UpdateScheduleIntent update my schedule
+UpdateScheduleIntent modify my schedule
+UpdateScheduleIntent alter the schedule
+UpdateScheduleIntent change the schedule
+UpdateScheduleIntent update the schedule
+UpdateScheduleIntent modify the schedule
+UpdateScheduleIntent to alter schedule
+UpdateScheduleIntent to change schedule
+UpdateScheduleIntent to update schedule
+UpdateScheduleIntent to modify schedule
+UpdateScheduleIntent to alter my schedule
+UpdateScheduleIntent to change my schedule
+UpdateScheduleIntent to update my schedule
+UpdateScheduleIntent to modify my schedule
+UpdateScheduleIntent to alter the schedule
+UpdateScheduleIntent to change the schedule
+UpdateScheduleIntent to update the schedule
+UpdateScheduleIntent to modify the schedule
+
+SetTimeZoneIntent set time zone as {TimeZone}
+SetTimeZoneIntent set time zone to {TimeZone}
+SetTimeZoneIntent set timezone as {TimeZone}
+SetTimeZoneIntent set timezone to {TimeZone}
+SetTimeZoneIntent set {TimeZone} for time zone
+SetTimeZoneIntent set {TimeZone} as time zone
+SetTimeZoneIntent to set time zone as {TimeZone}
+SetTimeZoneIntent to set time zone to {TimeZone}
+SetTimeZoneIntent to set timezone as {TimeZone}
+SetTimeZoneIntent to set timezone to {TimeZone}
+SetTimeZoneIntent to set {TimeZone} for time zone
+SetTimeZoneIntent to set {TimeZone} as time zone
+
+AddPickupIntent add {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+AddPickupIntent add {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+AddPickupIntent to add {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+AddPickupIntent to add {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+AddPickupIntent on {DayOfWeek} at {TimeOfDay} add {PickupName} pickup
+AddPickupIntent at {TimeOfDay} on {DayOfWeek} add {PickupName} pickup
+
+DeletePickupIntent delete {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+DeletePickupIntent delete {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+DeletePickupIntent to delete {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+DeletePickupIntent to delete {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+DeletePickupIntent on {DayOfWeek} at {TimeOfDay} delete {PickupName} pickup
+DeletePickupIntent at {TimeOfDay} on {DayOfWeek} delete {PickupName} pickup
+
+DeleteEntirePickupIntent delete all {PickupName} pickups
+DeleteEntirePickupIntent delete entire {PickupName} pickup
+DeleteEntirePickupIntent remove all {PickupName} pickups
+DeleteEntirePickupIntent remove entire {PickupName} pickup
+DeleteEntirePickupIntent clear all {PickupName} pickups
+DeleteEntirePickupIntent clear entire {PickupName} pickup
+DeleteEntirePickupIntent to delete all {PickupName} pickups
+DeleteEntirePickupIntent to delete entire {PickupName} pickup
+DeleteEntirePickupIntent to remove all {PickupName} pickups
+DeleteEntirePickupIntent to remove entire {PickupName} pickup
+DeleteEntirePickupIntent to clear all {PickupName} pickups
+DeleteEntirePickupIntent to clear entire {PickupName} pickup
+
+DeleteEntireScheduleIntent clear entire schedule
+DeleteEntireScheduleIntent delete entire schedule
+DeleteEntireScheduleIntent remove entire schedule
+DeleteEntireScheduleIntent clear the schedule
+DeleteEntireScheduleIntent delete the schedule
+DeleteEntireScheduleIntent remove the schedule
+DeleteEntireScheduleIntent clear schedule
+DeleteEntireScheduleIntent delete schedule
+DeleteEntireScheduleIntent remove schedule
+DeleteEntireScheduleIntent to clear entire schedule
+DeleteEntireScheduleIntent to delete entire schedule
+DeleteEntireScheduleIntent to remove entire schedule
+DeleteEntireScheduleIntent to clear the schedule
+DeleteEntireScheduleIntent to delete the schedule
+DeleteEntireScheduleIntent to remove the schedule
+DeleteEntireScheduleIntent to clear schedule
+DeleteEntireScheduleIntent to delete schedule
+DeleteEntireScheduleIntent to remove schedule

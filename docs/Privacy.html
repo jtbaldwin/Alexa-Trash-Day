@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trash Day Privacy Policy</title>
+</head>
+<body>
+<b>Effective: January 1, 2017</b>
+
+<h1>Introduction</h1>
+
+<p>The Trash Day skill (hereafter, "application") is a simple reminder service to
+help users remember a list of weekly pickups and query when the next pickups occur.  To
+perform this service, the application gathers and uses information from
+each user in order to perform its function.
+
+<p>This document describes the information collected, how it is used, and the storage of 
+that information.  Any user that does not wish their information to be used in this way is 
+provided <a href="#RemovingYourInfo">instructions</a> on how to remove their information and discontinue use of the 
+application.
+
+<p>This information is used only to provide this application's service. The information is 
+not shared or sold with any other party.  Use of this software your 
+consent to the collection, use, transfer, and storage of the any user 
+information given to the application, as well as the terms of the application's 
+<a href="https://s3.amazonaws.com/trash-day-docs/TermsOfService.html">Terms of Service</a>.
+
+<h1>Information Collected</h1>
+
+<p>The application collects the following information from the Alexa service (user id and 
+log data) as well as verbally from the user (pickup schedule, time zone and log data).
+
+<h2>Alexa User Id</h2>
+
+<p>When a user enables the Trash Day skill, a single userId is generated for all requests
+that will be sent by that user.  The application has no way to map this userId back
+to a specific Amazon Echo device or user account.  The application knows that this
+userId applies to a unique user account, but has no knowledge of the owner of that user
+account or the location of that user in the world.
+
+<h2>Pickup Schedule</h2>
+<p>The application verbally collects weekly pickup times for whatever items the user wants to
+track.  For example, a user's "trash" pickup may occur on "Monday 7am" and "Thursday 7am."
+and their "recycling" pickup may occur on "Wednesday at Noon."
+
+<h2>Time Zone</h2>
+<p>The application needs to know the user's time zone in order to compute when the
+next pickups will occur.  Since the Alexa service does not provide this information
+to 3rd-party skills like Trash Day, the application requires each user to verbally
+set the appropriate time zone.
+
+<h2>Log Data</h2>
+<p>As part of normal operation, the application generates logs of user activity.  This
+is used to monitor the application for correct functioning and diagnose any problems
+that may occur.
+
+<h1>Information Usage</h1>
+
+<p>The information is used in two ways.  First, the user ID, user's Zip Code and Pickup Schedule
+are necessary to provide the application functions as a pickup reminder service for
+specific users.  Second, log data is used for the operation and maintenance of the
+application itself.
+
+<p>All information collected is stored in Amazon's Dynamo DB and CloudWatch services.
+A single Dynamo DB table item exists for each userId and stores the 
+user's associated time zone and pickup schedule information.  The log data is stored
+in Amazon's CloudWatch service.
+
+<p>The application uses commercially reasonable computer security safeguards to protect 
+your information.  It secures your user data by relying on the security components within the
+several Amazon services (Dynamo DB, Lambda, S3, CloudWatch, Identity and Access Management).  
+
+<h1 id="RemovingYourInfo">Removing Your Information</h1>
+
+<p>Any application user may delete all of their data using the command: <strong>"Alexa, tell Trash Day, to
+delete entire schedule"</strong>.  After deleting their data, a user should 
+disable the Trash Day skill using the command: <strong>"Alexa, disable theTrash Day skill"</strong>.
+
+<h1>Children Under 13</h1>
+
+<p>This application is not directed to children under 13. If you learn that a child
+under 13 has provided us with personal information without consent, please use the
+instructions under the <a href="#RemovingYourInfo">Removing Your Information</a> section to remove that 
+information.
+
+<h1>Changes to this Privacy Policy</h1>
+
+<p>This policy may be revised in the future.  If so, changes will be posted to this page.
+ If you continue to use the application after those changes are in effect, you agree to 
+ the revised policy.
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+{
+  "intents": [
+    {
+      "intent": "UpdateScheduleIntent"
+    },
+    {
+      "intent": "SetTimeZoneIntent",
+      "slots": [
+        {
+          "name": "TimeZone",
+          "type": "TIME_ZONE"
+        }
+      ]
+    },
+    {
+      "intent": "AddPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "DeletePickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "DeleteEntirePickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "DeleteEntireScheduleIntent"
+    },
+    {
+      "intent": "TellScheduleIntent"
+    },
+    {
+      "intent": "TellNextPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.YesIntent"
+    },
+    {
+      "intent": "AMAZON.NoIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Time Zone Names</title>
+</head>
+<body>
+
+<h3>How to set Time Zone for Trash Day Skill</h3>
+
+<p>Use the following list of time zone names to tell Trash Day your time zone.  For example:
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alexa, tell Trash Day, to set time zone to &lt;Time_Zone_Name&gt;
+<p>For the continental United States, there are four easily-spoken time zone names (Eastern, 
+Central, Mountain, and Pacific).  However, the Trash Day skill understands approximately six hundred 
+other time zone names.  This complete list is given in the table at the end of this page.
+
+<h3>"Alexa-Speak"</h3>
+<p>Most of the time zone names include numbers, special characters ("/", "+", "-", "_"), common abbreviations ("Etc", "St", "US"), and computing-specific terms ("SystemV").  To say these time zone names to Alexa, you will need to state them so that Alexa can understand them.  I call this "Alexa-Speak" and the translation for every time zone is given in the table as well.
+<p>NOTE: I apologize if your time zone is one of the "unpronouncable" city names.  Alexa does not do well with these as regular translations and I have not yet managed to integrate the Trash Day skill with Amazon's city name database for Alexa input.  If you have a case where your time zone name is just not understood clearly by Alexa, please use one of the "Etc/GMT" time zone names in the list.
+
+<h3>Why does Trash Day need my time zone?</h3>
+
+<p>Amazon treats a user's time zone information as "Personally Identifiable Information." Therefore, they do not make that information available to 3rd-party custom skills like Trash Day.  So when Alexa sends your request to Trash Day, the request time stamp is in GMT time zone.
+
+<p>This is a problem because, for example,<ul>
+<li>you live in the US/Pacific time zone (eight hours earlier than GMT)
+<li>you have trash pickups on Monday &amp; Thursday at 8 AM
+<li>and, on Sunday 7pm, you say "Alexa, ask Trash Day, when is my next trash pickup"
+</li>
+</ul>
+<p>In this case, you would expect Trash Day to tell you "Next trash pickup is tomorrow at 8am" but the request Trash Day gets is in GMT.  So Sunday 7pm Pacific time comes to Trash Day as <b>Monday</b> 3am GMT.  If Trash Day relied on GMT, it would think it is already Monday and would tell you "Next trash pickup is <b>today</b> at 8am."  Telling you at 7pm that your trash pickup was this morning at 8am when you're asking for the <b>next</b> trash pickup is very wrong.
+
+<p>I hope Amazon will eventually find a better way to provide time zone information to 3rd-party skills.  Even just something that required a user to allow access to the time zone set in the Alexa app or at least a common time zone database like they provide for city names would help.  However, until they change their policy, Trash Day gathers this information from every user and stores it with their schedule.
+
+<h3>Full Time Zone List</h3>
+<p>NOTE: Abbreviations like "ACT" need to be stated as the individual letters.  So, "A.C.T." is stated as "ay cee tee" to Alexa, but I've just shown "A.C.T." in the table for clarity.
+
+<table border="1"><tr bgcolor="lightblue"><th>Time Zone Name</th><th>&quot;Alexa-Speak&quot;</th></tr>
+<tr><td>ACT</td><td>A.C.T.</td></tr>
+<tr><td>AET</td><td>A.E.T.</td></tr>
+<tr><td>AGT</td><td>A.G.T.</td></tr>
+<tr><td>ART</td><td>A.R.T.</td></tr>
+<tr><td>AST</td><td>A.S.T.</td></tr>
+<tr><td>Africa/Abidjan</td><td>Africa slash Abidjan</td></tr>
+<tr><td>Africa/Accra</td><td>Africa slash Accra</td></tr>
+<tr><td>Africa/Addis_Ababa</td><td>Africa slash Addis Ababa</td></tr>
+<tr><td>Africa/Algiers</td><td>Africa slash Algiers</td></tr>
+<tr><td>Africa/Asmara</td><td>Africa slash Asmara</td></tr>
+<tr><td>Africa/Asmera</td><td>Africa slash Asmera</td></tr>
+<tr><td>Africa/Bamako</td><td>Africa slash Bamako</td></tr>
+<tr><td>Africa/Bangui</td><td>Africa slash Bangui</td></tr>
+<tr><td>Africa/Banjul</td><td>Africa slash Banjul</td></tr>
+<tr><td>Africa/Bissau</td><td>Africa slash Bissau</td></tr>
+<tr><td>Africa/Blantyre</td><td>Africa slash Blantyre</td></tr>
+<tr><td>Africa/Brazzaville</td><td>Africa slash Brazzaville</td></tr>
+<tr><td>Africa/Bujumbura</td><td>Africa slash Bujumbura</td></tr>
+<tr><td>Africa/Cairo</td><td>Africa slash Cairo</td></tr>
+<tr><td>Africa/Casablanca</td><td>Africa slash Casablanca</td></tr>
+<tr><td>Africa/Ceuta</td><td>Africa slash Ceuta</td></tr>
+<tr><td>Africa/Conakry</td><td>Africa slash Conakry</td></tr>
+<tr><td>Africa/Dakar</td><td>Africa slash Dakar</td></tr>
+<tr><td>Africa/Dar_es_Salaam</td><td>Africa slash Dar es Salaam</td></tr>
+<tr><td>Africa/Djibouti</td><td>Africa slash Djibouti</td></tr>
+<tr><td>Africa/Douala</td><td>Africa slash Douala</td></tr>
+<tr><td>Africa/El_Aaiun</td><td>Africa slash El Aaiun</td></tr>
+<tr><td>Africa/Freetown</td><td>Africa slash Freetown</td></tr>
+<tr><td>Africa/Gaborone</td><td>Africa slash Gaborone</td></tr>
+<tr><td>Africa/Harare</td><td>Africa slash Harare</td></tr>
+<tr><td>Africa/Johannesburg</td><td>Africa slash Johannesburg</td></tr>
+<tr><td>Africa/Juba</td><td>Africa slash Juba</td></tr>
+<tr><td>Africa/Kampala</td><td>Africa slash Kampala</td></tr>
+<tr><td>Africa/Khartoum</td><td>Africa slash Khartoum</td></tr>
+<tr><td>Africa/Kigali</td><td>Africa slash Kigali</td></tr>
+<tr><td>Africa/Kinshasa</td><td>Africa slash Kinshasa</td></tr>
+<tr><td>Africa/Lagos</td><td>Africa slash Lagos</td></tr>
+<tr><td>Africa/Libreville</td><td>Africa slash Libreville</td></tr>
+<tr><td>Africa/Lome</td><td>Africa slash Lome</td></tr>
+<tr><td>Africa/Luanda</td><td>Africa slash Luanda</td></tr>
+<tr><td>Africa/Lubumbashi</td><td>Africa slash Lubumbashi</td></tr>
+<tr><td>Africa/Lusaka</td><td>Africa slash Lusaka</td></tr>
+<tr><td>Africa/Malabo</td><td>Africa slash Malabo</td></tr>
+<tr><td>Africa/Maputo</td><td>Africa slash Maputo</td></tr>
+<tr><td>Africa/Maseru</td><td>Africa slash Maseru</td></tr>
+<tr><td>Africa/Mbabane</td><td>Africa slash Mbabane</td></tr>
+<tr><td>Africa/Mogadishu</td><td>Africa slash Mogadishu</td></tr>
+<tr><td>Africa/Monrovia</td><td>Africa slash Monrovia</td></tr>
+<tr><td>Africa/Nairobi</td><td>Africa slash Nairobi</td></tr>
+<tr><td>Africa/Ndjamena</td><td>Africa slash Ndjamena</td></tr>
+<tr><td>Africa/Niamey</td><td>Africa slash Niamey</td></tr>
+<tr><td>Africa/Nouakchott</td><td>Africa slash Nouakchott</td></tr>
+<tr><td>Africa/Ouagadougou</td><td>Africa slash Ouagadougou</td></tr>
+<tr><td>Africa/Porto-Novo</td><td>Africa slash Porto dash Novo</td></tr>
+<tr><td>Africa/Sao_Tome</td><td>Africa slash Sao Tome</td></tr>
+<tr><td>Africa/Timbuktu</td><td>Africa slash Timbuktu</td></tr>
+<tr><td>Africa/Tripoli</td><td>Africa slash Tripoli</td></tr>
+<tr><td>Africa/Tunis</td><td>Africa slash Tunis</td></tr>
+<tr><td>Africa/Windhoek</td><td>Africa slash Windhoek</td></tr>
+<tr><td>America/Adak</td><td>America slash Adak</td></tr>
+<tr><td>America/Anchorage</td><td>America slash Anchorage</td></tr>
+<tr><td>America/Anguilla</td><td>America slash Anguilla</td></tr>
+<tr><td>America/Antigua</td><td>America slash Antigua</td></tr>
+<tr><td>America/Araguaina</td><td>America slash Araguaina</td></tr>
+<tr><td>America/Argentina/Buenos_Aires</td><td>America slash Argentina slash Buenos Aires</td></tr>
+<tr><td>America/Argentina/Catamarca</td><td>America slash Argentina slash Catamarca</td></tr>
+<tr><td>America/Argentina/ComodRivadavia</td><td>America slash Argentina slash ComodRivadavia</td></tr>
+<tr><td>America/Argentina/Cordoba</td><td>America slash Argentina slash Cordoba</td></tr>
+<tr><td>America/Argentina/Jujuy</td><td>America slash Argentina slash Jujuy</td></tr>
+<tr><td>America/Argentina/La_Rioja</td><td>America slash Argentina slash La Rioja</td></tr>
+<tr><td>America/Argentina/Mendoza</td><td>America slash Argentina slash Mendoza</td></tr>
+<tr><td>America/Argentina/Rio_Gallegos</td><td>America slash Argentina slash Rio Gallegos</td></tr>
+<tr><td>America/Argentina/Salta</td><td>America slash Argentina slash Salta</td></tr>
+<tr><td>America/Argentina/San_Juan</td><td>America slash Argentina slash San Juan</td></tr>
+<tr><td>America/Argentina/San_Luis</td><td>America slash Argentina slash San Luis</td></tr>
+<tr><td>America/Argentina/Tucuman</td><td>America slash Argentina slash Tucuman</td></tr>
+<tr><td>America/Argentina/Ushuaia</td><td>America slash Argentina slash Ushuaia</td></tr>
+<tr><td>America/Aruba</td><td>America slash Aruba</td></tr>
+<tr><td>America/Asuncion</td><td>America slash Asuncion</td></tr>
+<tr><td>America/Atikokan</td><td>America slash Atikokan</td></tr>
+<tr><td>America/Atka</td><td>America slash Atka</td></tr>
+<tr><td>America/Bahia</td><td>America slash Bahia</td></tr>
+<tr><td>America/Bahia_Banderas</td><td>America slash Bahia Banderas</td></tr>
+<tr><td>America/Barbados</td><td>America slash Barbados</td></tr>
+<tr><td>America/Belem</td><td>America slash Belem</td></tr>
+<tr><td>America/Belize</td><td>America slash Belize</td></tr>
+<tr><td>America/Blanc-Sablon</td><td>America slash Blanc dash Sablon</td></tr>
+<tr><td>America/Boa_Vista</td><td>America slash Boa Vista</td></tr>
+<tr><td>America/Bogota</td><td>America slash Bogota</td></tr>
+<tr><td>America/Boise</td><td>America slash Boise</td></tr>
+<tr><td>America/Buenos_Aires</td><td>America slash Buenos Aires</td></tr>
+<tr><td>America/Cambridge_Bay</td><td>America slash Cambridge Bay</td></tr>
+<tr><td>America/Campo_Grande</td><td>America slash Campo Grande</td></tr>
+<tr><td>America/Cancun</td><td>America slash Cancun</td></tr>
+<tr><td>America/Caracas</td><td>America slash Caracas</td></tr>
+<tr><td>America/Catamarca</td><td>America slash Catamarca</td></tr>
+<tr><td>America/Cayenne</td><td>America slash Cayenne</td></tr>
+<tr><td>America/Cayman</td><td>America slash Cayman</td></tr>
+<tr><td>America/Chicago</td><td>America slash Chicago</td></tr>
+<tr><td>America/Chihuahua</td><td>America slash Chihuahua</td></tr>
+<tr><td>America/Coral_Harbour</td><td>America slash Coral Harbour</td></tr>
+<tr><td>America/Cordoba</td><td>America slash Cordoba</td></tr>
+<tr><td>America/Costa_Rica</td><td>America slash Costa Rica</td></tr>
+<tr><td>America/Creston</td><td>America slash Creston</td></tr>
+<tr><td>America/Cuiaba</td><td>America slash Cuiaba</td></tr>
+<tr><td>America/Curacao</td><td>America slash Curacao</td></tr>
+<tr><td>America/Danmarkshavn</td><td>America slash Danmarkshavn</td></tr>
+<tr><td>America/Dawson</td><td>America slash Dawson</td></tr>
+<tr><td>America/Dawson_Creek</td><td>America slash Dawson Creek</td></tr>
+<tr><td>America/Denver</td><td>America slash Denver</td></tr>
+<tr><td>America/Detroit</td><td>America slash Detroit</td></tr>
+<tr><td>America/Dominica</td><td>America slash Dominica</td></tr>
+<tr><td>America/Edmonton</td><td>America slash Edmonton</td></tr>
+<tr><td>America/Eirunepe</td><td>America slash Eirunepe</td></tr>
+<tr><td>America/El_Salvador</td><td>America slash El Salvador</td></tr>
+<tr><td>America/Ensenada</td><td>America slash Ensenada</td></tr>
+<tr><td>America/Fort_Nelson</td><td>America slash Fort Nelson</td></tr>
+<tr><td>America/Fort_Wayne</td><td>America slash Fort Wayne</td></tr>
+<tr><td>America/Fortaleza</td><td>America slash Fortaleza</td></tr>
+<tr><td>America/Glace_Bay</td><td>America slash Glace Bay</td></tr>
+<tr><td>America/Godthab</td><td>America slash Godthab</td></tr>
+<tr><td>America/Goose_Bay</td><td>America slash Goose Bay</td></tr>
+<tr><td>America/Grand_Turk</td><td>America slash Grand Turk</td></tr>
+<tr><td>America/Grenada</td><td>America slash Grenada</td></tr>
+<tr><td>America/Guadeloupe</td><td>America slash Guadeloupe</td></tr>
+<tr><td>America/Guatemala</td><td>America slash Guatemala</td></tr>
+<tr><td>America/Guayaquil</td><td>America slash Guayaquil</td></tr>
+<tr><td>America/Guyana</td><td>America slash Guyana</td></tr>
+<tr><td>America/Halifax</td><td>America slash Halifax</td></tr>
+<tr><td>America/Havana</td><td>America slash Havana</td></tr>
+<tr><td>America/Hermosillo</td><td>America slash Hermosillo</td></tr>
+<tr><td>America/Indiana/Indianapolis</td><td>America slash Indiana slash Indianapolis</td></tr>
+<tr><td>America/Indiana/Knox</td><td>America slash Indiana slash Knox</td></tr>
+<tr><td>America/Indiana/Marengo</td><td>America slash Indiana slash Marengo</td></tr>
+<tr><td>America/Indiana/Petersburg</td><td>America slash Indiana slash Petersburg</td></tr>
+<tr><td>America/Indiana/Tell_City</td><td>America slash Indiana slash Tell City</td></tr>
+<tr><td>America/Indiana/Vevay</td><td>America slash Indiana slash Vevay</td></tr>
+<tr><td>America/Indiana/Vincennes</td><td>America slash Indiana slash Vincennes</td></tr>
+<tr><td>America/Indiana/Winamac</td><td>America slash Indiana slash Winamac</td></tr>
+<tr><td>America/Indianapolis</td><td>America slash Indianapolis</td></tr>
+<tr><td>America/Inuvik</td><td>America slash Inuvik</td></tr>
+<tr><td>America/Iqaluit</td><td>America slash Iqaluit</td></tr>
+<tr><td>America/Jamaica</td><td>America slash Jamaica</td></tr>
+<tr><td>America/Jujuy</td><td>America slash Jujuy</td></tr>
+<tr><td>America/Juneau</td><td>America slash Juneau</td></tr>
+<tr><td>America/Kentucky/Louisville</td><td>America slash Kentucky slash Louisville</td></tr>
+<tr><td>America/Kentucky/Monticello</td><td>America slash Kentucky slash Monticello</td></tr>
+<tr><td>America/Knox_IN</td><td>America slash Knox I.N.</td></tr>
+<tr><td>America/Kralendijk</td><td>America slash Kralendijk</td></tr>
+<tr><td>America/La_Paz</td><td>America slash La Paz</td></tr>
+<tr><td>America/Lima</td><td>America slash Lima</td></tr>
+<tr><td>America/Los_Angeles</td><td>America slash Los Angeles</td></tr>
+<tr><td>America/Louisville</td><td>America slash Louisville</td></tr>
+<tr><td>America/Lower_Princes</td><td>America slash Lower Princes</td></tr>
+<tr><td>America/Maceio</td><td>America slash Maceio</td></tr>
+<tr><td>America/Managua</td><td>America slash Managua</td></tr>
+<tr><td>America/Manaus</td><td>America slash Manaus</td></tr>
+<tr><td>America/Marigot</td><td>America slash Marigot</td></tr>
+<tr><td>America/Martinique</td><td>America slash Martinique</td></tr>
+<tr><td>America/Matamoros</td><td>America slash Matamoros</td></tr>
+<tr><td>America/Mazatlan</td><td>America slash Mazatlan</td></tr>
+<tr><td>America/Mendoza</td><td>America slash Mendoza</td></tr>
+<tr><td>America/Menominee</td><td>America slash Menominee</td></tr>
+<tr><td>America/Merida</td><td>America slash Merida</td></tr>
+<tr><td>America/Metlakatla</td><td>America slash Metlakatla</td></tr>
+<tr><td>America/Mexico_City</td><td>America slash Mexico City</td></tr>
+<tr><td>America/Miquelon</td><td>America slash Miquelon</td></tr>
+<tr><td>America/Moncton</td><td>America slash Moncton</td></tr>
+<tr><td>America/Monterrey</td><td>America slash Monterrey</td></tr>
+<tr><td>America/Montevideo</td><td>America slash Montevideo</td></tr>
+<tr><td>America/Montreal</td><td>America slash Montreal</td></tr>
+<tr><td>America/Montserrat</td><td>America slash Montserrat</td></tr>
+<tr><td>America/Nassau</td><td>America slash Nassau</td></tr>
+<tr><td>America/New_York</td><td>America slash New York</td></tr>
+<tr><td>America/Nipigon</td><td>America slash Nipigon</td></tr>
+<tr><td>America/Nome</td><td>America slash Nome</td></tr>
+<tr><td>America/Noronha</td><td>America slash Noronha</td></tr>
+<tr><td>America/North_Dakota/Beulah</td><td>America slash North Dakota slash Beulah</td></tr>
+<tr><td>America/North_Dakota/Center</td><td>America slash North Dakota slash Center</td></tr>
+<tr><td>America/North_Dakota/New_Salem</td><td>America slash North Dakota slash New Salem</td></tr>
+<tr><td>America/Ojinaga</td><td>America slash Ojinaga</td></tr>
+<tr><td>America/Panama</td><td>America slash Panama</td></tr>
+<tr><td>America/Pangnirtung</td><td>America slash Pangnirtung</td></tr>
+<tr><td>America/Paramaribo</td><td>America slash Paramaribo</td></tr>
+<tr><td>America/Phoenix</td><td>America slash Phoenix</td></tr>
+<tr><td>America/Port-au-Prince</td><td>America slash Port dash au dash Prince</td></tr>
+<tr><td>America/Port_of_Spain</td><td>America slash Port of Spain</td></tr>
+<tr><td>America/Porto_Acre</td><td>America slash Porto Acre</td></tr>
+<tr><td>America/Porto_Velho</td><td>America slash Porto Velho</td></tr>
+<tr><td>America/Puerto_Rico</td><td>America slash Puerto Rico</td></tr>
+<tr><td>America/Rainy_River</td><td>America slash Rainy River</td></tr>
+<tr><td>America/Rankin_Inlet</td><td>America slash Rankin Inlet</td></tr>
+<tr><td>America/Recife</td><td>America slash Recife</td></tr>
+<tr><td>America/Regina</td><td>America slash Regina</td></tr>
+<tr><td>America/Resolute</td><td>America slash Resolute</td></tr>
+<tr><td>America/Rio_Branco</td><td>America slash Rio Branco</td></tr>
+<tr><td>America/Rosario</td><td>America slash Rosario</td></tr>
+<tr><td>America/Santa_Isabel</td><td>America slash Santa Isabel</td></tr>
+<tr><td>America/Santarem</td><td>America slash Santarem</td></tr>
+<tr><td>America/Santiago</td><td>America slash Santiago</td></tr>
+<tr><td>America/Santo_Domingo</td><td>America slash Santo Domingo</td></tr>
+<tr><td>America/Sao_Paulo</td><td>America slash Sao Paulo</td></tr>
+<tr><td>America/Scoresbysund</td><td>America slash Scoresbysund</td></tr>
+<tr><td>America/Shiprock</td><td>America slash Shiprock</td></tr>
+<tr><td>America/Sitka</td><td>America slash Sitka</td></tr>
+<tr><td>America/St_Barthelemy</td><td>America slash Saint Barthelemy</td></tr>
+<tr><td>America/St_Johns</td><td>America slash Saint Johns</td></tr>
+<tr><td>America/St_Kitts</td><td>America slash Saint Kitts</td></tr>
+<tr><td>America/St_Lucia</td><td>America slash Saint Lucia</td></tr>
+<tr><td>America/St_Thomas</td><td>America slash Saint Thomas</td></tr>
+<tr><td>America/St_Vincent</td><td>America slash Saint Vincent</td></tr>
+<tr><td>America/Swift_Current</td><td>America slash Swift Current</td></tr>
+<tr><td>America/Tegucigalpa</td><td>America slash Tegucigalpa</td></tr>
+<tr><td>America/Thule</td><td>America slash Thule</td></tr>
+<tr><td>America/Thunder_Bay</td><td>America slash Thunder Bay</td></tr>
+<tr><td>America/Tijuana</td><td>America slash Tijuana</td></tr>
+<tr><td>America/Toronto</td><td>America slash Toronto</td></tr>
+<tr><td>America/Tortola</td><td>America slash Tortola</td></tr>
+<tr><td>America/Vancouver</td><td>America slash Vancouver</td></tr>
+<tr><td>America/Virgin</td><td>America slash Virgin</td></tr>
+<tr><td>America/Whitehorse</td><td>America slash Whitehorse</td></tr>
+<tr><td>America/Winnipeg</td><td>America slash Winnipeg</td></tr>
+<tr><td>America/Yakutat</td><td>America slash Yakutat</td></tr>
+<tr><td>America/Yellowknife</td><td>America slash Yellowknife</td></tr>
+<tr><td>Antarctica/Casey</td><td>Antarctica slash Casey</td></tr>
+<tr><td>Antarctica/Davis</td><td>Antarctica slash Davis</td></tr>
+<tr><td>Antarctica/DumontDUrville</td><td>Antarctica slash DumontDUrville</td></tr>
+<tr><td>Antarctica/Macquarie</td><td>Antarctica slash Macquarie</td></tr>
+<tr><td>Antarctica/Mawson</td><td>Antarctica slash Mawson</td></tr>
+<tr><td>Antarctica/McMurdo</td><td>Antarctica slash McMurdo</td></tr>
+<tr><td>Antarctica/Palmer</td><td>Antarctica slash Palmer</td></tr>
+<tr><td>Antarctica/Rothera</td><td>Antarctica slash Rothera</td></tr>
+<tr><td>Antarctica/South_Pole</td><td>Antarctica slash South Pole</td></tr>
+<tr><td>Antarctica/Syowa</td><td>Antarctica slash Syowa</td></tr>
+<tr><td>Antarctica/Troll</td><td>Antarctica slash Troll</td></tr>
+<tr><td>Antarctica/Vostok</td><td>Antarctica slash Vostok</td></tr>
+<tr><td>Arctic/Longyearbyen</td><td>Arctic slash Longyearbyen</td></tr>
+<tr><td>Asia/Aden</td><td>Asia slash Aden</td></tr>
+<tr><td>Asia/Almaty</td><td>Asia slash Almaty</td></tr>
+<tr><td>Asia/Amman</td><td>Asia slash Amman</td></tr>
+<tr><td>Asia/Anadyr</td><td>Asia slash Anadyr</td></tr>
+<tr><td>Asia/Aqtau</td><td>Asia slash Aqtau</td></tr>
+<tr><td>Asia/Aqtobe</td><td>Asia slash Aqtobe</td></tr>
+<tr><td>Asia/Ashgabat</td><td>Asia slash Ashgabat</td></tr>
+<tr><td>Asia/Ashkhabad</td><td>Asia slash Ashkhabad</td></tr>
+<tr><td>Asia/Baghdad</td><td>Asia slash Baghdad</td></tr>
+<tr><td>Asia/Bahrain</td><td>Asia slash Bahrain</td></tr>
+<tr><td>Asia/Baku</td><td>Asia slash Baku</td></tr>
+<tr><td>Asia/Bangkok</td><td>Asia slash Bangkok</td></tr>
+<tr><td>Asia/Barnaul</td><td>Asia slash Barnaul</td></tr>
+<tr><td>Asia/Beirut</td><td>Asia slash Beirut</td></tr>
+<tr><td>Asia/Bishkek</td><td>Asia slash Bishkek</td></tr>
+<tr><td>Asia/Brunei</td><td>Asia slash Brunei</td></tr>
+<tr><td>Asia/Calcutta</td><td>Asia slash Calcutta</td></tr>
+<tr><td>Asia/Chita</td><td>Asia slash Chita</td></tr>
+<tr><td>Asia/Choibalsan</td><td>Asia slash Choibalsan</td></tr>
+<tr><td>Asia/Chongqing</td><td>Asia slash Chongqing</td></tr>
+<tr><td>Asia/Chungking</td><td>Asia slash Chungking</td></tr>
+<tr><td>Asia/Colombo</td><td>Asia slash Colombo</td></tr>
+<tr><td>Asia/Dacca</td><td>Asia slash Dacca</td></tr>
+<tr><td>Asia/Damascus</td><td>Asia slash Damascus</td></tr>
+<tr><td>Asia/Dhaka</td><td>Asia slash Dhaka</td></tr>
+<tr><td>Asia/Dili</td><td>Asia slash Dili</td></tr>
+<tr><td>Asia/Dubai</td><td>Asia slash Dubai</td></tr>
+<tr><td>Asia/Dushanbe</td><td>Asia slash Dushanbe</td></tr>
+<tr><td>Asia/Gaza</td><td>Asia slash Gaza</td></tr>
+<tr><td>Asia/Harbin</td><td>Asia slash Harbin</td></tr>
+<tr><td>Asia/Hebron</td><td>Asia slash Hebron</td></tr>
+<tr><td>Asia/Ho_Chi_Minh</td><td>Asia slash Ho Chi Minh</td></tr>
+<tr><td>Asia/Hong_Kong</td><td>Asia slash Hong Kong</td></tr>
+<tr><td>Asia/Hovd</td><td>Asia slash Hovd</td></tr>
+<tr><td>Asia/Irkutsk</td><td>Asia slash Irkutsk</td></tr>
+<tr><td>Asia/Istanbul</td><td>Asia slash Istanbul</td></tr>
+<tr><td>Asia/Jakarta</td><td>Asia slash Jakarta</td></tr>
+<tr><td>Asia/Jayapura</td><td>Asia slash Jayapura</td></tr>
+<tr><td>Asia/Jerusalem</td><td>Asia slash Jerusalem</td></tr>
+<tr><td>Asia/Kabul</td><td>Asia slash Kabul</td></tr>
+<tr><td>Asia/Kamchatka</td><td>Asia slash Kamchatka</td></tr>
+<tr><td>Asia/Karachi</td><td>Asia slash Karachi</td></tr>
+<tr><td>Asia/Kashgar</td><td>Asia slash Kashgar</td></tr>
+<tr><td>Asia/Kathmandu</td><td>Asia slash Kathmandu</td></tr>
+<tr><td>Asia/Katmandu</td><td>Asia slash Katmandu</td></tr>
+<tr><td>Asia/Khandyga</td><td>Asia slash Khandyga</td></tr>
+<tr><td>Asia/Kolkata</td><td>Asia slash Kolkata</td></tr>
+<tr><td>Asia/Krasnoyarsk</td><td>Asia slash Krasnoyarsk</td></tr>
+<tr><td>Asia/Kuala_Lumpur</td><td>Asia slash Kuala Lumpur</td></tr>
+<tr><td>Asia/Kuching</td><td>Asia slash Kuching</td></tr>
+<tr><td>Asia/Kuwait</td><td>Asia slash Kuwait</td></tr>
+<tr><td>Asia/Macao</td><td>Asia slash Macao</td></tr>
+<tr><td>Asia/Macau</td><td>Asia slash Macau</td></tr>
+<tr><td>Asia/Magadan</td><td>Asia slash Magadan</td></tr>
+<tr><td>Asia/Makassar</td><td>Asia slash Makassar</td></tr>
+<tr><td>Asia/Manila</td><td>Asia slash Manila</td></tr>
+<tr><td>Asia/Muscat</td><td>Asia slash Muscat</td></tr>
+<tr><td>Asia/Nicosia</td><td>Asia slash Nicosia</td></tr>
+<tr><td>Asia/Novokuznetsk</td><td>Asia slash Novokuznetsk</td></tr>
+<tr><td>Asia/Novosibirsk</td><td>Asia slash Novosibirsk</td></tr>
+<tr><td>Asia/Omsk</td><td>Asia slash Omsk</td></tr>
+<tr><td>Asia/Oral</td><td>Asia slash Oral</td></tr>
+<tr><td>Asia/Phnom_Penh</td><td>Asia slash Phnom Penh</td></tr>
+<tr><td>Asia/Pontianak</td><td>Asia slash Pontianak</td></tr>
+<tr><td>Asia/Pyongyang</td><td>Asia slash Pyongyang</td></tr>
+<tr><td>Asia/Qatar</td><td>Asia slash Qatar</td></tr>
+<tr><td>Asia/Qyzylorda</td><td>Asia slash Qyzylorda</td></tr>
+<tr><td>Asia/Rangoon</td><td>Asia slash Rangoon</td></tr>
+<tr><td>Asia/Riyadh</td><td>Asia slash Riyadh</td></tr>
+<tr><td>Asia/Saigon</td><td>Asia slash Saigon</td></tr>
+<tr><td>Asia/Sakhalin</td><td>Asia slash Sakhalin</td></tr>
+<tr><td>Asia/Samarkand</td><td>Asia slash Samarkand</td></tr>
+<tr><td>Asia/Seoul</td><td>Asia slash Seoul</td></tr>
+<tr><td>Asia/Shanghai</td><td>Asia slash Shanghai</td></tr>
+<tr><td>Asia/Singapore</td><td>Asia slash Singapore</td></tr>
+<tr><td>Asia/Srednekolymsk</td><td>Asia slash Srednekolymsk</td></tr>
+<tr><td>Asia/Taipei</td><td>Asia slash Taipei</td></tr>
+<tr><td>Asia/Tashkent</td><td>Asia slash Tashkent</td></tr>
+<tr><td>Asia/Tbilisi</td><td>Asia slash Tbilisi</td></tr>
+<tr><td>Asia/Tehran</td><td>Asia slash Tehran</td></tr>
+<tr><td>Asia/Tel_Aviv</td><td>Asia slash Tel Aviv</td></tr>
+<tr><td>Asia/Thimbu</td><td>Asia slash Thimbu</td></tr>
+<tr><td>Asia/Thimphu</td><td>Asia slash Thimphu</td></tr>
+<tr><td>Asia/Tokyo</td><td>Asia slash Tokyo</td></tr>
+<tr><td>Asia/Tomsk</td><td>Asia slash Tomsk</td></tr>
+<tr><td>Asia/Ujung_Pandang</td><td>Asia slash Ujung Pandang</td></tr>
+<tr><td>Asia/Ulaanbaatar</td><td>Asia slash Ulaanbaatar</td></tr>
+<tr><td>Asia/Ulan_Bator</td><td>Asia slash Ulan Bator</td></tr>
+<tr><td>Asia/Urumqi</td><td>Asia slash Urumqi</td></tr>
+<tr><td>Asia/Ust-Nera</td><td>Asia slash Ust dash Nera</td></tr>
+<tr><td>Asia/Vientiane</td><td>Asia slash Vientiane</td></tr>
+<tr><td>Asia/Vladivostok</td><td>Asia slash Vladivostok</td></tr>
+<tr><td>Asia/Yakutsk</td><td>Asia slash Yakutsk</td></tr>
+<tr><td>Asia/Yekaterinburg</td><td>Asia slash Yekaterinburg</td></tr>
+<tr><td>Asia/Yerevan</td><td>Asia slash Yerevan</td></tr>
+<tr><td>Atlantic/Azores</td><td>Atlantic slash Azores</td></tr>
+<tr><td>Atlantic/Bermuda</td><td>Atlantic slash Bermuda</td></tr>
+<tr><td>Atlantic/Canary</td><td>Atlantic slash Canary</td></tr>
+<tr><td>Atlantic/Cape_Verde</td><td>Atlantic slash Cape Verde</td></tr>
+<tr><td>Atlantic/Faeroe</td><td>Atlantic slash Faeroe</td></tr>
+<tr><td>Atlantic/Faroe</td><td>Atlantic slash Faroe</td></tr>
+<tr><td>Atlantic/Jan_Mayen</td><td>Atlantic slash Jan Mayen</td></tr>
+<tr><td>Atlantic/Madeira</td><td>Atlantic slash Madeira</td></tr>
+<tr><td>Atlantic/Reykjavik</td><td>Atlantic slash Reykjavik</td></tr>
+<tr><td>Atlantic/South_Georgia</td><td>Atlantic slash South Georgia</td></tr>
+<tr><td>Atlantic/St_Helena</td><td>Atlantic slash Saint Helena</td></tr>
+<tr><td>Atlantic/Stanley</td><td>Atlantic slash Stanley</td></tr>
+<tr><td>Australia/ACT</td><td>Australia slash A.C.T.</td></tr>
+<tr><td>Australia/Adelaide</td><td>Australia slash Adelaide</td></tr>
+<tr><td>Australia/Brisbane</td><td>Australia slash Brisbane</td></tr>
+<tr><td>Australia/Broken_Hill</td><td>Australia slash Broken Hill</td></tr>
+<tr><td>Australia/Canberra</td><td>Australia slash Canberra</td></tr>
+<tr><td>Australia/Currie</td><td>Australia slash Currie</td></tr>
+<tr><td>Australia/Darwin</td><td>Australia slash Darwin</td></tr>
+<tr><td>Australia/Eucla</td><td>Australia slash Eucla</td></tr>
+<tr><td>Australia/Hobart</td><td>Australia slash Hobart</td></tr>
+<tr><td>Australia/LHI</td><td>Australia slash L.H.I.</td></tr>
+<tr><td>Australia/Lindeman</td><td>Australia slash Lindeman</td></tr>
+<tr><td>Australia/Lord_Howe</td><td>Australia slash Lord Howe</td></tr>
+<tr><td>Australia/Melbourne</td><td>Australia slash Melbourne</td></tr>
+<tr><td>Australia/NSW</td><td>Australia slash N.S.W.</td></tr>
+<tr><td>Australia/North</td><td>Australia slash North</td></tr>
+<tr><td>Australia/Perth</td><td>Australia slash Perth</td></tr>
+<tr><td>Australia/Queensland</td><td>Australia slash Queensland</td></tr>
+<tr><td>Australia/South</td><td>Australia slash South</td></tr>
+<tr><td>Australia/Sydney</td><td>Australia slash Sydney</td></tr>
+<tr><td>Australia/Tasmania</td><td>Australia slash Tasmania</td></tr>
+<tr><td>Australia/Victoria</td><td>Australia slash Victoria</td></tr>
+<tr><td>Australia/West</td><td>Australia slash West</td></tr>
+<tr><td>Australia/Yancowinna</td><td>Australia slash Yancowinna</td></tr>
+<tr><td>BET</td><td>B.E.T.</td></tr>
+<tr><td>BST</td><td>B.S.T.</td></tr>
+<tr><td>Brazil/Acre</td><td>Brazil slash Acre</td></tr>
+<tr><td>Brazil/DeNoronha</td><td>Brazil slash DeNoronha</td></tr>
+<tr><td>Brazil/East</td><td>Brazil slash East</td></tr>
+<tr><td>Brazil/West</td><td>Brazil slash West</td></tr>
+<tr><td>CAT</td><td>C.A.T.</td></tr>
+<tr><td>CET</td><td>C.E.T.</td></tr>
+<tr><td>CNT</td><td>C.N.T.</td></tr>
+<tr><td>CST</td><td>C.S.T.</td></tr>
+<tr><td>CST6CDT</td><td>C.S.T. six C.D.T.</td></tr>
+<tr><td>CTT</td><td>C.T.T.</td></tr>
+<tr><td>Canada/Atlantic</td><td>Canada slash Atlantic</td></tr>
+<tr><td>Canada/Central</td><td>Canada slash Central</td></tr>
+<tr><td>Canada/East-Saskatchewan</td><td>Canada slash East dash Saskatchewan</td></tr>
+<tr><td>Canada/Eastern</td><td>Canada slash Eastern</td></tr>
+<tr><td>Canada/Mountain</td><td>Canada slash Mountain</td></tr>
+<tr><td>Canada/Newfoundland</td><td>Canada slash Newfoundland</td></tr>
+<tr><td>Canada/Pacific</td><td>Canada slash Pacific</td></tr>
+<tr><td>Canada/Saskatchewan</td><td>Canada slash Saskatchewan</td></tr>
+<tr><td>Canada/Yukon</td><td>Canada slash Yukon</td></tr>
+<tr><td>Chile/Continental</td><td>Chile slash Continental</td></tr>
+<tr><td>Chile/EasterIsland</td><td>Chile slash EasterIsland</td></tr>
+<tr><td>Cuba</td><td>Cuba</td></tr>
+<tr><td>EAT</td><td>E.A.T.</td></tr>
+<tr><td>ECT</td><td>E.C.T.</td></tr>
+<tr><td>EET</td><td>E.E.T.</td></tr>
+<tr><td>EST</td><td>E.S.T.</td></tr>
+<tr><td>EST5EDT</td><td>E.S.T. five E.D.T.</td></tr>
+<tr><td>Egypt</td><td>Egypt</td></tr>
+<tr><td>Eire</td><td>Eire</td></tr>
+<tr><td>Etc/GMT</td><td>G.M.T. <i>or</i> Etcetera slash G.M.T.</td></tr>
+<tr><td>Etc/GMT+0</td><td>G.M.T. plus zero <i>or</i> Etcetera slash G.M.T. plus zero</td></tr>
+<tr><td>Etc/GMT+1</td><td>G.M.T. plus one <i>or</i> Etcetera slash G.M.T. plus one</td></tr>
+<tr><td>Etc/GMT+10</td><td>G.M.T. plus ten <i>or</i> Etcetera slash G.M.T. plus ten</td></tr>
+<tr><td>Etc/GMT+11</td><td>G.M.T. plus eleven <i>or</i> Etcetera slash G.M.T. plus eleven</td></tr>
+<tr><td>Etc/GMT+12</td><td>G.M.T. plus twelve <i>or</i> Etcetera slash G.M.T. plus twelve</td></tr>
+<tr><td>Etc/GMT+2</td><td>G.M.T. plus two <i>or</i> Etcetera slash G.M.T. plus two</td></tr>
+<tr><td>Etc/GMT+3</td><td>G.M.T. plus three <i>or</i> Etcetera slash G.M.T. plus three</td></tr>
+<tr><td>Etc/GMT+4</td><td>G.M.T. plus four <i>or</i> Etcetera slash G.M.T. plus four</td></tr>
+<tr><td>Etc/GMT+5</td><td>G.M.T. plus five <i>or</i> Etcetera slash G.M.T. plus five</td></tr>
+<tr><td>Etc/GMT+6</td><td>G.M.T. plus six <i>or</i> Etcetera slash G.M.T. plus six</td></tr>
+<tr><td>Etc/GMT+7</td><td>G.M.T. plus seven <i>or</i> Etcetera slash G.M.T. plus seven</td></tr>
+<tr><td>Etc/GMT+8</td><td>G.M.T. plus eight <i>or</i> Etcetera slash G.M.T. plus eight</td></tr>
+<tr><td>Etc/GMT+9</td><td>G.M.T. plus nine <i>or</i> Etcetera slash G.M.T. plus nine</td></tr>
+<tr><td>Etc/GMT-0</td><td>G.M.T. minus zero <i>or</i> Etcetera slash G.M.T. minus zero</td></tr>
+<tr><td>Etc/GMT-1</td><td>G.M.T. minus one <i>or</i> Etcetera slash G.M.T. minus one</td></tr>
+<tr><td>Etc/GMT-10</td><td>G.M.T. minus ten <i>or</i> Etcetera slash G.M.T. minus ten</td></tr>
+<tr><td>Etc/GMT-11</td><td>G.M.T. minus eleven <i>or</i> Etcetera slash G.M.T. minus eleven</td></tr>
+<tr><td>Etc/GMT-12</td><td>G.M.T. minus twelve <i>or</i> Etcetera slash G.M.T. minus twelve</td></tr>
+<tr><td>Etc/GMT-13</td><td>G.M.T. minus thirteen <i>or</i> Etcetera slash G.M.T. minus thirteen</td></tr>
+<tr><td>Etc/GMT-14</td><td>G.M.T. minus fourteen <i>or</i> Etcetera slash G.M.T. minus fourteen</td></tr>
+<tr><td>Etc/GMT-2</td><td>G.M.T. minus two <i>or</i> Etcetera slash G.M.T. minus two</td></tr>
+<tr><td>Etc/GMT-3</td><td>G.M.T. minus three <i>or</i> Etcetera slash G.M.T. minus three</td></tr>
+<tr><td>Etc/GMT-4</td><td>G.M.T. minus four <i>or</i> Etcetera slash G.M.T. minus four</td></tr>
+<tr><td>Etc/GMT-5</td><td>G.M.T. minus five <i>or</i> Etcetera slash G.M.T. minus five</td></tr>
+<tr><td>Etc/GMT-6</td><td>G.M.T. minus six <i>or</i> Etcetera slash G.M.T. minus six</td></tr>
+<tr><td>Etc/GMT-7</td><td>G.M.T. minus seven <i>or</i> Etcetera slash G.M.T. minus seven</td></tr>
+<tr><td>Etc/GMT-8</td><td>G.M.T. minus eight <i>or</i> Etcetera slash G.M.T. minus eight</td></tr>
+<tr><td>Etc/GMT-9</td><td>G.M.T. minus nine <i>or</i> Etcetera slash G.M.T. minus nine</td></tr>
+<tr><td>Etc/GMT0</td><td>G.M.T. zero <i>or</i> Etcetera slash G.M.T. zero</td></tr>
+<tr><td>Etc/Greenwich</td><td>Etcetera slash Greenwich</td></tr>
+<tr><td>Etc/UCT</td><td>Etcetera slash U.C.T.</td></tr>
+<tr><td>Etc/UTC</td><td>Etcetera slash U.T.C.</td></tr>
+<tr><td>Etc/Universal</td><td>Etcetera slash Universal</td></tr>
+<tr><td>Etc/Zulu</td><td>Etcetera slash Zulu</td></tr>
+<tr><td>Europe/Amsterdam</td><td>Europe slash Amsterdam</td></tr>
+<tr><td>Europe/Andorra</td><td>Europe slash Andorra</td></tr>
+<tr><td>Europe/Astrakhan</td><td>Europe slash Astrakhan</td></tr>
+<tr><td>Europe/Athens</td><td>Europe slash Athens</td></tr>
+<tr><td>Europe/Belfast</td><td>Europe slash Belfast</td></tr>
+<tr><td>Europe/Belgrade</td><td>Europe slash Belgrade</td></tr>
+<tr><td>Europe/Berlin</td><td>Europe slash Berlin</td></tr>
+<tr><td>Europe/Bratislava</td><td>Europe slash Bratislava</td></tr>
+<tr><td>Europe/Brussels</td><td>Europe slash Brussels</td></tr>
+<tr><td>Europe/Bucharest</td><td>Europe slash Bucharest</td></tr>
+<tr><td>Europe/Budapest</td><td>Europe slash Budapest</td></tr>
+<tr><td>Europe/Busingen</td><td>Europe slash Busingen</td></tr>
+<tr><td>Europe/Chisinau</td><td>Europe slash Chisinau</td></tr>
+<tr><td>Europe/Copenhagen</td><td>Europe slash Copenhagen</td></tr>
+<tr><td>Europe/Dublin</td><td>Europe slash Dublin</td></tr>
+<tr><td>Europe/Gibraltar</td><td>Europe slash Gibraltar</td></tr>
+<tr><td>Europe/Guernsey</td><td>Europe slash Guernsey</td></tr>
+<tr><td>Europe/Helsinki</td><td>Europe slash Helsinki</td></tr>
+<tr><td>Europe/Isle_of_Man</td><td>Europe slash Isle of Man</td></tr>
+<tr><td>Europe/Istanbul</td><td>Europe slash Istanbul</td></tr>
+<tr><td>Europe/Jersey</td><td>Europe slash Jersey</td></tr>
+<tr><td>Europe/Kaliningrad</td><td>Europe slash Kaliningrad</td></tr>
+<tr><td>Europe/Kiev</td><td>Europe slash Kiev</td></tr>
+<tr><td>Europe/Kirov</td><td>Europe slash Kirov</td></tr>
+<tr><td>Europe/Lisbon</td><td>Europe slash Lisbon</td></tr>
+<tr><td>Europe/Ljubljana</td><td>Europe slash Ljubljana</td></tr>
+<tr><td>Europe/London</td><td>Europe slash London</td></tr>
+<tr><td>Europe/Luxembourg</td><td>Europe slash Luxembourg</td></tr>
+<tr><td>Europe/Madrid</td><td>Europe slash Madrid</td></tr>
+<tr><td>Europe/Malta</td><td>Europe slash Malta</td></tr>
+<tr><td>Europe/Mariehamn</td><td>Europe slash Mariehamn</td></tr>
+<tr><td>Europe/Minsk</td><td>Europe slash Minsk</td></tr>
+<tr><td>Europe/Monaco</td><td>Europe slash Monaco</td></tr>
+<tr><td>Europe/Moscow</td><td>Europe slash Moscow</td></tr>
+<tr><td>Europe/Nicosia</td><td>Europe slash Nicosia</td></tr>
+<tr><td>Europe/Oslo</td><td>Europe slash Oslo</td></tr>
+<tr><td>Europe/Paris</td><td>Europe slash Paris</td></tr>
+<tr><td>Europe/Podgorica</td><td>Europe slash Podgorica</td></tr>
+<tr><td>Europe/Prague</td><td>Europe slash Prague</td></tr>
+<tr><td>Europe/Riga</td><td>Europe slash Riga</td></tr>
+<tr><td>Europe/Rome</td><td>Europe slash Rome</td></tr>
+<tr><td>Europe/Samara</td><td>Europe slash Samara</td></tr>
+<tr><td>Europe/San_Marino</td><td>Europe slash San Marino</td></tr>
+<tr><td>Europe/Sarajevo</td><td>Europe slash Sarajevo</td></tr>
+<tr><td>Europe/Simferopol</td><td>Europe slash Simferopol</td></tr>
+<tr><td>Europe/Skopje</td><td>Europe slash Skopje</td></tr>
+<tr><td>Europe/Sofia</td><td>Europe slash Sofia</td></tr>
+<tr><td>Europe/Stockholm</td><td>Europe slash Stockholm</td></tr>
+<tr><td>Europe/Tallinn</td><td>Europe slash Tallinn</td></tr>
+<tr><td>Europe/Tirane</td><td>Europe slash Tirane</td></tr>
+<tr><td>Europe/Tiraspol</td><td>Europe slash Tiraspol</td></tr>
+<tr><td>Europe/Ulyanovsk</td><td>Europe slash Ulyanovsk</td></tr>
+<tr><td>Europe/Uzhgorod</td><td>Europe slash Uzhgorod</td></tr>
+<tr><td>Europe/Vaduz</td><td>Europe slash Vaduz</td></tr>
+<tr><td>Europe/Vatican</td><td>Europe slash Vatican</td></tr>
+<tr><td>Europe/Vienna</td><td>Europe slash Vienna</td></tr>
+<tr><td>Europe/Vilnius</td><td>Europe slash Vilnius</td></tr>
+<tr><td>Europe/Volgograd</td><td>Europe slash Volgograd</td></tr>
+<tr><td>Europe/Warsaw</td><td>Europe slash Warsaw</td></tr>
+<tr><td>Europe/Zagreb</td><td>Europe slash Zagreb</td></tr>
+<tr><td>Europe/Zaporozhye</td><td>Europe slash Zaporozhye</td></tr>
+<tr><td>Europe/Zurich</td><td>Europe slash Zurich</td></tr>
+<tr><td>GB</td><td>G.B.</td></tr>
+<tr><td>GB-Eire</td><td>G.B. dash Eire</td></tr>
+<tr><td>GMT</td><td>G.M.T.</td></tr>
+<tr><td>GMT0</td><td>G.M.T. zero</td></tr>
+<tr><td>Greenwich</td><td>Greenwich</td></tr>
+<tr><td>HST</td><td>H.S.T.</td></tr>
+<tr><td>Hongkong</td><td>Hongkong</td></tr>
+<tr><td>IET</td><td>I.E.T.</td></tr>
+<tr><td>IST</td><td>I.S.T.</td></tr>
+<tr><td>Iceland</td><td>Iceland</td></tr>
+<tr><td>Indian/Antananarivo</td><td>Indian slash Antananarivo</td></tr>
+<tr><td>Indian/Chagos</td><td>Indian slash Chagos</td></tr>
+<tr><td>Indian/Christmas</td><td>Indian slash Christmas</td></tr>
+<tr><td>Indian/Cocos</td><td>Indian slash Cocos</td></tr>
+<tr><td>Indian/Comoro</td><td>Indian slash Comoro</td></tr>
+<tr><td>Indian/Kerguelen</td><td>Indian slash Kerguelen</td></tr>
+<tr><td>Indian/Mahe</td><td>Indian slash Mahe</td></tr>
+<tr><td>Indian/Maldives</td><td>Indian slash Maldives</td></tr>
+<tr><td>Indian/Mauritius</td><td>Indian slash Mauritius</td></tr>
+<tr><td>Indian/Mayotte</td><td>Indian slash Mayotte</td></tr>
+<tr><td>Indian/Reunion</td><td>Indian slash Reunion</td></tr>
+<tr><td>Iran</td><td>Iran</td></tr>
+<tr><td>Israel</td><td>Israel</td></tr>
+<tr><td>JST</td><td>J.S.T.</td></tr>
+<tr><td>Jamaica</td><td>Jamaica</td></tr>
+<tr><td>Japan</td><td>Japan</td></tr>
+<tr><td>Kwajalein</td><td>Kwajalein</td></tr>
+<tr><td>Libya</td><td>Libya</td></tr>
+<tr><td>MET</td><td>M.E.T.</td></tr>
+<tr><td>MIT</td><td>M.I.T.</td></tr>
+<tr><td>MST</td><td>M.S.T.</td></tr>
+<tr><td>MST7MDT</td><td>M.S.T. seven M.D.T.</td></tr>
+<tr><td>Mexico/BajaNorte</td><td>Mexico slash BajaNorte</td></tr>
+<tr><td>Mexico/BajaSur</td><td>Mexico slash BajaSur</td></tr>
+<tr><td>Mexico/General</td><td>Mexico slash General</td></tr>
+<tr><td>NET</td><td>N.E.T.</td></tr>
+<tr><td>NST</td><td>N.S.T.</td></tr>
+<tr><td>NZ</td><td>N.Z.</td></tr>
+<tr><td>NZ-CHAT</td><td>N.Z. dash C.H.A.T.</td></tr>
+<tr><td>Navajo</td><td>Navajo</td></tr>
+<tr><td>PLT</td><td>P.L.T.</td></tr>
+<tr><td>PNT</td><td>P.N.T.</td></tr>
+<tr><td>PRC</td><td>P.R.C.</td></tr>
+<tr><td>PRT</td><td>P.R.T.</td></tr>
+<tr><td>PST</td><td>P.S.T.</td></tr>
+<tr><td>PST8PDT</td><td>P.S.T. eight P.D.T.</td></tr>
+<tr><td>Pacific/Apia</td><td>Pacific slash Apia</td></tr>
+<tr><td>Pacific/Auckland</td><td>Pacific slash Auckland</td></tr>
+<tr><td>Pacific/Bougainville</td><td>Pacific slash Bougainville</td></tr>
+<tr><td>Pacific/Chatham</td><td>Pacific slash Chatham</td></tr>
+<tr><td>Pacific/Chuuk</td><td>Pacific slash Chuuk</td></tr>
+<tr><td>Pacific/Easter</td><td>Pacific slash Easter</td></tr>
+<tr><td>Pacific/Efate</td><td>Pacific slash Efate</td></tr>
+<tr><td>Pacific/Enderbury</td><td>Pacific slash Enderbury</td></tr>
+<tr><td>Pacific/Fakaofo</td><td>Pacific slash Fakaofo</td></tr>
+<tr><td>Pacific/Fiji</td><td>Pacific slash Fiji</td></tr>
+<tr><td>Pacific/Funafuti</td><td>Pacific slash Funafuti</td></tr>
+<tr><td>Pacific/Galapagos</td><td>Pacific slash Galapagos</td></tr>
+<tr><td>Pacific/Gambier</td><td>Pacific slash Gambier</td></tr>
+<tr><td>Pacific/Guadalcanal</td><td>Pacific slash Guadalcanal</td></tr>
+<tr><td>Pacific/Guam</td><td>Pacific slash Guam</td></tr>
+<tr><td>Pacific/Honolulu</td><td>Pacific slash Honolulu</td></tr>
+<tr><td>Pacific/Johnston</td><td>Pacific slash Johnston</td></tr>
+<tr><td>Pacific/Kiritimati</td><td>Pacific slash Kiritimati</td></tr>
+<tr><td>Pacific/Kosrae</td><td>Pacific slash Kosrae</td></tr>
+<tr><td>Pacific/Kwajalein</td><td>Pacific slash Kwajalein</td></tr>
+<tr><td>Pacific/Majuro</td><td>Pacific slash Majuro</td></tr>
+<tr><td>Pacific/Marquesas</td><td>Pacific slash Marquesas</td></tr>
+<tr><td>Pacific/Midway</td><td>Pacific slash Midway</td></tr>
+<tr><td>Pacific/Nauru</td><td>Pacific slash Nauru</td></tr>
+<tr><td>Pacific/Niue</td><td>Pacific slash Niue</td></tr>
+<tr><td>Pacific/Norfolk</td><td>Pacific slash Norfolk</td></tr>
+<tr><td>Pacific/Noumea</td><td>Pacific slash Noumea</td></tr>
+<tr><td>Pacific/Pago_Pago</td><td>Pacific slash Pago Pago</td></tr>
+<tr><td>Pacific/Palau</td><td>Pacific slash Palau</td></tr>
+<tr><td>Pacific/Pitcairn</td><td>Pacific slash Pitcairn</td></tr>
+<tr><td>Pacific/Pohnpei</td><td>Pacific slash Pohnpei</td></tr>
+<tr><td>Pacific/Ponape</td><td>Pacific slash Ponape</td></tr>
+<tr><td>Pacific/Port_Moresby</td><td>Pacific slash Port Moresby</td></tr>
+<tr><td>Pacific/Rarotonga</td><td>Pacific slash Rarotonga</td></tr>
+<tr><td>Pacific/Saipan</td><td>Pacific slash Saipan</td></tr>
+<tr><td>Pacific/Samoa</td><td>Pacific slash Samoa</td></tr>
+<tr><td>Pacific/Tahiti</td><td>Pacific slash Tahiti</td></tr>
+<tr><td>Pacific/Tarawa</td><td>Pacific slash Tarawa</td></tr>
+<tr><td>Pacific/Tongatapu</td><td>Pacific slash Tongatapu</td></tr>
+<tr><td>Pacific/Truk</td><td>Pacific slash Truk</td></tr>
+<tr><td>Pacific/Wake</td><td>Pacific slash Wake</td></tr>
+<tr><td>Pacific/Wallis</td><td>Pacific slash Wallis</td></tr>
+<tr><td>Pacific/Yap</td><td>Pacific slash Yap</td></tr>
+<tr><td>Poland</td><td>Poland</td></tr>
+<tr><td>Portugal</td><td>Portugal</td></tr>
+<tr><td>ROK</td><td>R.O.K.</td></tr>
+<tr><td>SST</td><td>S.S.T.</td></tr>
+<tr><td>Singapore</td><td>Singapore</td></tr>
+<tr><td>SystemV/AST4</td><td>System Five slash A.S.T. four</td></tr>
+<tr><td>SystemV/AST4ADT</td><td>System Five slash A.S.T. four A.D.T.</td></tr>
+<tr><td>SystemV/CST6</td><td>System Five slash C.S.T. six</td></tr>
+<tr><td>SystemV/CST6CDT</td><td>System Five slash C.S.T. six C.D.T.</td></tr>
+<tr><td>SystemV/EST5</td><td>System Five slash E.S.T. five</td></tr>
+<tr><td>SystemV/EST5EDT</td><td>System Five slash E.S.T. five E.D.T.</td></tr>
+<tr><td>SystemV/HST10</td><td>System Five slash H.S.T. ten</td></tr>
+<tr><td>SystemV/MST7</td><td>System Five slash M.S.T. seven</td></tr>
+<tr><td>SystemV/MST7MDT</td><td>System Five slash M.S.T. seven M.D.T.</td></tr>
+<tr><td>SystemV/PST8</td><td>System Five slash P.S.T. eight</td></tr>
+<tr><td>SystemV/PST8PDT</td><td>System Five slash P.S.T. eight P.D.T.</td></tr>
+<tr><td>SystemV/YST9</td><td>System Five slash Y.S.T. nine</td></tr>
+<tr><td>SystemV/YST9YDT</td><td>System Five slash Y.S.T. nine Y.D.T.</td></tr>
+<tr><td>Turkey</td><td>Turkey</td></tr>
+<tr><td>UCT</td><td>U.C.T.</td></tr>
+<tr><td>US/Alaska</td><td>U.S. slash Alaska</td></tr>
+<tr><td>US/Aleutian</td><td>U.S. slash Aleutian</td></tr>
+<tr><td>US/Arizona</td><td>U.S. slash Arizona</td></tr>
+<tr><td>US/Central</td><td>Central <i>or</i> U.S. slash Central</td></tr>
+<tr><td>US/East-Indiana</td><td>U.S. slash East dash Indiana</td></tr>
+<tr><td>US/Eastern</td><td>Eastern <i>or</i> U.S. slash Eastern</td></tr>
+<tr><td>US/Hawaii</td><td>U.S. slash Hawaii</td></tr>
+<tr><td>US/Indiana-Starke</td><td>U.S. slash Indiana dash Starke</td></tr>
+<tr><td>US/Michigan</td><td>U.S. slash Michigan</td></tr>
+<tr><td>US/Mountain</td><td>Mountain <i>or</i> U.S. slash Mountain</td></tr>
+<tr><td>US/Pacific</td><td>Pacific <i>or</i> U.S. slash Pacific</td></tr>
+<tr><td>US/Pacific-New</td><td>U.S. slash Pacific dash New</td></tr>
+<tr><td>US/Samoa</td><td>U.S. slash Samoa</td></tr>
+<tr><td>UTC</td><td>U.T.C.</td></tr>
+<tr><td>Universal</td><td>Universal</td></tr>
+<tr><td>VST</td><td>V.S.T.</td></tr>
+<tr><td>W-SU</td><td>W. dash S.U.</td></tr>
+<tr><td>WET</td><td>W.E.T.</td></tr>
+<tr><td>Zulu</td><td>Zulu</td></tr>
+</table>
+</body></html>

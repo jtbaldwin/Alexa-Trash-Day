@@ -1,0 +1,24 @@
+title handleUpdateScheduleRequest
+
+participantspacing equal
+
+actor "Trash Day User" as User
+participant "Trash Day\nSkill" as Trash Day
+#supported participant types: participant, actor, boundary, control, entity, database
+
+User-#blue>Trash Day :**"Change Schedule"** (UpdateScheduleIntent) 
+
+rbox over Trash Day: configNeeded=isConfigurationComplete()
+
+alt configNeeded != Null
+
+Trash Day->User: <Configuration Prompt>
+
+else configNeeded == Null
+
+rbox over Trash Day: setScheduleConfigInProgress()\naskScheduleChange()
+
+Trash Day->User:(ask, no card)\n\n**Text**: PhraseSchedule.HELP_VERBAL_ALTER_SCHEDULE\n**Reprompt**: PhraseSchedule.HELP_REPROMPT_ALTER_SCHEDULE\n**Card**: PhraseSchedule.CARD_ALTER_SCHEDULE
+
+end
+

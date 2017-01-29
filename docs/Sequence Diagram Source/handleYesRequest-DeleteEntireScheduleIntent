@@ -1,0 +1,32 @@
+title handleYesRequest (DeleteEntireScheduleIntent)
+
+participantspacing equal
+
+actor "Trash Day User" as User
+participant "Trash Day\nSkill" as Trash Day
+#supported participant types: participant, actor, boundary, control, entity, database
+
+User-#blue>Trash Day :"Yes" (to prior DeleteEntireScheduleIntent)
+
+rbox over Trash Day: intentToConfirm = sessionDao.getConfirmationIntent()
+
+alt intentToConfirm is blank
+
+rbox over Trash Day: sessionDao.clearConfirmationData()\ntellYesNoMisunderstood()
+
+Trash Day->User: (tell, no card)\n\n**Text**: "Sorry.  I didn't understand what question you were answering.  Please say \"help\" for what things you can say."
+
+else intentToConfirm == DeleteEntireScheduleIntent
+
+rbox over Trash Day: sessionDao.clearConfirmationData()\nschedule = loadSchedule(sessionDao, dynamoDao);\nsessionDao.clearSchedule()\nsessionDao.clearTimeZone()\nSave changes to database.\ntellScheduleDeleted()
+
+Trash Day->User: (tell, no card)\n\n**Text**: Cleared entire schedule.
+
+else unknown intentToConfirm
+
+rbox over Trash Day: clearConfirmationData()\ntellYesNoProblem()
+
+Trash Day->User: (tell, no card)\n\n**Text**: Uh-oh, I found a programming problem.  Cannot <actionName>.
+
+end
+

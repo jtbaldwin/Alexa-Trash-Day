@@ -1,0 +1,39 @@
+title handleTellNextPickupRequest
+
+participantspacing equal
+
+actor "Trash Day User" as User
+participant "Trash Day\nSkill" as Trash Day
+
+User-#blue>Trash Day :"What's next?" (TellNextPickupIntent)
+
+
+rbox over Trash Day: configNeeded=isConfigurationComplete()
+
+alt configNeeded != Null
+
+Trash Day->User: <Configuration Prompt>
+
+else configNeeded == Null
+
+alt Pickup Name slot is empty or invalid
+
+rbox over Trash Day: tellAllNextPickups()
+
+alt No Pickups Scheduled
+Trash Day->User: (tell, with card)\n\n**Text**:No pickups are scheduled. Add schedule pickups by saying: "Alexa, tell Trash Day to change schedule."\n**Card**:As of <day> and <time>, no pickups are scheduled. Add schedule pickups by saying: "Alexa, tell Trash Day to change schedule."
+else Some Pickups Scheduled
+Trash Day->User:  (tell, with card)\n\n**Text**:Next trash pickup is <day> and <time>.\nNext recycling pickup is <day> and <time>...\n**Card**:As of <day> and <time>:\nNext trash pickup is <day> and <time>.\nNext recycling pickup is <day> and <time>...
+end
+
+else single Pickup Name given
+
+rbox over Trash Day: TellOneNextPickup()
+
+alt Pickup Name is not Scheduled
+Trash Day->User: (tell, with card)\n\n**Text**:No //XYZ// pickup is scheduled. Add schedule pickups by saying: "Alexa, tell Trash Day to change schedule."\n**Card**:As of <day> and <time>, no //XYZ// pickup is scheduled. Add schedule pickups by saying: "Alexa, tell Trash Day to change schedule."
+else Some Pickups Scheduled
+Trash Day->User:  (tell, with card)\n\n**Text**:Next //XYZ// pickup is <day> and <time>.\n**Card**:As of <day> and <time>:\nNext //XYZ// pickup is <day> and <time>
+end
+
+end

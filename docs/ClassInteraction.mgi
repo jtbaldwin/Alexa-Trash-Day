@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <CommunicationClass name="trashday.TrashDayManager" x="399" y="165">
+        <Communication destinationClassName="trashday.ui.responses.ScheduleResponses"/>
+        <Communication destinationClassName="trashday.ui.responses.HelpResponses"/>
+        <Communication destinationClassName="trashday.ui.responses.YesNoResponses"/>
+        <Communication destinationClassName="trashday.ui.responses.ExitResponses"/>
+    </CommunicationClass>
+    <CommunicationClass name="trashday.ui.responses.ScheduleResponses"
+        x="632" y="181"/>
+    <CommunicationClass name="trashday.ui.responses.HelpResponses"
+        x="488" y="17"/>
+    <CommunicationClass name="trashday.ui.responses.YesNoResponses"
+        x="656" y="83"/>
+    <CommunicationClass name="trashday.ui.responses.ExitResponses"
+        x="618" y="30"/>
+    <CommunicationClass name="trashday.TrashDaySpeechlet" x="108" y="162">
+        <Association destinationClassName="trashday.TrashDayManager"
+            endpointName="tdm" kind="Simple"/>
+        <Communication destinationClassName="trashday.TrashDayManager"/>
+    </CommunicationClass>
+</ClassDiagram>

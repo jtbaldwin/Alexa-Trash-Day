@@ -1,0 +1,12 @@
+title handleHelpRequest
+
+participantspacing equal
+
+actor "Trash Day User" as User
+participant "Trash Day\nSkill" as Trash Day
+
+User-#blue>Trash Day :"Help" (AMAZON.HelpIntent)
+
+rbox over Trash Day: tellHelp()
+
+Trash Day->User: (tell, with card)\n\n**Text**:Try asking "what is the schedule?" \nOr ask for the next pickup time with "what's next?" or \n"when is the next trash pickup?"\nYou can update the schedule by saying "change schedule".\nFor further help, you can refer to the Trash Day Help Card just sent to your Alexa phone app."\n\n**Card**:On initial setup, you will need to teach Trash Day your time zone and weekly pickup schedule.  Here's mine:\n  Alexa, open Trash Day.\n  Eastern.\n  Add trash pickup on Tuesday at seven-thirty am.\n  Add trash pickup on Friday at seven-thirty am.\n  Add recycling pickup on Friday at seven-thirty am.\n  Add lawn waste pickup on Wednesday at one p.m.\n  Tell me the schedule.\n\nOnce you setup your schedule, you can ask quick questions like...\n  Alexa, ask Trash Day, what's next?\n  Alexa, ask Trash Day, is it trash day?\n  Alexa, ask Trash Day, when is the next recycling pickup?\n  Alexa, ask Trash Day, what is the schedule?\n\nIf you need to make schedule changes, you can use commands like...\n   Alexa, tell Trash Day to change schedule.\n   Add recycling pickup on Friday at seven-thirty am.\n   Add recycling pickup on Wednesday at one p.m.\n   Delete all lawn waste pickups.\n   Tell me the schedule.\n\nIf you want, you can also delete the entire schedule and start over... \n  Alexa, tell Trash Day to delete the entire schedule.\n\nFor more extensive help, refer to the documentation at:\nhttps://s3.amazonaws.com/trash-day-docs/Help.html

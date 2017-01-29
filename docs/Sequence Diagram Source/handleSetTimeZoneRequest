@@ -1,0 +1,57 @@
+title handleSetTimeZoneRequest
+
+participantspacing equal
+
+actor "Trash Day User" as User
+participant "Trash Day\nSkill" as Trash Day
+#supported participant types: participant, actor, boundary, control, entity, database
+
+User-#blue>Trash Day :"Set time zone to //XYZ//." (SetTimeZoneIntent)
+
+rbox over Trash Day: timeZone = loadTimeZone(sessionDao, dynamoDao);
+
+alt Time Zone Slot is empty
+
+rbox over Trash Day: getScheduleConfigInProgress()\nrespondSetTimeZoneMissingData()
+
+alt if schedule config in-progress
+
+Trash Day->User:(ask, with card)\n\n**Text**: I missed the time zone information. PhraseTimeZone.SET_VERBAL\n**Reprompt**: PhraseTimeZone.SET_REPROMPT\n**Card**: PhraseTimeZone.SET_CARD
+else getScheduleConfigInProgress == false
+Trash Day->User:(tell, with card)\n\n**Text**: I missed the time zone information. PhraseTimeZone.SET_VERBAL\n**Card**: PhraseTimeZone.SET_CARD
+end
+
+else Time Zone Slot has Invalid Data
+
+rbox over Trash Day: getScheduleConfigInProgress()\nrespondSetTimeZoneInvalidData()
+
+alt if schedule config in-progress
+
+Trash Day->User:(ask, with card)\n\n**Text**: I didn't understand the time zone information. PhraseTimeZone.SET_VERBAL\n**Reprompt**: PhraseTimeZone.SET_REPROMPT\n**Card**: PhraseTimeZone.SET_CARD
+else getScheduleConfigInProgress == false
+Trash Day->User:(tell, with card)\n\n**Text**: I missed the time zone information. PhraseTimeZone.SET_VERBAL\n**Card**: PhraseTimeZone.SET_CARD
+end
+
+else askTimeZoneUpdatedScheduleMissing
+
+rbox over Trash Day: Save Time Zone to Session+Database.\nschedule = loadSchedule(sessionDao, dynamoDao)
+
+alt if Schedule Empty
+
+rbox over Trash Day: setScheduleConfigInProgress()\naskTimeZoneUpdatedScheduleMissing()
+
+Trash Day->User:(ask, no card)\n\n**Text**: Time zone set to //XYZ//. Next, + PhraseSchedule.HELP_VERBAL_ADD_PICKUPS\n**Reprompt**: Next, PhraseSchedule.HELP_REPROMPT_ADD_PICKUPS\n**Card**: PhraseSchedule.CARD_ALTER_SCHEDULE
+
+else Schedule has entries
+
+rbox over Trash Day: getScheduleConfigInProgress()\nrespondTimeZoneUpdatedScheduleExists()
+
+alt if schedule configuration in-progress
+
+Trash Day->User:(ask, with card)\n**Text**: Time zone set to //XYZ//. Next, PhraseSchedule.HELP_VERBAL_ALTER_SCHEDULE\n**Reprompt**: PhraseSchedule.HELP_REPROMPT_ALTER_SCHEDULE\n**Card**: PhraseSchedule.CARD_ALTER_SCHEDULE
+
+else schedule configuration not in-progress
+Trash Day->User: (tell, no card)\n**Text**: Time zone set to //XYZ//.
+end
+
+end

@@ -1,0 +1,8 @@
+trashday
+trashday.model
+trashday.storage
+trashday.ui
+trashday.ui.requests
+trashday.ui.responses
+trashday.ui.speechAssets
+trashday.ui.speechAssets.customSlotTypes

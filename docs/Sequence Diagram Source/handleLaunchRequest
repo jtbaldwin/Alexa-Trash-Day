@@ -1,0 +1,20 @@
+title handleLaunchRequest
+
+participantspacing equal
+
+actor "Trash Day User" as User
+participant "Trash Day\nSkill" as Trash Day
+
+User-#blue>Trash Day :"Alexa, open Trash Day." (onLaunch)
+rbox over Trash Day: configNeeded=isConfigurationComplete()
+
+alt configNeeded != Null
+
+Trash Day->User: <Configuration Prompt>
+
+else configNeeded == Null
+
+rbox over Trash Day:askForMostCommonCommands()
+Trash Day->User:(ask, no card)\n\n**Text**:Welcome to Trash Day.\nYou can say phrases like:\n  "What's next?",\n  "Tell me the schedule",\n  "Change Schedule.", or\n  "Help".\n**Reprompt**:You can say phrases like:\n  "What's next?",\n  "Tell me the schedule",\n  "Change Schedule.", or\n  "Help".
+
+end
