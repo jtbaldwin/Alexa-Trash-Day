@@ -660,13 +660,16 @@ public class TrashDayManager {
      */
     public SpeechletResponse handleHelpRequest(IntentRequest request, Session session) {
     	log.trace("handleHelpRequest()");
+    	sessionDao = new SessionDao(session);
+    	schedule = loadSchedule(sessionDao, dynamoDao);
     	timeZone = loadTimeZone(sessionDao, dynamoDao);
     	if (timeZone!=null) {
         	sessionDao = new SessionDao(session);
         	LocalDateTime ldtRequest = DateTimeOutputUtils.getRequestLocalDateTime(request, timeZone);
         	sessionDao.incrementIntentLog(ldtRequest, "help");
     	}
-    	SpeechletResponse response = ResponsesHelp.tellHelp();
+    	boolean nonEmptyScheduleExists = (schedule!=null)&&(! schedule.isEmpty());
+    	SpeechletResponse response = ResponsesHelp.respondHelp(sessionDao, true, nonEmptyScheduleExists);
 		if (response.getShouldEndSession()) { flushIntentLog(); }
 		return response;
     }

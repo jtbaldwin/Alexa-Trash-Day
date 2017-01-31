@@ -369,10 +369,19 @@ public class TrashDaySpeechletRequestStreamHandlerTest {
 		log.debug("testHelp testDataRequest={}", testDataRequestFormatted);
 
 		// Modify expectedResponse for this test.
-		TestDataTellResponse expectedResponse = new TestDataTellResponse();
-		expectedResponse.setResponseOutputSpeechText(Phrases.HELP_VERBAL_HELP.toString()+Phrases.HELP_VERBAL_CARD_SUFFIX);
+		TestDataAskResponse expectedResponse = new TestDataAskResponse();
+		expectedResponse.setResponseOutputSpeechText(Phrases.HELP_VERBAL_SCHEDULE_EXISTS.toString()+Phrases.HELP_VERBAL_CARD_SUFFIX);
+		expectedResponse.setResponseRepromptOutputSpeechText(Phrases.HELP_REPROMPT_SCHEDULE_EXISTS);
 		expectedResponse.setResponseCardTitle("Trash Day Help");
-		expectedResponse.setResponseCardContent(Phrases.HELP_CARD_HELP.toString());
+		expectedResponse.setResponseCardContent(Phrases.HELP_CARD);
+		IntentLog intentLog = new IntentLog();
+		LocalDateTime ldtRequest = testRequest.getRequestTimestamp();
+		intentLog.incrementIntent(ldtRequest, "help");
+		expectedResponse.setSessionAttribute(SessionDao.SESSION_ATTR_INTENT_LOG, intentLog.toJson());
+		expectedResponse.setSessionAttribute(SessionDao.SESSION_ATTR_INTENT_LOG_UPDATED, true);
+		expectedResponse.setSessionAttribute(SessionDao.SESSION_ATTR_OVERALL_HELP_CARD_SENT,  true);
+		expectedResponse.setSessionAttribute(SessionDao.SESSION_ATTR_SCHEDULE, "${json-unit.ignore}");			
+		expectedResponse.setSessionAttribute(SessionDao.SESSION_ATTR_TIMEZONE, testTimeZone);
 		String expectedResponseFormatted = expectedResponse.toString();
 		log.debug("testHelp expectedResponse={}", expectedResponseFormatted);
 

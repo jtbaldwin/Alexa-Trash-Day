@@ -6,9 +6,14 @@ public enum Phrases {
 	
 	EXIT_VERBAL("Goodbye"),
 	
-	HELP_VERBAL_HELP("Try asking \"what is the schedule?\"  Or ask for the next pickup time with \"what's next?\" or \"when is the next trash pickup?\". You can update the schedule by saying \"change schedule\"."),
+	HELP_VERBAL_NO_SCHEDULE("The Trash Day skill remembers a weekly pickup schedule for you.  You could then ask: \"Is it trash day?\" or \"what's the schedule?\".  But the first thing to do is to create your weekly pickup schedule by saying, \"Change Schedule\"."),
+	HELP_REPROMPT_NO_SCHEDULE("Please create your weekly pickup schedule by saying, \"Change Schedule\"."),
+	
+	HELP_VERBAL_SCHEDULE_EXISTS("The Trash Day skill remembers a weekly pickup schedule for you.  You can ask: \"Is it trash day?\", \"what's next?\", or \"what's the schedule?\".  You can also update your weekly schedule by saying, \"Change Schedule\"."),
+	HELP_REPROMPT_SCHEDULE_EXISTS("You can say phrases like: \"What's next?\", \"Tell me the schedule\", \"Change Schedule.\", or \"Stop\"."),
+	
     HELP_VERBAL_CARD_SUFFIX(" For further help, you can refer to the Trash Day Help Card just sent to your Alexa phone app."),
-    HELP_CARD_HELP(
+    HELP_CARD(
 	"On initial setup, you will need to teach Trash Day your time zone and weekly pickup schedule.  Here's mine:\n" + 
 	"  Alexa, open Trash Day.\n" + 
 	"  Eastern\n" + 

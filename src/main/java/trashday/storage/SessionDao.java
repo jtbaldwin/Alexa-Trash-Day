@@ -29,8 +29,10 @@ import trashday.model.Schedule;
 public class SessionDao {
 	/** Log object for this class */
     private static final Logger log = LoggerFactory.getLogger(SessionDao.class);
+    
     /** Object that loads specific users' Schedules in Dynamo DB */
     private Session session;
+    
 	/** A Jackson object mapper configured to handle Java 8 LocalDateTime objects and Jon Peterson's object versioning module. */
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()
  		   .registerModule(new ParameterNamesModule())
@@ -49,6 +51,8 @@ public class SessionDao {
     /** {@link com.amazon.speech.speechlet.Session Session} attribute key to store user text description of actions that require a Yes/No confirmation */
 	public static final String SESSION_ATTR_CONFIRM_DESC = "trashDayConfirmAction";
 	
+    /** {@link com.amazon.speech.speechlet.Session Session} attribute key to store if overall help card is already sent in this session. */
+	public static final String SESSION_ATTR_OVERALL_HELP_CARD_SENT = "trashDayOverallHelpCardSent";
     /** {@link com.amazon.speech.speechlet.Session Session} attribute key to store if Time Zone help card is already sent in this session. */
 	public static final String SESSION_ATTR_TIMEZONE_HELP_CARD_SENT = "trashDayTimeZoneHelpCardSent";
     /** {@link com.amazon.speech.speechlet.Session Session} attribute key to store if Schedule help card is already sent in this session. */
@@ -169,6 +173,22 @@ public class SessionDao {
     	if (o.getClass().getName().equals("java.lang.Boolean")) {
     		Boolean updated = (Boolean) o;
     		return updated.booleanValue();
+    	}
+    	return false;
+    }
+    
+    /**
+     * Load the session attribute that tracks if the overall help card has
+     * been sent to the user during this session.
+     * 
+     * @return true if flag exists and is true
+     */
+    public boolean getOverallHelpCardSent() {
+    	Object o = session.getAttribute(SESSION_ATTR_OVERALL_HELP_CARD_SENT);
+    	if ( o == null) { return false; };
+    	if (o.getClass().getName().equals("java.lang.Boolean")) {
+    		Boolean sent = (Boolean) o;
+    		return sent.booleanValue();
     	}
     	return false;
     }
@@ -353,6 +373,15 @@ public class SessionDao {
 		} catch (JsonProcessingException e) {
 			log.error("Failed to save intent log to current session. JsonProcessingException={}", e.getMessage());
 		}
+    }
+    
+    /**
+     * Set the session attribute that tracks if the overall help card has
+     * been sent to the user during this session.
+     */
+    public void setOverallHelpCardSent() {
+    	Boolean sent = new Boolean(true);
+    	session.setAttribute(SESSION_ATTR_OVERALL_HELP_CARD_SENT, sent);
     }
     
     /**
