@@ -7,24 +7,55 @@ I can never seem to remember.  Is my trash pickup is Monday/Thursday or is it Tu
 
 ## Skill Usage
 
-WARNING: Ensure your Echo is setup with your correct timezone information.  In the Alexa app, go to Settings -> <Your Device> -> Device Time Zone.
+To use the Trash Day skill, you need to enable the skill for your Alexa
+device(s).  See instructions at the [Trash Day Skill](https://www.amazon.com/dp/B01MRAXTN8) page.
 
-Use this skill to teach Alexa your weekly pickup schedule.  Here is mine:
+### Skill Usage: Setup
 
-- "Alexa, ask Trash Day to add trash pickup on Tuesday at six a.m."
+Once you have the skill enabled, you have to tell the application your time zone and make a pickup schedule.  This is the most difficult part of using the Trash Day application.  As an example, here's how I setup to use the application in my house:
 
-- "Alexa, ask Trash Day to add trash pickup on Friday at six a.m."
+- Alexa, open Trash Day
+- Set time zone to Eastern.
+- Add trash pickup on Tuesday at seven-thirty am.
+- Add trash pickup on Friday at seven-thirty am.
+- Add recycling pickup on Friday at seven-thirty am.
+- Add lawn waste pickup on Wednesday at one p.m.
+- Tell me the schedule.
+- Stop.
 
-- "Alexa, ask Trash Day to add recycling pickup on Friday at six a.m."
+<B>NOTE:</B>The Trash Day application keeps listening (the blue ring is lit on the Echo) while you give commands.  If you mess up or get delayed, the blue ring will turn off. If that happens, just say "Alexa, open Trash Day" and continue where you left off with your setup.
 
-- "Alexa, ask Trash Day to add lawn waste pickup on Wednesday at 1 p.m."
+### Skill Usage: Normal Usage 	
 
+Once you have setup your time zone and pickup schedule, using Trash Day is easy.  Here are the common commands:
 
-Then, whenever you aren't sure if the trash needs to go out to the curb:
+- Alexa, ask Trash Day, what's next?
+- Alexa, ask Trash Day, is it trash day?
+- Alexa, ask Trash Day, when is the next recyling pickup?
+- Alexa, ask Trash Day, what is the schedule?
 
-- "Alexa, open Trash Day."
+### Skill Usage: Schedule Updates
 
-- "Alexa, ask Trash Day when is the next trash pickup?"
+Any time you need to make changes to your pickup schedule, use commands like the following to set your time zone, add new weekly pickups, and delete old pickups.
+
+- Alexa, open Trash Day.
+- Set time zone to Pacific.
+- Add recycling pickup on Friday at seven-thirty am.
+- Add recycling pickup on Wednesday at one p.m.
+- Delete all lawn waste pickups.
+- Tell me the schedule.
+- Stop.
+
+If you need to make more extensive changes, you may want to delete the entire
+schedule. To do this:
+
+- Alexa, open Trash Day.
+- Delete the entire schedule.
+- Yes
+
+You will need to answer "Yes" to confirm the schedule deletion.  Once the schedule
+is deleted, rebuild a new schedule by using the commands given in the Setup section 
+at the top of this page.
 
 ## Source Code Usage
 
@@ -60,6 +91,12 @@ Project build was accomplished with the following Maven commands:
 
 ## Resources
 Here are a few direct links to documentation associated with the project:
+
+- The [Trash Day Skill](https://www.amazon.com/dp/B01MRAXTN8)
+- [Trash Day Docs: Help](https://s3.amazonaws.com/trash-day-docs/Help.html)
+- [Trash Day Docs: Privacy Policy](https://s3.amazonaws.com/trash-day-docs/Privacy.html)
+- [Trash Day Docs: Terms of Service](https://s3.amazonaws.com/trash-day-docs/TermsOfService.html)
+- [Trash Day Docs: Time Zone Names](https://s3.amazonaws.com/trash-day-docs/TimeZoneNames.html)
 
 - [Using the Alexa Skills Kit Samples](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/using-the-alexa-skills-kit-samples)
 - [Getting Started](https://developer.amazon.com/appsandservices/solutions/alexa/alexa-skills-kit/getting-started-guide)
