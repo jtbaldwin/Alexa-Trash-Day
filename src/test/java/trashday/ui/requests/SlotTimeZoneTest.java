@@ -244,6 +244,7 @@ public class SlotTimeZoneTest {
 			File fileTimeZone = File.createTempFile("TIME_ZONE", ".txt");
 			FileWriter fileWriter = new FileWriter(fileTimeZone, true);
 		    BufferedWriter bw = new BufferedWriter(fileWriter);
+		    bw.write("other\n");
 		    
 		    Set<String> translations = new TreeSet<String>();
 			for (Map.Entry<String, List<String>> entry : alexaSpeakTimeZoneIDs.entrySet()) {

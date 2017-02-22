@@ -137,14 +137,14 @@ public class SlotDayOfWeekTest {
 		actualDayOfWeek = slotDayOfWeek.validate(ldtRequest);
 		assertEquals(expectedDayOfWeek, actualDayOfWeek);
 		
-		// Validate for an unknown time zone name Slot in SlotDayOfWeek
-		expectedDayOfWeek = null;
+		// Validate for an unknown day of week name Slot in SlotDayOfWeek
+		actualDayOfWeek = null;
 		testSlots.clear();
 		testSlots.put("DayOfWeek", Slot.builder().withName("DayOfWeek").withValue("garbage").build());
 		intent = Intent.builder().withName("MyIntentName").withSlots(testSlots).build();
 		slotDayOfWeek = new SlotDayOfWeek(intent);
 		actualDayOfWeek = slotDayOfWeek.validate(ldtRequest);
-		assertEquals(expectedDayOfWeek, actualDayOfWeek);
+		assertNull(actualDayOfWeek);
 	}
 
 }

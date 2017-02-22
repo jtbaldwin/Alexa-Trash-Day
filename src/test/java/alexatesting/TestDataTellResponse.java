@@ -13,7 +13,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-import trashday.ui.responses.Phrases;
+import trashday.ui.responses.Phrase;
 
 // The default Response data:
 //"{\n"+
@@ -175,7 +175,7 @@ public class TestDataTellResponse {
 		setResponseOutputSpeechType("PlainText");
 	}
 	
-	public void setResponseOutputSpeechText(Phrases phrase) {
+	public void setResponseOutputSpeechText(Phrase phrase) {
 		setResponseOutputSpeechText(phrase.toString());
 	}
 	
@@ -217,7 +217,7 @@ public class TestDataTellResponse {
 		setAttribute(card, "content", newText);
 	}
 	
-	public void setResponseCardContent(Phrases phrase) {
+	public void setResponseCardContent(Phrase phrase) {
 		setResponseCardContent(phrase.toString());
 	}
 	

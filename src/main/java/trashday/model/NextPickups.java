@@ -9,7 +9,8 @@ import java.util.SortedSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import trashday.ui.DateTimeOutputUtils;
+import trashday.CoberturaIgnore;
+import trashday.ui.FormatUtils;
 
 /**
  * Data structure to compute the next pickup times for every
@@ -28,9 +29,12 @@ public class NextPickups {
     private static final Logger log = LoggerFactory.getLogger(NextPickups.class);
     
     /** Compute the next pickup after this datetime */
-	public LocalDateTime ldtStartingPoint;
+	public LocalDateTime ldtStartingPoint = null;
 	/** The weekly pickup schedule */
-	public Schedule sched;
+	@Deprecated
+	public Schedule sched = null;
+	/** The general pickup schedule */
+	public Calendar calendar = null;
 	/** Map of pickup name to the computed next pickup time */
 	public Map<String,LocalDateTime> pickups;
 	
@@ -47,6 +51,7 @@ public class NextPickups {
 	 * 			pickup name.  if null, compute for all pickups
 	 * 			in the schedule.
 	 */
+	@Deprecated
 	public NextPickups(LocalDateTime ldtStartingPoint, Schedule sched, String pickupName) {
 		log.trace("new NextPickups({}, {})", ldtStartingPoint, sched);
 		this.ldtStartingPoint = ldtStartingPoint;
@@ -84,6 +89,25 @@ public class NextPickups {
 			.forEachOrdered(x -> pickups.put(x.getKey(), x.getValue()));
 	}
 	
+	public NextPickups(LocalDateTime ldtStartingPoint, Calendar calendar, String pickupName) {
+		log.trace("new NextPickups({}, {})", ldtStartingPoint, calendar);
+		this.ldtStartingPoint = ldtStartingPoint;
+		this.calendar = calendar;
+		this.pickups = new LinkedHashMap<String,LocalDateTime>();
+		
+		if (pickupName == null) {
+			Map<String,LocalDateTime> nextPickupTimes = calendar.pickupGetNextOccurrences(ldtStartingPoint);
+			nextPickupTimes.entrySet().stream()
+				.sorted(Map.Entry.<String, LocalDateTime>comparingByValue())
+				.forEachOrdered(x -> pickups.put(x.getKey(), x.getValue()));
+		} else {
+			LocalDateTime ldtEventRecurs = calendar.pickupGetNextOccurrence(ldtStartingPoint, pickupName);
+			if (ldtEventRecurs!=null) {
+				pickups.put(pickupName.trim().toLowerCase(), ldtEventRecurs);
+			}
+		}
+	}
+
 	/**
 	 * Calculate next pickup time, after the given starting 
 	 * date/time, for a specific pickup in the
@@ -100,6 +124,7 @@ public class NextPickups {
 	 * @return The next pickup time for this pickup name
 	 * 			that would occur after the {@code ldtStartingPoint}
 	 */
+	@Deprecated
 	private LocalDateTime getNextPickupTime(String pickupName, LocalDateTime ldtStartingPoint) {
 		log.trace("getNextPickupTime({}, {})", pickupName, ldtStartingPoint);
 		LocalDateTime ldwNextPickup = null;
@@ -113,6 +138,16 @@ public class NextPickups {
 			}
 		}
 		return ldwNextPickup;
+	}
+	
+	/**
+	 * Get the starting point for when these next pickups were calculated.
+	 * 
+	 * @return Starting point given when the next pickups were calculated.
+	 */
+	public LocalDateTime getStartingPoint() {
+		log.trace("getStartingPoint");
+		return ldtStartingPoint;
 	}
 	
 	/**
@@ -156,7 +191,7 @@ public class NextPickups {
 	 */
 	@Deprecated
 	public String toString() {
-		return toStringPrintable(LocalDateTime.now());
+		return toStringPrintable();
 	}
 	
 	/**
@@ -173,6 +208,8 @@ public class NextPickups {
 	 * 
 	 * @return String representing the next pickup times
 	 */
+	@Deprecated
+	@CoberturaIgnore
 	public String toStringVerbal() {
 		log.trace("toStringVerbal()");
 		StringBuilder sb = new StringBuilder();
@@ -181,7 +218,7 @@ public class NextPickups {
 		for(Map.Entry<String,LocalDateTime> entry : pickups.entrySet()) {
 			String pickupName = entry.getKey();
 			LocalDateTime ldtNextPickup = entry.getValue();
-			sb.append("Next " + pickupName + " pickup is " + DateTimeOutputUtils.verbalDateAndTimeRelative(ldtNextPickup, ldtStartingPoint) + ". ");
+			sb.append("Next " + pickupName + " pickup is " + FormatUtils.verbalDateAndTimeRelative(ldtNextPickup, ldtStartingPoint) + ". ");
 			//if (pickupNum != pickups.size()) {
 			//	// Not the last item
 			//	//sb.append("<break strength=\"strong\"/>\n");
@@ -201,18 +238,17 @@ public class NextPickups {
 	 * <p>
 	 * Used primarily for JUnit for testing.
 	 * 
-	 * @param ldtStartingPoint LocalDateTime Pickup time is printed
-	 * 			with a day relative to this given starting point.  For
-	 * 			example: today, tomorrow, etc.
 	 * @return String representing the next pickup times
 	 */
-	public String toStringPrintable(LocalDateTime ldtStartingPoint) {
+	@Deprecated
+	@CoberturaIgnore
+	public String toStringPrintable() {
 		log.trace("toStringPrintable()");
 		StringBuilder sb = new StringBuilder();
 		for(Map.Entry<String,LocalDateTime> entry : pickups.entrySet()) {
 			String pickupName = entry.getKey();
 			LocalDateTime ldtNextPickup = entry.getValue();
-			sb.append("Next " + pickupName + " pickup is " + DateTimeOutputUtils.printableDateAndTimeRelative(ldtNextPickup, ldtStartingPoint) + ".\n");
+			sb.append("Next " + pickupName + " pickup is " + FormatUtils.printableDateAndTimeRelative(ldtNextPickup, ldtStartingPoint) + ".\n");
 		}
 		return sb.toString();
 	}

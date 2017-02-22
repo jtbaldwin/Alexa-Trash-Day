@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.jonpeterson.jackson.module.versioning.JsonVersionedModel;
 
-import trashday.ui.DateTimeOutputUtils;
+import trashday.ui.FormatUtils;
 
 import java.time.DayOfWeek;
 
@@ -34,11 +34,13 @@ import java.time.DayOfWeek;
  * @see		<a href="https://github.com/jonpeterson/jackson-module-model-versioning">Jackson Module: Model Versioning</a>
  *
  */
+@Deprecated
 @JsonIgnoreProperties
 @JsonVersionedModel(currentVersion = "1", toCurrentConverterClass = ToCurrentTimeOfWeek.class)
 public class TimeOfWeek implements Comparable<TimeOfWeek> {
 	/** Log object for this class */
     private static final Logger log = LoggerFactory.getLogger(TimeOfWeek.class);
+    
     /** Day of week this pickup occurs. */
 	private DayOfWeek dow;	// ISO-8601 standard, from 1 (Monday) to 7 (Sunday)
 	/** Time of day this pickup occurs. */
@@ -315,7 +317,7 @@ public class TimeOfWeek implements Comparable<TimeOfWeek> {
 	 * 			time of day).
 	 */
 	public String toStringVerbal() {
-		return DateTimeOutputUtils.printableDayOfWeek(dow) +" "+ DateTimeOutputUtils.verbalTime(tod);
+		return FormatUtils.printableDayOfWeek(dow) +" "+ FormatUtils.verbalTime(tod);
 	}
 
 	/**
@@ -329,7 +331,7 @@ public class TimeOfWeek implements Comparable<TimeOfWeek> {
 	 * 			time of day).
 	 */
 	public String toStringPrintable() {
-		return DateTimeOutputUtils.printableDayOfWeek(dow) + " at " + DateTimeOutputUtils.printableTime(tod);
+		return FormatUtils.printableDayOfWeek(dow) + " at " + FormatUtils.printableTime(tod);
 	}
 
 }

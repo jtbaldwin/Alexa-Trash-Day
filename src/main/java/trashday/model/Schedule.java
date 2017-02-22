@@ -40,12 +40,13 @@ import com.github.jonpeterson.jackson.module.versioning.VersioningModule;
  * @see		<a href="https://github.com/jonpeterson/jackson-module-model-versioning">Jackson Module: Model Versioning</a>
  *
  */
+@SuppressWarnings("deprecation")
 @JsonVersionedModel(currentVersion = "1", toCurrentConverterClass = ToCurrentSchedule.class)
+@Deprecated
 public class Schedule {
-	/** Serialized version number */
-	//private static final long serialVersionUID = 1L;
 	/** Log object for this class */
     private static final Logger log = LoggerFactory.getLogger(Schedule.class);
+    
     /** Convenience for ordered list of pickup names. */
 	public List<String> 						pickupNames;
 	/** The core schedule Map */
@@ -331,8 +332,9 @@ public class Schedule {
 	 */
 	public String toJson() {
 		try {
-			log.info("Schedule convert: {}", this);
-			return OBJECT_MAPPER.writeValueAsString(this);
+			String json = OBJECT_MAPPER.writeValueAsString(this);
+			log.info("Schedule to JSON: {}", json);
+			return json;
 		} catch (JsonProcessingException e) {
 			throw new IllegalStateException("Unable to convert schedule.", e);
 		}

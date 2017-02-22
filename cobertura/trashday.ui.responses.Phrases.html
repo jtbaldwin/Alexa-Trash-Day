@@ -12,7 +12,7 @@
 <div class="separator">&nbsp;</div>
 <table class="report">
 <thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
-  <tr><td><a href="trashday.ui.responses.Phrases.html">Phrases</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">100%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:100px"><span class="text">32/32</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></td><td class="percentgraph"><div class="percentgraph"><div class="na" style="width:100px"><span class="text"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></span></div></div></td></tr></table></td><td class="value"><span class="hidden">1.0;</span>1</td></tr>
+  <tr><td><a href="trashday.ui.responses.Phrases.html">Phrases</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">100%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:100px"><span class="text">42/42</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></td><td class="percentgraph"><div class="percentgraph"><div class="na" style="width:100px"><span class="text"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></span></div></div></td></tr></table></td><td class="value"><span class="hidden">1.0;</span>1</td></tr>
 
 </table>
 <div class="separator">&nbsp;</div>
@@ -29,218 +29,246 @@
 <tr>  <td class="numLineCover">&nbsp;7</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        EXIT_VERBAL(<span class="string">"Goodbye"</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;9</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        HELP_VERBAL_NO_SCHEDULE(<span class="string">"The Trash Day skill remembers a weekly pickup schedule for you.  You could then ask: \"Is it trash day?\" or \"what's the schedule?\".  The first thing to do is to create your weekly pickup schedule by saying, \"Change Schedule\"."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;10</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        HELP_REPROMPT_NO_SCHEDULE(<span class="string">"Please create your weekly pickup schedule by saying, \"Change Schedule\"."</span>),</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;11</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLineCover">&nbsp;9</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        HELP_VERBAL_INITIAL(<span class="string">"The Trash Day skill remembers a regular pickup schedule for you.  You could then ask: \"Is it trash day?\" or \"what's the schedule?\".  But first, please set your time zone using a phrase like: \"Set time zone to Eastern, Central, Mountain, Pacific or Other.\"."</span>),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;10</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;12</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        HELP_VERBAL_SCHEDULE_EXISTS(<span class="string">"The Trash Day skill remembers a weekly pickup schedule for you.  You can ask: \"Is it trash day?\", \"what's next?\", or \"what's the schedule?\".  You can also update your weekly schedule by saying, \"Change Schedule\"."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;13</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        HELP_REPROMPT_SCHEDULE_EXISTS(<span class="string">"You can say phrases like: \"What's next?\", \"Tell me the schedule\", \"Change Schedule.\", or \"Stop\"."</span>),</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;14</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLineCover">&nbsp;11</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        HELP_VERBAL_NO_SCHEDULE(<span class="string">"The Trash Day skill remembers a regular pickup schedule for you.  You could then ask: \"Is it trash day?\" or \"what's the schedule?\".  But first, please create your regular pickup schedule by saying, \"Change Schedule\"."</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;12</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        HELP_REPROMPT_NO_SCHEDULE(<span class="string">"Please create your pickup schedule by saying, \"Change Schedule\"."</span>),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;13</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;15</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    HELP_VERBAL_CARD_SUFFIX(<span class="string">" For further help, you can refer to the Trash Day Help Card just sent to your Alexa phone app."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;16</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    HELP_CARD(</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;17</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"On initial setup, you will need to teach Trash Day your time zone and weekly pickup schedule.  Here's mine:\n"</span> + </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        HELP_VERBAL_SCHEDULE_EXISTS(<span class="string">"The Trash Day skill remembers a regular pickup schedule for you.  You can ask: \"Is it trash day?\", \"what's next?\", or \"what's the schedule?\".  You can also update your pickup schedule by saying, \"Change Schedule\"."</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;15</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        HELP_REPROMPT_SCHEDULE_EXISTS(<span class="string">"You can say phrases like: \\\"</span>Is it trash day?\\\<span class="string">", \"What's next?\", \"Tell me the schedule\", \"Change Schedule.\", or \"Stop\"."</span>),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;16</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;17</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    HELP_VERBAL_CARD_SUFFIX(<span class="string">" For further help, you can refer to the Trash Day Help Card just sent to your Alexa phone app."</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;18</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, open Trash Day.\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;19</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Eastern\n"</span> + </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;19</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    HELP_CARD(</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;20</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add trash pickup on Tuesday at seven-thirty a.m.\n"</span> + </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"On initial setup, you will need to teach Trash Day your time zone and regular pickup schedule.  Here's mine:\n"</span> + </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;21</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add trash pickup on Friday at seven-thirty a.m.\n"</span> + </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, open Trash Day.\n"</span> + </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;22</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add recycling pickup on Friday at seven-thirty a.m.\n"</span> + </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Eastern\n"</span> + </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;23</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add lawn waste pickup on Wednesday at one p.m.\n"</span> + </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add weekly trash pickup on Tuesday at seven-thirty a.m.\n"</span> + </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;24</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Tell me the schedule.\n"</span> + </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add weekly trash pickup on Friday at seven-thirty a.m.\n"</span> + </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;25</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Stop.\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add biweekly recycling pickup on this Wednesday at one p.m.\n"</span> + </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;26</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"\n"</span> + </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add biweekly lawn waste pickup on next Wednesday at one p.m.\n"</span> + </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;27</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"Once you setup your schedule, you can ask quick questions like...\n"</span> + </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add monthly scrap metal pickup on the fifteenth at four p.m.\n"</span> + </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;28</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, ask Trash Day, what's next?\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;29</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, ask Trash Day, is it trash day?\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;30</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, ask Trash Day, when is the next recycling pickup?\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;31</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, ask Trash Day, what is the schedule?\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;32</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;33</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"If you need to make schedule changes, you can use commands like...\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;34</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, tell Trash Day to change schedule.\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;35</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add recycling pickup on Friday at seven-thirty a.m.\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;36</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add recycling pickup on Wednesday at one p.m.\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;37</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Delete all lawn waste pickups.\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;38</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="string">"  Tell me the schedule.\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;39</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLine">&nbsp;29</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="string">"  Stop.\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;40</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"\n"</span> +</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;41</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"If you want, you can also delete the entire schedule and start over...\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;42</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, tell Trash Day to delete the entire schedule.\n"</span> + </pre></td></tr>
-<tr>  <td class="numLine">&nbsp;43</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLine">&nbsp;30</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="string">"\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;31</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"Once you setup your schedule, you can ask quick questions like...\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;32</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, ask Trash Day, what's next?\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;33</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, ask Trash Day, is it trash day?\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;34</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, ask Trash Day, when is the next recycling pickup?\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;35</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, ask Trash Day, what is the schedule?\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;36</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;37</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"If you need to make schedule changes, you can use commands like...\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;38</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, tell Trash Day, to change schedule.\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;39</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Delete all recycling pickups.\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;40</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add weekly recycling pickup on Friday at seven-thirty a.m.\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;41</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Add monthly lawn waste pickup on the first at four p.m.\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;42</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Tell me the schedule.\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;43</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Stop.\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;44</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"For more extensive help, refer to the documentation at: "</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"\n"</span> +</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;45</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="string">"https://s3.amazonaws.com/trash-day-docs/Help.html"</span>),</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"If you want, you can also delete the entire schedule and start over...\n"</span> + </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;46</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"  Alexa, tell Trash Day to delete the entire schedule.\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;47</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"\n"</span> + </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;48</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"For more extensive help, refer to the documentation at: "</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;49</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="string">"https://s3.amazonaws.com/trash-day-docs/Help.html"</span>),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;50</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;47</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        TIME_ZONE_SET_VERBAL(<span class="string">"Set your time zone using a phrase like: \"Set time zone to Eastern, Central, Mountain, Pacific or Other.\""</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;48</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        TIME_ZONE_SET_VERBAL_CARD_SUFFIX(<span class="string">" For a list of other available time zone names, see the Trash Day Help Card just sent to your Alexa app."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;49</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        TIME_ZONE_SET_REPROMPT(<span class="string">"Say a phrase like: \"Set time zone to Eastern, Central, Mountain, Pacific or Other.\""</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;50</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        TIME_ZONE_SET_HELP_CARD(</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;51</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"Set your time zone by saying:\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;52</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day, set time zone to &lt;Your_Time_Zone&gt;\"\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;53</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;54</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"The United States time zone names are:\n"</span>+</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;51</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        TIME_ZONE_SET_VERBAL(<span class="string">"Set your time zone using a phrase like: \"Set time zone to Eastern, Central, Mountain, Pacific or Other.\""</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;52</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        TIME_ZONE_SET_VERBAL_CARD_SUFFIX(<span class="string">" For a list of other available time zone names, see the Trash Day Help Card just sent to your Alexa app."</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;53</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        TIME_ZONE_SET_REPROMPT(<span class="string">"Say a phrase like: \"Set time zone to Eastern, Central, Mountain, Pacific or Other.\""</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;54</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        TIME_ZONE_SET_HELP_CARD(</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;55</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  Eastern, Central, Mountain, and Pacific\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"Set your time zone by saying:\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;56</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day, set time zone to &lt;Your_Time_Zone&gt;\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;57</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"There are nearly 600 other time zone names accepted by "</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;58</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"Trash Day (too many to list here).  Try the time zone "</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"The United States time zone names are:\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;59</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"you use on a computer in your house.  Or see the "</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  Eastern, Central, Mountain, and Pacific\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;60</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"complete list at: https://s3.amazonaws.com/trash-day-docs/TimeZoneNames.html"</span>),</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;61</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;62</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    SCHEDULE_ADD_PICKUPS_VERBAL(<span class="string">"Add weekly pickup times using phrases like: \"Add trash pickup on Wednesday at 6 A.M.\". When you are finished, say \"Stop\"."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;63</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ADD_PICKUPS_VERBAL_CARD_SUFFIX(<span class="string">" For help with updating the schedule, see the Trash Day Help Card just sent to your Alexa app."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;64</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ADD_PICKUPS_REPROMPT(<span class="string">"Add weekly pickup times using phrases like: \"Add trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"There are nearly 600 other time zone names accepted by "</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;62</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"Trash Day (too many to list here).  Try the time zone "</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;63</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"you use on a computer in your house.  Or see the "</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;64</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"complete list at: https://s3.amazonaws.com/trash-day-docs/TimeZoneNames.html"</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;65</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;66</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    SCHEDULE_ADD_PICKUPS_VERBAL(<span class="string">"Add regular pickup times using phrases like: \"Add weekly trash pickup on Wednesday at 6 A.M.\". When you are finished, say \"Stop\"."</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;67</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ADD_PICKUPS_REPROMPT(<span class="string">"Add regular pickup times using phrases like: \"Add weekly trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;68</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;66</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_PICKUPS_VERBAL(<span class="string">"Delete weekly pickup times using phrases like: \"Delete trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;67</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_PICKUPS_VERBAL_CARD_SUFFIX(<span class="string">" For help with updating the schedule, see the Trash Day Help Card just sent to your Alexa app."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;68</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_PICKUPS_REPROMPT(<span class="string">"Delete weekly pickup times using phrases like: \"Delete trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;69</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLineCover">&nbsp;69</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    SCHEDULE_ADD_WEEKLY_PICKUPS_VERBAL(<span class="string">"Add weekly pickup times using phrases like: \"Add weekly trash pickup on Wednesday at 6 A.M.\". When you are finished, say \"Stop\"."</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;70</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ADD_WEEKLY_PICKUPS_REPROMPT(<span class="string">"Add weekly pickup times using phrases like: \"Add weekly trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;71</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;70</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_ENTIRE_PICKUP_VERBAL(<span class="string">"Delete entire weekly pickups using phrases like: \"Delete entire trash pickup.\""</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;71</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_ENTIRE_PICKUP_VERBAL_CARD_SUFFIX(<span class="string">" For help with updating the schedule, see the Trash Day Help Card just sent to your Alexa app."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;72</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_ENTIRE_PICKUP_REPROMPT(<span class="string">"Delete entire weekly pickups using phrases like: \"Delete entire trash pickup.\""</span>),</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;73</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLineCover">&nbsp;72</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    SCHEDULE_ADD_BIWEEKLY_PICKUPS_VERBAL(<span class="string">"Add biweekly pickup times using phrases like: \"Add biweekly trash pickup on Wednesday at 6 A.M.\". When you are finished, say \"Stop\"."</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;73</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ADD_BIWEEKLY_PICKUPS_REPROMPT(<span class="string">"Add biweekly pickup times using phrases like: \"Add biweekly trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;74</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;74</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ALTER_VERBAL(<span class="string">"Update the schedule using phrases like: \"Add or Delete trash pickup on Monday at seven A.M.\". When you are finished, say \"Stop\"."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;75</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ALTER_VERBAL_CARD_SUFFIX(<span class="string">" For more commands to update your schedule, see the Trash Day Help Card just sent to your Alexa app."</span>),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;76</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ALTER_REPROMPT(<span class="string">"Update the schedule using phrases like: \"Add or Delete trash pickup on Monday at seven A.M.\""</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;75</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;    SCHEDULE_ADD_MONTHLY_PICKUPS_VERBAL(<span class="string">"Add monthly pickup times using phrases like: \"Add monthly trash pickup on the fifth at 6 A.M.\". When you are finished, say \"Stop\"."</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;76</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ADD_MONTHLY_PICKUPS_REPROMPT(<span class="string">"Add monthly pickup times using phrases like: \"Add monthly trash pickup on the fifth at 6 A.M.\""</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;77</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;78</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DONE_VERBAL(<span class="string">"Done configuring schedule. Next, try saying \"Alexa, ask Trash Day, is it trash day?\" or \"Alexa, tell Trash Day to tell me the schedule.\""</span>),</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;79</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLineCover">&nbsp;78</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_PICKUPS_VERBAL(<span class="string">"Delete pickup times using phrases like: \"Delete weekly trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;79</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_PICKUPS_REPROMPT(<span class="string">"Delete pickup times using phrases like: \"Delete weekly trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;80</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;80</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ALTER_CARD(</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;81</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"Use the following commands to alter your weekly pickup schedule.\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;82</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;81</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_WEEKLY_PICKUPS_VERBAL(<span class="string">"Delete weekly pickup times using phrases like: \"Delete weekly trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;82</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_WEEKLY_PICKUPS_REPROMPT(<span class="string">"Delete weekly pickup times using phrases like: \"Delete weekly trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;83</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"Add weekly pickup times using phrases like: \n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;84</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day, to change schedule.\"\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;85</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Add trash pickup on Tuesday at 6 am.\"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;84</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_BIWEEKLY_PICKUPS_VERBAL(<span class="string">"Delete biweekly pickup times using phrases like: \"Delete biweekly trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;85</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_BIWEEKLY_PICKUPS_REPROMPT(<span class="string">"Delete biweekly pickup times using phrases like: \"Delete biweekly trash pickup on Wednesday at 6 A.M.\""</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;86</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Add trash pickup on Friday at 6 am.\"\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;87</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Add recycling pickup on Friday at 6 am.\"\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;88</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Add lawn waste pickup on Wednesday at 4 pm.\"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;87</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_MONTHLY_PICKUPS_VERBAL(<span class="string">"Delete monthly pickup times using phrases like: \"Delete monthly trash pickup on the fifteenth at 6 A.M.\""</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;88</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_MONTHLY_PICKUPS_REPROMPT(<span class="string">"Delete monthly pickup times using phrases like: \"Delete monthly trash pickup on the fifteenth at 6 A.M.\""</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;89</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Tell me the schedule.\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;90</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Stop.\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;91</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;90</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_ENTIRE_PICKUP_VERBAL(<span class="string">"Delete entire pickups using phrases like: \"Delete entire trash pickup.\""</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;91</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DELETE_ENTIRE_PICKUP_REPROMPT(<span class="string">"Delete entire pickups using phrases like: \"Delete entire trash pickup.\""</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;92</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"Delete pickup times using phrases like:\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;93</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day, to change schedule.\"\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;94</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Delete trash pickup on Tuesday at 6 am.\"\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;95</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Delete lawn waste pickup on Wednesday at 4 pm.\"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;93</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ALTER_VERBAL(<span class="string">"Update the schedule using phrases like: \"Add or Delete weekly trash pickup on Monday at seven A.M.\". When you are finished, say \"Stop\"."</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;94</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ALTER_VERBAL_CARD_SUFFIX(<span class="string">" For more commands to update your schedule, see the Trash Day Help Card just sent to your Alexa app."</span>),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;95</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ALTER_REPROMPT(<span class="string">"Update the schedule using phrases like: \"Add or Delete weekly trash pickup on Monday at seven A.M.\""</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;96</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Stop.\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;97</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;97</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_DONE_VERBAL(<span class="string">"Done configuring schedule. Next, try saying \"Alexa, ask Trash Day, is it trash day?\" or \"Alexa, tell Trash Day to tell me the schedule.\""</span>),</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;98</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"Delete entire pickups using a phrase like:\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;99</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day, to change schedule.\"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;99</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        SCHEDULE_ALTER_CARD(</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;100</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Delete entire trash pickup.\"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"Use the following commands to alter your regular pickup schedule.\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;101</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Stop.\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;102</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"Add weekly, biweekly, or monthly pickup times using phrases like: \n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;103</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"Update your time zone by saying:\n"</span>+</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;104</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day, to change schedule.\"\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;104</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Add weekly trash pickup on Tuesday at 6 a.m.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;105</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Set time zone to Pacific.\"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Add weekly trash pickup on Friday at 6 a.m.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;106</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Stop.\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Add biweekly recycling pickup on this Friday at 4 p.m.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;107</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Add biweekly lawn waste pickup on next Friday at 4 p.m.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;108</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"To start over, delete entire schedule by saying:\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Add mothly scrap metal pickup on the fifteenth at 4 p.m.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;109</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day to change schedule.\"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Tell me the schedule.\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;110</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Delete entire schedule.\"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Stop.\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;111</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Yes.\"\n"</span>+</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;112</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Stop.\n"</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"Delete pickup times using phrases like:\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;113</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                ),</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day, to change schedule.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;114</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        ;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Delete weekly trash pickup on Tuesday at 6 a.m.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;115</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Delete biweekly lawn waste pickup on Friday at 4 p.m.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;116</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> String value; </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Delete mothly scrap metal pickup on the fifteenth at 4 p.m.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;117</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;118</td>  <td class="nbHitsCovered">&nbsp;27</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> Phrases(String value) { </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;119</td>  <td class="nbHitsCovered">&nbsp;27</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.value = value; </pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;120</td>  <td class="nbHitsCovered">&nbsp;27</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Stop.\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;118</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;119</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"Delete entire pickups using a phrase like:\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;120</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day, to change schedule.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;121</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Delete entire trash pickup.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;122</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        @Override</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Stop.\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;123</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> String toString() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;124</td>  <td class="nbHitsCovered">&nbsp;284</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> value;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;124</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"Update your time zone by saying:\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;125</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day, set time zone to Pacific.\"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;126</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"\n"</span>+</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;127</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"To start over, delete entire schedule by saying:\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;128</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Alexa, tell Trash Day to change schedule.\"\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;129</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Delete entire schedule.\"\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;130</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Yes.\"\n"</span>+</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;131</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="string">"  \"Stop.\n"</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;132</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                ),</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;133</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        ;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;134</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;135</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> String value; </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;136</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;137</td>  <td class="nbHitsCovered">&nbsp;37</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> Phrases(String value) { </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;138</td>  <td class="nbHitsCovered">&nbsp;37</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.value = value; </pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;139</td>  <td class="nbHitsCovered">&nbsp;37</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;140</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;141</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        @Override</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;142</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> String toString() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;143</td>  <td class="nbHitsCovered">&nbsp;310</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> value;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;144</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;145</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        </pre></td></tr>
+<tr>  <td class="numLine">&nbsp;146</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 1/31/17 12:30 PM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 2/13/17 11:18 AM.</div>
 </body>
 </html>

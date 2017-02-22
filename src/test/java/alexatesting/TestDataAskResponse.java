@@ -12,7 +12,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-import trashday.ui.responses.Phrases;
+import trashday.ui.responses.Phrase;
 
 // The default Response data:
 //"{\n"+
@@ -129,7 +129,11 @@ public class TestDataAskResponse {
 			}
 		}
 		if (! changed) {
-			jo.add(key, joValue);
+			if (joValue==null) {
+				jo.add(key, null);
+			} else {
+				jo.add(key, joValue);
+			}
 		}
 	}
 	
@@ -173,7 +177,11 @@ public class TestDataAskResponse {
 			}
 		}
 		if (! changed) {
-			jo.add(key, new JsonPrimitive(value));
+			if (value==null) {
+				jo.add(key, null);
+			} else {
+				jo.add(key, new JsonPrimitive(value));
+			}
 		}
 	}
 	
@@ -203,7 +211,7 @@ public class TestDataAskResponse {
 		setResponseOutputSpeechType("PlainText");
 	}
 	
-	public void setResponseOutputSpeechText(Phrases phrase) {
+	public void setResponseOutputSpeechText(Phrase phrase) {
 		setResponseOutputSpeechText(phrase.toString());
 	}
 	
@@ -234,7 +242,7 @@ public class TestDataAskResponse {
 		setAttribute(outputSpeech, "text", newText);
 	}
 	
-	public void setResponseRepromptOutputSpeechText(Phrases phrase) {
+	public void setResponseRepromptOutputSpeechText(Phrase phrase) {
 		setResponseRepromptOutputSpeechText(phrase.toString());
 	}
 	
@@ -262,7 +270,7 @@ public class TestDataAskResponse {
 		setAttribute(card, "content", newText);
 	}
 	
-	public void setResponseCardContent(Phrases phrase) {
+	public void setResponseCardContent(Phrase phrase) {
 		setResponseCardContent(phrase.toString());
 	}
 	

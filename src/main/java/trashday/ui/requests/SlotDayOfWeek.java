@@ -19,9 +19,9 @@ public class SlotDayOfWeek implements Slot {
     /** {@link com.amazon.speech.slu.Slot} from the Alexa request. */
 	private com.amazon.speech.slu.Slot slot;
 	/** The slot field name corresponding to the VUI IntentSchema / Sample Utterances */
-    private static final String name = "DayOfWeek";
+	public static final String name = "DayOfWeek";
     /** A printable description of this slot's purpose */
-    private static final String description = "Day Of Week";
+	public static final String description = "Day Of Week";
 	
 	/**
 	 * Handle parsing of a request slot intended to store Day Of Week information
@@ -132,7 +132,7 @@ public class SlotDayOfWeek implements Slot {
     	    	log.debug("validate parse=>dow={}",dow);
     		}
     	} catch (IllegalArgumentException e) {
-	    	log.error("validate DayOfWeek parse error={}",e);
+	    	log.error("validate DayOfWeek parse error={}",e.getMessage());
     	}
     	log.debug("validate dow={}", dow);
     	return dow;

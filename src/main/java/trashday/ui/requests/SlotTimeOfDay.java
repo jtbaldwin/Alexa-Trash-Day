@@ -19,9 +19,9 @@ public class SlotTimeOfDay implements Slot {
     /** {@link com.amazon.speech.slu.Slot} from the Alexa request. */
 	private com.amazon.speech.slu.Slot slot;
 	/** The slot field name corresponding to the VUI IntentSchema / Sample Utterances */
-    private static final String name = "TimeOfDay";
+	public static final String name = "TimeOfDay";
     /** A printable description of this slot's purpose */
-    private static final String description = "Time Of Day";
+	public static final String description = "Time Of Day";
 	
 	/**
 	 * Handle parsing of a request slot intended to store Time Of Day information

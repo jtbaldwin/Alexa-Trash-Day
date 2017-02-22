@@ -18,8 +18,10 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.github.jonpeterson.jackson.module.versioning.VersioningModule;
 
+import net.fortuna.ical4j.data.ParserException;
+import trashday.model.Calendar;
 import trashday.model.IntentLog;
-import trashday.model.Schedule;
+import trashday.ui.FormatUtils;
 
 /**
  * Trash Day data access object for Alexa Session.
@@ -42,24 +44,24 @@ public class SessionDao {
 
     /** {@link Session} attribute key to store user is currently configuring their {@link trashday.model.Schedule}. */
     public static final String SESSION_ATTR_SCHEDULE_IN_PROGRESS = "trashDayScheduleConfigInProgress";
-    /** {@link Session} attribute key to store user's {@link trashday.model.Schedule} */
-	public static final String SESSION_ATTR_SCHEDULE = "trashDaySchedule";
+    /** {@link Session} attribute key to store user's {@link trashday.model.Calendar} */
+	public static final String SESSION_ATTR_CALENDAR = "trashDayCalendar";
     /** {@link Session} attribute key to store user's {@link java.util.TimeZone} */
 	public static final String SESSION_ATTR_TIMEZONE = "trashDayTimeZone";
-    /** {@link com.amazon.speech.speechlet.Session Session} attribute key to store intent names that require a Yes/No confirmation */
+    /** {@link com.amazon.speech.speechlet.Session} attribute key to store intent names that require a Yes/No confirmation */
 	public static final String SESSION_ATTR_CONFIRM_INTENT = "trashDayConfirmIntent";
-    /** {@link com.amazon.speech.speechlet.Session Session} attribute key to store user text description of actions that require a Yes/No confirmation */
+    /** {@link com.amazon.speech.speechlet.Session} attribute key to store user text description of actions that require a Yes/No confirmation */
 	public static final String SESSION_ATTR_CONFIRM_DESC = "trashDayConfirmAction";
 	
-    /** {@link com.amazon.speech.speechlet.Session Session} attribute key to store if overall help card is already sent in this session. */
+    /** {@link com.amazon.speech.speechlet.Session} attribute key to store if overall help card is already sent in this session. */
 	public static final String SESSION_ATTR_OVERALL_HELP_CARD_SENT = "trashDayOverallHelpCardSent";
-    /** {@link com.amazon.speech.speechlet.Session Session} attribute key to store if Time Zone help card is already sent in this session. */
+    /** {@link com.amazon.speech.speechlet.Session} attribute key to store if Time Zone help card is already sent in this session. */
 	public static final String SESSION_ATTR_TIMEZONE_HELP_CARD_SENT = "trashDayTimeZoneHelpCardSent";
-    /** {@link com.amazon.speech.speechlet.Session Session} attribute key to store if Schedule help card is already sent in this session. */
+    /** {@link com.amazon.speech.speechlet.Session} attribute key to store if Schedule help card is already sent in this session. */
 	public static final String SESSION_ATTR_SCHEDULE_HELP_CARD_SENT = "trashDayScheduleHelpCardSent";
-	/** {@link com.amazon.speech.speechlet.Session Session} attribute key to store a log of intents performed */
+	/** {@link com.amazon.speech.speechlet.Session} attribute key to store a log of intents performed */
 	public static final String SESSION_ATTR_INTENT_LOG = "trashDayIntentLog";
-	/** {@link com.amazon.speech.speechlet.Session Session} attribute key to store a flag when intent log is updated so we know to store it later to Dynamo DB */
+	/** {@link com.amazon.speech.speechlet.Session} attribute key to store a flag when intent log is updated so we know to store it later to Dynamo DB */
 	public static final String SESSION_ATTR_INTENT_LOG_UPDATED = "trashDayIntentLogUpdated";
 	
     /**
@@ -101,6 +103,47 @@ public class SessionDao {
 		return timeZone;
 	}
 	
+    /**
+     * Load a given {@link trashday.model.Calendar} from the {@link Session}.
+     * 
+     * @return if existing, the {@link trashday.model.Calendar}
+     */
+    public Calendar getCalendar() {
+    	log.trace("getCalendar");
+
+    	// Load schedule data from the session, if exists.
+    	Object o = session.getAttribute(SESSION_ATTR_CALENDAR);
+    	Calendar calendar = null;
+    	if (o != null) {
+    		if (o.getClass().equals(Calendar.class)) {
+    			calendar = (Calendar) o;
+    			log.info("Using pickup calendar from current session. calendar={}", FormatUtils.printableCalendar(calendar, LocalDateTime.now()));
+    			return calendar;
+    		}
+    		try {
+    			String s = o.toString();
+    			log.trace("Deserialize this: {}",s);
+    			if ("(empty)".equals(s.trim())) {
+    				calendar = new Calendar();
+    			} else {
+    				calendar = new Calendar(s);
+    			}
+			} catch (IOException e) {
+				log.error("IOException: {}",e.getMessage());
+			} catch (ParserException e) {
+				log.error("ParserException: {}",e.getMessage());
+			}
+    		if (calendar != null) {
+    			log.info("Using pickup calendar from current session. calendar={}", FormatUtils.printableCalendar(calendar, LocalDateTime.now()));
+    			return calendar;
+    		}
+    	}
+    	
+    	// No schedule data in the DB, run configuration conversation
+    	log.info("No pickup calendar available from Session.");
+    	return null;
+    }
+    
     /**
      * Get session attribute that contains a description of the confirmation action
      * currently in progress.
@@ -184,62 +227,12 @@ public class SessionDao {
      * @return true if flag exists and is true
      */
     public boolean getOverallHelpCardSent() {
-    	Object o = session.getAttribute(SESSION_ATTR_OVERALL_HELP_CARD_SENT);
-    	if ( o == null) { return false; };
-    	if (o.getClass().getName().equals("java.lang.Boolean")) {
-    		Boolean sent = (Boolean) o;
-    		return sent.booleanValue();
-    	}
-    	return false;
+    	return isSessionAttributeTrue(SESSION_ATTR_OVERALL_HELP_CARD_SENT);
     }
     
-   /**
-     * Load a given {@link trashday.model.Schedule} from the {@link Session}.
-     * 
-     * @return if existing, the {@link trashday.model.Schedule}
-     */
-    public Schedule getSchedule() {
-    	log.trace("getSchedule");
-    	
-    	// Load schedule data from the session, if exists.
-    	Object o = session.getAttribute(SESSION_ATTR_SCHEDULE);
-    	Schedule schedule = null;
-    	if (o != null) {
-    		if (o.getClass().equals(Schedule.class)) {
-    			schedule = (Schedule) o;
-    			log.info("Using pickup Schedule from current session. schedule={}", schedule.toStringPrintable());
-    			return schedule;
-    		}
-    		try {
-    			String s = o.toString();
-    			log.trace("Deserialize this: {}",s);
-    			schedule = OBJECT_MAPPER.readValue(s, new TypeReference<Schedule>() { } );
-    		} catch (JsonParseException e) {
-				log.error("JsonParsingException: {}",e.getMessage());
-			} catch (JsonMappingException e) {
-				log.error("JsonMappingException: {}",e.getMessage());
-			} catch (IOException e) {
-				log.error("IOException: {}",e.getMessage());
-			}
-    		if (schedule != null) {
-    			log.info("Using pickup schedule from current session. schedule={}", schedule.toStringPrintable());
-    			return schedule;
-    		}
-    	}
-    	
-    	// No schedule data in the DB, run configuration conversation
-    	log.info("No pickup schedule available from Session.");
-    	return null;
-    }
-    
-    /**
-     * Load the session attribute that tracks if the schedule help card has
-     * been sent to the user during this session.
-     * 
-     * @return true if flag exists and is true
-     */
-    public boolean getScheduleHelpCardSent() {
-    	Object o = session.getAttribute(SESSION_ATTR_SCHEDULE_HELP_CARD_SENT);
+    public boolean isSessionAttributeTrue(String attributeName) {
+    	if ( attributeName == null) { return false; };
+    	Object o = session.getAttribute(attributeName);
     	if ( o == null) { return false; };
     	if (o.getClass().getName().equals("java.lang.Boolean")) {
     		Boolean sent = (Boolean) o;
@@ -290,23 +283,7 @@ public class SessionDao {
     }
     
     /**
-     * Load the session attribute that tracks if the time zone help card has
-     * been sent to the user during this session.
-     * 
-     * @return true if flag exists and is true
-     */
-    public boolean getTimeZoneHelpCardSent() {
-    	Object o = session.getAttribute(SESSION_ATTR_TIMEZONE_HELP_CARD_SENT);
-    	if ( o == null) { return false; };
-    	if (o.getClass().getName().equals("java.lang.Boolean")) {
-    		Boolean sent = (Boolean) o;
-    		return sent.booleanValue();
-    	}
-    	return false;
-    }
-    
-    /**
-     * Get the user id from the current {@link com.amazon.speech.speechlet.Session Session}.
+     * Get the user id from the current {@link com.amazon.speech.speechlet.Session}.
      * Use this information to read/write Dynamo DB database object per-user.
      * 
      * @return String user ID
@@ -333,6 +310,24 @@ public class SessionDao {
 	    	setIntentLog(intentLog);
 			session.setAttribute(SESSION_ATTR_INTENT_LOG_UPDATED, true);
     	}
+    }
+    
+    /**
+     * Save a given {@link trashday.model.Calendar} to the {@link Session}.
+     * 
+     * @param calendar
+     * 	          {@link trashday.model.Calendar} to be saved
+     */
+    public void setCalendar(Calendar calendar) {
+    	log.trace("setCalendar");
+    	String json;
+    	if (calendar.isEmpty()) {
+    		json = "(empty)";
+    	} else {
+    		json = calendar.toStringRFC5545();
+    	}
+		session.setAttribute(SESSION_ATTR_CALENDAR, json);
+		log.info("Saved calendar to current session. calendar={}", json);
     }
     
     /**
@@ -380,35 +375,19 @@ public class SessionDao {
      * been sent to the user during this session.
      */
     public void setOverallHelpCardSent() {
-    	Boolean sent = new Boolean(true);
-    	session.setAttribute(SESSION_ATTR_OVERALL_HELP_CARD_SENT, sent);
+    	setSessionAttributeTrue(SESSION_ATTR_OVERALL_HELP_CARD_SENT);
     }
     
     /**
-     * Save a given {@link trashday.model.Schedule} to the {@link Session}.
-     * 
-     * @param schedule
-     * 	          {@link trashday.model.Schedule} to be saved
-     */
-    public void setSchedule(Schedule schedule) {
-    	log.trace("setSchedule");
-        schedule.validate();
-        try {
-			String json = OBJECT_MAPPER.writeValueAsString(schedule);
-			session.setAttribute(SESSION_ATTR_SCHEDULE, json);
-			log.info("Saved schedule to current session. schedule={}", json);
-		} catch (JsonProcessingException e) {
-			log.error("Failed to save schedule to current session. JsonProcessingException={}", e.getMessage());
-		}
-    }
-    
-    /**
-     * Set the session attribute that tracks if the schedule help card has
+     * Set the session attribute that tracks if the time zone help card has
      * been sent to the user during this session.
      */
-    public void setScheduleHelpCardSent() {
-    	Boolean sent = new Boolean(true);
-    	session.setAttribute(SESSION_ATTR_SCHEDULE_HELP_CARD_SENT, sent);
+    public void setTimeZoneHelpCardSent() {
+    	setSessionAttributeTrue(SESSION_ATTR_TIMEZONE_HELP_CARD_SENT);
+    }
+    
+    public void setSessionAttributeTrue(String attributeName) {
+    	session.setAttribute(attributeName, new Boolean(true));
     }
     
     /**
@@ -435,12 +414,10 @@ public class SessionDao {
     }
     
     /**
-     * Set the session attribute that tracks if the time zone help card has
-     * been sent to the user during this session.
+     * Clear {@link trashday.model.Calendar} from the {@link Session}.
      */
-    public void setTimeZoneHelpCardSent() {
-    	Boolean sent = new Boolean(true);
-    	session.setAttribute(SESSION_ATTR_TIMEZONE_HELP_CARD_SENT, sent);
+    public void clearCalendar() {
+    	session.removeAttribute(SESSION_ATTR_CALENDAR);
     }
     
     /**
@@ -478,43 +455,10 @@ public class SessionDao {
     }
     
     /**
-     * Clear {@link trashday.model.Schedule} from the {@link Session}.
-     */
-    public void clearSchedule() {
-    	session.removeAttribute(SESSION_ATTR_SCHEDULE);
-    }
-    
-    /**
-     * Clear the session attribute that tracks if the schedule help card has
-     * been sent to the user during this session.
-     */
-    public void clearScheduleHelpCardSent() {
-    	session.removeAttribute(SESSION_ATTR_SCHEDULE_HELP_CARD_SENT);
-    }
-    
-    /**
-     * Clear the session attribute that tracks if we are currently in a conversation
-     * with the user about configuring the schedule.  Used to differentiate from
-     * one-shot "Alexa, tell Trash Day, to add mail pickup on Monday at 4pm." or
-     * user is answering our prompt with "Add mail pickup on Monday at 4pm."
-     */
-    public void clearScheduleConfigInProgress() {
-    	session.removeAttribute(SESSION_ATTR_SCHEDULE_IN_PROGRESS);
-    }
-    
-    /**
      * Clear {@link java.util.TimeZone} from the {@link Session}.
      */
     public void clearTimeZone() {
 		session.removeAttribute(SESSION_ATTR_TIMEZONE);
-    }
-    
-    /**
-     * Clear the session attribute that tracks if the time zone help card has
-     * been sent to the user during this session.
-     */
-    public void clearTimeZoneHelpCardSent() {
-    	session.removeAttribute(SESSION_ATTR_TIMEZONE_HELP_CARD_SENT);
     }
     
 }

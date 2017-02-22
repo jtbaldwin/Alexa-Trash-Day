@@ -5,11 +5,11 @@ import org.slf4j.LoggerFactory;
 
 import com.amazon.speech.speechlet.SpeechletResponse;
 
-import trashday.model.Schedule;
+import trashday.model.Calendar;
 import trashday.storage.SessionDao;
 
 /**
- * Organizes all the voice responses for Alexa "exit" intents.
+ * Organizes all the voice responses for Alexa "stop" and "exit" intents.
  * 
  * @author	J. Todd Baldwin
  */
@@ -22,17 +22,18 @@ public class ResponsesExit extends ResponseHelpers {
      * "Goodbye" from Alexa without any associated
      * {@link com.amazon.speech.ui.Card}.
      * 
-     * @param sessionDao {@link trashday.storage.SessionDao} Alexa session used for storing state information for the current dialog with the user.
+	 * @param sessionDao {@link SessionDao} data access object for user data stored in 
+	 * 			current {@link com.amazon.speech.speechlet.Session}.
      * @return "silence"
      */
     public static SpeechletResponse buildExitResponse(SessionDao sessionDao) {
     	log.info("buildExitResponse: configInProgress={}", sessionDao.getScheduleConfigInProgress());
     	
-		Schedule schedule = sessionDao.getSchedule();
-    	if (sessionDao.getScheduleConfigInProgress() && (schedule != null) && (! schedule.isEmpty()) ) {
-    		return SpeechletResponse.newTellResponse(outputSpeech(Phrases.SCHEDULE_DONE_VERBAL));
+		Calendar calendar = sessionDao.getCalendar();
+    	if (sessionDao.getScheduleConfigInProgress() && (calendar != null) && (! calendar.isEmpty()) ) {
+    		return SpeechletResponse.newTellResponse(outputSpeech(Phrase.SCHEDULE_DONE_VERBAL));
     	} else {
-    		return SpeechletResponse.newTellResponse(outputSpeech(Phrases.EXIT_VERBAL));
+    		return SpeechletResponse.newTellResponse(outputSpeech(Phrase.EXIT_VERBAL));
     	}
     }
 }

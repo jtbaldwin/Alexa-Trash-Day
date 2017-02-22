@@ -54,7 +54,20 @@
         <version>2.10.4</version>
         <configuration>
           <links>
-            <link>https://github.com/amzn/alexa-skills-kit-java/tree/master/javadoc</link>
+            <!-- 
+            Failing links.  Usually because can't retrieve a clean package-list file
+            from the given URL (www.javadoc.io).  Or end up not able to get a clean page for a referenced
+            object (github.com).
+            <link>https://raw.githubusercontent.com/amzn/alexa-skills-kit-java/master/javadoc</link>
+            <link>https://github.com/amzn/alexa-skills-kit-java/raw/master/javadoc/package-list</link>
+            <link>https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.0</link>
+            <link>https://static.javadoc.io/com.google.code.gson/gson/2.8.0/</link>
+             -->
+            <link>http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc</link>
+            <link>https://developer.amazon.com/public/binaries/content/assets/javadoc/ask-java-library-3</link>
+            <link>http://ical4j.github.io/docs/ical4j/api/2.0.0/</link>
+            <link>https://jonpeterson.github.io/docs/jackson-module-model-versioning/1.1.1</link>
+            <link>http://fasterxml.github.io/jackson-databind/javadoc/2.8/</link>
           </links>
           <outputDirectory>${project.basedir}</outputDirectory>
           <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
@@ -180,6 +193,12 @@
     	<artifactId>jackson-module-model-versioning</artifactId>
     	<version>1.2.2</version>
 	</dependency>
+	
+	<dependency>
+      <groupId>org.mnode.ical4j</groupId>
+      <artifactId>ical4j</artifactId>
+      <version>2.0.0</version>
+    </dependency>
 	
     <dependency>
       <groupId>log4j</groupId>

@@ -19,8 +19,8 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
  * {@link TrashDayManager} methods.
  * <p>
  * This is mostly boilerplate code from Alexa samples modified to handle
- * the specific Intents for our application.  Additionally, the constructor from a
- * AmazonDynamoDBClient is added to allow the JUnit tests
+ * the specific Intents for our application.  Additionally, the {@link #TrashDaySpeechlet(AmazonDynamoDBClient, String)}
+ * constructor is added to allow the JUnit tests
  * to use a local Dynamo DB instance for testing purposes only.
  * 
  * @author      J. Todd Baldwin
@@ -30,8 +30,6 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 public class TrashDaySpeechlet implements SpeechletV2 {
 	/** Log object for this class */
     private static final Logger log = LoggerFactory.getLogger(TrashDaySpeechlet.class);
-    /** The connection used to store the Trash Day pickup schedule. */
-    private AmazonDynamoDBClient db;
     /** The methods for appropriately handling our skill Intents. */
     private TrashDayManager tdm = null;
     
@@ -39,31 +37,35 @@ public class TrashDaySpeechlet implements SpeechletV2 {
      * Handle requests using a new connection to the Amazon Dynamo DB
      * cloud.  Used for normal Alexa skill requests.
      * <p>
-     * CoberturaIgnore used because we don't want to use JUnit
+     * {@literal @}{@link trashday.CoberturaIgnore} used because we don't want to use JUnit
      * tests that involve the Amazon Dynamo DB cloud that 
      * may contain user data.
      */
     @CoberturaIgnore
     public TrashDaySpeechlet() {
     	//ProfileCredentialsProvider pcp = new ProfileCredentialsProvider(credentialFile, credentialProfileName);
-		db = new AmazonDynamoDBClient();
-		tdm = new TrashDayManager(db);    	
+		tdm = new TrashDayManager(null, null);    	
     }
     
 	/** 
-     * Handle requests using a specified Dynamo DB.  Used only for
+     * Handle requests using a specified Dynamo DB and, optionally, a given
+     * table for storing user data.  {@code tableNameOverride} is only for
      * JUnit tests at this time.
      *
      * @param db        specific Dynamo DB (instead of the default
      * 					Dynamo DB cloud)
+     * @param tableNameOverride String table name used by JUnit tests to ensure they do not
+     * 				write to the Production table name (which is hard-coded using 
+     * 				{@literal @}{@link com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable} in
+     * 				{@link trashday.storage.DynamoItem}).  A null value indicates no override.
+     * 				Any other value is the Dynamo table name to be used.
      */
-    public TrashDaySpeechlet(AmazonDynamoDBClient db) {
-    	this.db = db;
-		tdm = new TrashDayManager(db);    	
+    public TrashDaySpeechlet(AmazonDynamoDBClient db, String tableNameOverride) {
+		tdm = new TrashDayManager(db, tableNameOverride);    	
     }
     
     /**
-     * Handle the Alexa request {@code LaunchRequest}.
+     * Handle the Alexa request when the user says "Alexa, open Trash Day."
      * 
      * @param requestEnvelope	SpeechletRequestEnvelope Alexa request information
      * @return			Alexa speech and/or card response
@@ -78,32 +80,12 @@ public class TrashDaySpeechlet implements SpeechletV2 {
 	}
 
     /**
-     * Handle the Alexa request {@code IntentRequest}.  Accepts the following
-     * intent names:
-     * <p>
-     * <b>Custom Intents</b>
-     * <ul>
-     * <li>AddPickupIntent
-     * <li>TellScheduleIntent
-     * <li>TellNextPickupIntent
-     * <li>DeleteEntireScheduleIntent
-     * <li>DeleteScheduleIntent
-     * </ul>
-     * <p>
-     * <b>Built-in Intents</b>
-     * <ul>
-     * <li>AMAZON.YesIntent
-     * <li>AMAZON.NoIntent
-     * <li>AMAZON.HelpIntent
-     * <li>AMAZON.CancelIntent
-     * <li>AMAZON.StopIntent
-     * </ul>
+     * Handle the Alexa request for all the regular user conversation.
      * 
-     * @param requestEnvelope	SpeechletRequestEnvelope Alexa request information
-     * @return			Alexa speech and/or card response
+     * @param requestEnvelope	Alexa request data
+     * @return Alexa speech and/or card response
      * @see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/handling-requests-sent-by-alexa#types-of-requests-sent-by-alexa">Alexa Skills Kit Docs: Types of Requests Sent by Alexa</a>
      * @see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Alexa Skills Kit Docs: Available Standard Built-in Intents</a>
-     * 
      */
 	@Override
 	public SpeechletResponse onIntent(SpeechletRequestEnvelope<IntentRequest> requestEnvelope) {
@@ -112,57 +94,110 @@ public class TrashDaySpeechlet implements SpeechletV2 {
         Intent intent = request.getIntent();
 		log.info("onIntent {} requestId={}, sessionId={}", intent.getName(), request.getRequestId(), session.getSessionId());
 
+		SpeechletResponse response = null;
+		switch (intent.getName()) {
+		
 		// User Queries for information
-		if ("TellScheduleIntent".equals(intent.getName())) {
-            return tdm.handleTellScheduleRequest(request, session);
-        } else if ("TellNextPickupIntent".equals(intent.getName())) {
-            return tdm.handleTellNextPickupRequest(request, session);
-        } else if ("UpdateScheduleIntent".equals(intent.getName())) {
-        	return tdm.handleUpdateScheduleRequest(request, session);
-        }
+		case "TellScheduleIntent":
+            response = tdm.handleTellScheduleRequest(request, session);
+			break;
+		case "TellNextPickupIntent":
+			response = tdm.handleTellNextPickupRequest(request, session);
+			break;
+		case "UpdateScheduleIntent":
+			response = tdm.handleUpdateScheduleRequest(request, session);
+			break;
         
         // User Answers to Questions from our skill.
-	    else if ("AMAZON.YesIntent".equals(intent.getName())) {
-	        return tdm.handleYesRequest(request, session);
-	    } else if ("AMAZON.NoIntent".equals(intent.getName())) {
-	        return tdm.handleNoRequest(session);
-	    }
+		case "AMAZON.YesIntent":
+			response = tdm.handleYesRequest(request, session);
+			break;
+		case "AMAZON.NoIntent":
+			response = tdm.handleNoRequest(session);
+			break;
         
         // User commands to alter the Schedule of weekly pickups
-        else if ("SetTimeZoneIntent".equals(intent.getName())) {
-            return tdm.handleSetTimeZoneRequest(request, session);
-
-        } else if ("AddPickupIntent".equals(intent.getName())) {
-            return tdm.handleAddPickupRequest(request, session);
-
-        } else if ("DeletePickupIntent".equals(intent.getName())) {
-            return tdm.handleDeletePickupRequest(request, session);
-
-        } else if ("DeleteEntirePickupIntent".equals(intent.getName())) {
-            return tdm.handleDeleteEntirePickupRequest(request, session);
-
-        } else if ("DeleteEntireScheduleIntent".equals(intent.getName())) {
-            return tdm.handleDeleteEntireScheduleRequest(request, session);
-            
-        }
+		case "SetTimeZoneIntent":
+			response = tdm.handleSetTimeZoneRequest(request, session);
+			break;
+		case "AddPickupIntent":
+			response = tdm.handleAddPickupRequest(request, session);
+			break;
+		case "AddWeeklyPickupIntent":
+			response = tdm.handleAddWeeklyPickupRequest(request, session);
+			break;
+		case "AddThisBiWeeklyPickupIntent":
+			response = tdm.handleAddThisBiWeeklyPickupRequest(request, session);
+			break;
+		case "AddFollowingBiWeeklyPickupIntent":
+			response = tdm.handleAddFollowingBiWeeklyPickupRequest(request, session);
+			break;
+		case "AddMonthlyPickupIntent":
+			response = tdm.handleAddMonthlyPickupRequest(request, session);
+			break;
+		case "AddMonthlyLastDayPickupIntent":
+			response = tdm.handleAddMonthlyLastDayPickupRequest(request, session);
+			break;
+		case "AddMonthlyLastNDayPickupIntent":
+			response = tdm.handleAddMonthlyLastNDayPickupRequest(request, session);
+			break;
+		case "AddMonthlyWeekdayPickupIntent":
+			response = tdm.handleAddMonthlyWeekdayPickupRequest(request, session);
+			break;
+		case "AddMonthlyLastNWeekdayPickupIntent":
+			response = tdm.handleAddMonthlyLastNWeekdayPickupRequest(request, session);
+			break;
+		case "DeletePickupIntent":
+			response = tdm.handleDeletePickupRequest(request, session);
+			break;
+		case "DeleteWeeklyPickupIntent":
+			response = tdm.handleDeleteWeeklyPickupRequest(request, session);
+			break;
+		case "DeleteBiWeeklyPickupIntent":
+			response = tdm.handleDeleteBiWeeklyPickupRequest(request, session);
+			break;
+		case "DeleteMonthlyPickupIntent":
+			response = tdm.handleDeleteMonthlyPickupRequest(request, session);
+			break;
+		case "DeleteMonthlyLastDayPickupIntent":
+			response = tdm.handleDeleteMonthlyLastDayPickupRequest(request, session);
+			break;
+		case "DeleteMonthlyLastNDayPickupIntent":
+			response = tdm.handleDeleteMonthlyLastNDayPickupRequest(request, session);
+			break;
+		case "DeleteMonthlyWeekdayPickupIntent":
+			response = tdm.handleDeleteMonthlyWeekdayPickupRequest(request, session);
+			break;
+		case "DeleteMonthlyLastNWeekdayPickupIntent":
+			response = tdm.handleDeleteMonthlyLastNWeekdayPickupRequest(request, session);
+			break;
+		case "DeleteEntirePickupIntent":
+			response = tdm.handleDeleteEntirePickupRequest(request, session);
+			break;
+		case "DeleteEntireScheduleIntent":
+			response = tdm.handleDeleteEntireScheduleRequest(request, session);
+            break;
         
         // User gives standard, one-word commands
-        else if ("AMAZON.HelpIntent".equals(intent.getName())) {
-            return tdm.handleHelpRequest(request, session);
-
-        } else if ("AMAZON.CancelIntent".equals(intent.getName())) {
-            return tdm.handleExitRequest(session);
-
-        } else if ("AMAZON.StopIntent".equals(intent.getName())) {
-            return tdm.handleExitRequest(session);
-
-        } else {
+		case "AMAZON.HelpIntent":
+			response = tdm.handleHelpRequest(request, session);
+			break;
+		case "AMAZON.CancelIntent":
+			response = tdm.handleExitRequest(session);
+			break;
+		case "AMAZON.StopIntent":
+			response = tdm.handleExitRequest(session);
+			break;
+			
+		// Error if program gets an unexpected Intent Name
+        default:
             throw new IllegalArgumentException("Unrecognized intent: " + intent.getName());
-        }
+		}
+		return response;
 	}
 
     /**
-     * Ignore the Alexa request {@code SessionStartedRequest}.
+     * Ignore this kind of Alexa request.
      * 
      * @param requestEnvelope	SpeechletRequestEnvelope Alexa request information
      * @see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/handling-requests-sent-by-alexa#types-of-requests-sent-by-alexa">Alexa Skills Kit Docs: Types of Requests Sent by Alexa</a>
@@ -175,7 +210,11 @@ public class TrashDaySpeechlet implements SpeechletV2 {
 	}
 
     /**
-     * Ignore the Alexa request {@code SessionEndedRequest}.
+     * Handle the Alexa request when a user session ends.
+     * <p>
+     * At session end, we flush {@link trashday.model.IntentLog} information.  This
+     * records the actions a user performed in order to provide later analysis of
+     * how often users use which functions from our skill.
      * 
      * @param requestEnvelope	SpeechletRequestEnvelope Alexa request information
      * @see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/handling-requests-sent-by-alexa#types-of-requests-sent-by-alexa">Alexa Skills Kit Docs: Types of Requests Sent by Alexa</a>

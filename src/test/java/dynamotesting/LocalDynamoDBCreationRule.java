@@ -6,7 +6,7 @@ import com.amazonaws.services.dynamodbv2.local.main.ServerRunner;
 import com.amazonaws.services.dynamodbv2.local.server.DynamoDBProxyServer;
 
 import trashday.TrashDaySpeechletRequestStreamHandlerTest;
-import trashday.storage.DynamoDbClient;
+import trashday.storage.DynamoItemPersistence;
 
 import org.junit.rules.ExternalResource;
 import org.slf4j.Logger;
@@ -29,18 +29,26 @@ public class LocalDynamoDBCreationRule extends ExternalResource {
     /** Connection to the Dynamo DB */
     private AmazonDynamoDBClient amazonDynamoDbClient;
     /** Dynamo DB access for saving and loading user Schedules. */
-    private DynamoDbClient trashDayDbClient;
+    private DynamoItemPersistence trashDayDbClient;
+    /** Override the Dynamo DB Table Name, if defined.  Used for JUnit testing. */
+    private String tableNameOverride = null;
 
     /**
      * Rule initialization needs sqlite4java binaries to run a local 
      * Dynamo DB instance. Maven handles downloading the library files,
      * but we need to configure the library path to them with this rule.
+     * 
+     * @param tableNameOverride String table name used by JUnit tests to ensure they do not
+     * 				write to the Production table name (which is hard-coded using {@literal @}DynamoDBTable in
+     * 				{@link trashday.storage.DynamoItem}).  A null value indicates no override.
+     * 				Any other value is the Dynamo table name to be used.
      */
-    public LocalDynamoDBCreationRule() {
+    public LocalDynamoDBCreationRule(String tableNameOverride) {
         // This one should be copied during test-compile time. If project's basedir does not contains a folder
         // named 'native-libs' please try '$ mvn clean install' from command line first
     	log.info("LocalDynamoDBCreationRule setting sqlite4java.library.path");
         System.setProperty("sqlite4java.library.path", "native-libs");
+        this.tableNameOverride = tableNameOverride;
     }
 
     /**
@@ -61,7 +69,7 @@ public class LocalDynamoDBCreationRule extends ExternalResource {
         	log.info("LocalDynamoDBCreationRule made new DynamoDB client");
             amazonDynamoDbClient.setEndpoint("http://localhost:" + port);
         	log.info("LocalDynamoDBCreationRule set endpoint");
-        	trashDayDbClient = new DynamoDbClient(amazonDynamoDbClient);
+        	trashDayDbClient = new DynamoItemPersistence(amazonDynamoDbClient, tableNameOverride);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -101,7 +109,7 @@ public class LocalDynamoDBCreationRule extends ExternalResource {
      * 
      * @return Dynamo DB access for saving and loading user Schedules.
      */
-    public DynamoDbClient getTrashDayDbClient() {
+    public DynamoItemPersistence getTrashDayDbClient() {
     	log.info("LocalDynamoDBCreationRule.getTrashDayDbClient()");
         return trashDayDbClient;
     }

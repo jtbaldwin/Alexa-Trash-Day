@@ -18,6 +18,7 @@ import com.github.jonpeterson.jackson.module.versioning.VersionedModelConverter;
  * @author	J. Todd Baldwin
  * @see		<a href="https://github.com/jonpeterson/jackson-module-model-versioning">Jackson Module Model Versioning</a>
  */
+@Deprecated
 public class ToCurrentSchedule implements VersionedModelConverter {
     private static final Logger log = LoggerFactory.getLogger(ToCurrentSchedule.class);
     

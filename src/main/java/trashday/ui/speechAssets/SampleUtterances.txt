@@ -73,12 +73,175 @@ AddPickupIntent to add {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
 AddPickupIntent on {DayOfWeek} at {TimeOfDay} add {PickupName} pickup
 AddPickupIntent at {TimeOfDay} on {DayOfWeek} add {PickupName} pickup
 
+AddWeeklyPickupIntent add weekly {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+AddWeeklyPickupIntent add weekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+AddWeeklyPickupIntent to add weekly {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+AddWeeklyPickupIntent to add weekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+AddWeeklyPickupIntent on {DayOfWeek} at {TimeOfDay} add weekly {PickupName} pickup
+AddWeeklyPickupIntent at {TimeOfDay} on {DayOfWeek} add weekly {PickupName} pickup
+
+AddThisBiWeeklyPickupIntent add biweekly {PickupName} pickup on this {DayOfWeek} at {TimeOfDay}
+AddThisBiWeeklyPickupIntent add biweekly {PickupName} pickup on next {DayOfWeek} at {TimeOfDay}
+AddThisBiWeeklyPickupIntent add biweekly {PickupName} pickup at {TimeOfDay} on this {DayOfWeek}
+AddThisBiWeeklyPickupIntent add biweekly {PickupName} pickup at {TimeOfDay} on next {DayOfWeek}
+AddThisBiWeeklyPickupIntent to add biweekly {PickupName} pickup on this {DayOfWeek} at {TimeOfDay}
+AddThisBiWeeklyPickupIntent to add biweekly {PickupName} pickup on next {DayOfWeek} at {TimeOfDay}
+AddThisBiWeeklyPickupIntent to add biweekly {PickupName} pickup at {TimeOfDay} on this {DayOfWeek}
+AddThisBiWeeklyPickupIntent to add biweekly {PickupName} pickup at {TimeOfDay} on next {DayOfWeek}
+AddThisBiWeeklyPickupIntent on this {DayOfWeek} at {TimeOfDay} add biweekly {PickupName} pickup
+AddThisBiWeeklyPickupIntent on next {DayOfWeek} at {TimeOfDay} add biweekly {PickupName} pickup
+AddThisBiWeeklyPickupIntent at {TimeOfDay} on this {DayOfWeek} add biweekly {PickupName} pickup
+AddThisBiWeeklyPickupIntent at {TimeOfDay} on next {DayOfWeek} add biweekly {PickupName} pickup
+
+AddFollowingBiWeeklyPickupIntent add biweekly {PickupName} pickup on {DayOfWeek} after next at {TimeOfDay}
+AddFollowingBiWeeklyPickupIntent add biweekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek} after next
+AddFollowingBiWeeklyPickupIntent to add biweekly {PickupName} pickup on {DayOfWeek} after next at {TimeOfDay}
+AddFollowingBiWeeklyPickupIntent to add biweekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek} after next
+AddFollowingBiWeeklyPickupIntent on {DayOfWeek} after next at {TimeOfDay} add biweekly {PickupName} pickup
+AddFollowingBiWeeklyPickupIntent at {TimeOfDay} on {DayOfWeek} after next add biweekly {PickupName} pickup
+AddFollowingBiWeeklyPickupIntent add biweekly {PickupName} pickup on {DayOfWeek} after this one at {TimeOfDay}
+AddFollowingBiWeeklyPickupIntent add biweekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek} after this one
+AddFollowingBiWeeklyPickupIntent to add biweekly {PickupName} pickup on {DayOfWeek} after this one at {TimeOfDay}
+AddFollowingBiWeeklyPickupIntent to add biweekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek} after this one
+AddFollowingBiWeeklyPickupIntent on {DayOfWeek} after this one at {TimeOfDay} add biweekly {PickupName} pickup
+AddFollowingBiWeeklyPickupIntent at {TimeOfDay} on {DayOfWeek} after this one add biweekly {PickupName} pickup
+
+AddMonthlyPickupIntent add monthly {PickupName} pickup on the {NthOfMonth} at {TimeOfDay}
+AddMonthlyPickupIntent add monthly {PickupName} pickup at {TimeOfDay} on the {NthOfMonth}
+AddMonthlyPickupIntent to add monthly {PickupName} pickup on the {NthOfMonth} at {TimeOfDay}
+AddMonthlyPickupIntent to add monthly {PickupName} pickup at {TimeOfDay} on the {NthOfMonth}
+AddMonthlyPickupIntent on the {NthOfMonth} at {TimeOfDay} add monthly {PickupName} pickup
+AddMonthlyPickupIntent at {TimeOfDay} on the {NthOfMonth} add monthly {PickupName} pickup
+
+AddMonthlyLastDayPickupIntent add monthly {PickupName} pickup on the last day of the month at {TimeOfDay}
+AddMonthlyLastDayPickupIntent add monthly {PickupName} pickup at {TimeOfDay} on the last day of the month
+AddMonthlyLastDayPickupIntent to add monthly {PickupName} pickup on the last day of the month at {TimeOfDay}
+AddMonthlyLastDayPickupIntent to add monthly {PickupName} pickup at {TimeOfDay} on the last day of the month
+AddMonthlyLastDayPickupIntent on the last day of the month at {TimeOfDay} add monthly {PickupName} pickup 
+AddMonthlyLastDayPickupIntent at {TimeOfDay} on the last day of the month add monthly {PickupName} pickup
+
+AddMonthlyLastNDayPickupIntent add monthly {PickupName} pickup {DayOfMonth} days before the end of the month at {TimeOfDay}
+AddMonthlyLastNDayPickupIntent add monthly {PickupName} pickup at {TimeOfDay} {DayOfMonth} days before the end of the month
+AddMonthlyLastNDayPickupIntent to add monthly {PickupName} pickup {DayOfMonth} days before the end of the month at {TimeOfDay}
+AddMonthlyLastNDayPickupIntent to add monthly {PickupName} pickup at {TimeOfDay} {DayOfMonth} days before the end of the month
+AddMonthlyLastNDayPickupIntent {DayOfMonth} days before the end of the month at {TimeOfDay} add monthly {PickupName} pickup 
+AddMonthlyLastNDayPickupIntent at {TimeOfDay} {DayOfMonth} days before the end of the month add monthly {PickupName} pickup
+
+AddMonthlyLastNDayPickupIntent add monthly {PickupName} pickup on the {NthOfMonth} day before the end of the month at {TimeOfDay}
+AddMonthlyLastNDayPickupIntent add monthly {PickupName} pickup at {TimeOfDay} on the {NthOfMonth} day before the end of the month
+AddMonthlyLastNDayPickupIntent to add monthly {PickupName} pickup on the {NthOfMonth} day before the end of the month at {TimeOfDay}
+AddMonthlyLastNDayPickupIntent to add monthly {PickupName} pickup at {TimeOfDay} on the {NthOfMonth} day before the end of the month
+AddMonthlyLastNDayPickupIntent on the {NthOfMonth} day before the end of the month at {TimeOfDay} add monthly {PickupName} pickup 
+AddMonthlyLastNDayPickupIntent at {TimeOfDay} on the {NthOfMonth} day before the end of the month add monthly {PickupName} pickup
+
+AddMonthlyWeekdayPickupIntent add monthly {PickupName} pickup on the {WeekOfMonth} {DayOfWeek} at {TimeOfDay}
+AddMonthlyWeekdayPickupIntent add monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek}
+AddMonthlyWeekdayPickupIntent to add monthly {PickupName} pickup on the {WeekOfMonth} {DayOfWeek} at {TimeOfDay}
+AddMonthlyWeekdayPickupIntent to add monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek}
+AddMonthlyWeekdayPickupIntent on the {WeekOfMonth} {DayOfWeek} at {TimeOfDay} add monthly {PickupName} pickup
+AddMonthlyWeekdayPickupIntent at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek} add monthly {PickupName} pickup
+
+AddMonthlyLastNWeekdayPickupIntent add monthly {PickupName} pickup on the {WeekOfMonth} to last {DayOfWeek} at {TimeOfDay}
+AddMonthlyLastNWeekdayPickupIntent add monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} to last {DayOfWeek}
+AddMonthlyLastNWeekdayPickupIntent to add monthly {PickupName} pickup on the {WeekOfMonth} to last {DayOfWeek} at {TimeOfDay}
+AddMonthlyLastNWeekdayPickupIntent to add monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} to last {DayOfWeek}
+AddMonthlyLastNWeekdayPickupIntent on the {WeekOfMonth} to last {DayOfWeek} at {TimeOfDay} add monthly {PickupName} pickup
+AddMonthlyLastNWeekdayPickupIntent at {TimeOfDay} on the {WeekOfMonth} to last {DayOfWeek} add monthly {PickupName} pickup
+
+AddMonthlyLastNWeekdayPickupIntent add monthly {PickupName} pickup on the {WeekOfMonth} {DayOfWeek} before the end of the month at {TimeOfDay}
+AddMonthlyLastNWeekdayPickupIntent add monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek} before the end of the month
+AddMonthlyLastNWeekdayPickupIntent to add monthly {PickupName} pickup on the {WeekOfMonth} {DayOfWeek} before the end of the month at {TimeOfDay}
+AddMonthlyLastNWeekdayPickupIntent to add monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek} before the end of the month
+AddMonthlyLastNWeekdayPickupIntent on the {WeekOfMonth} {DayOfWeek} before the end of the month at {TimeOfDay} add monthly {PickupName} pickup
+AddMonthlyLastNWeekdayPickupIntent at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek} before the end of the month add monthly {PickupName} pickup
+
 DeletePickupIntent delete {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
 DeletePickupIntent delete {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
 DeletePickupIntent to delete {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
 DeletePickupIntent to delete {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
 DeletePickupIntent on {DayOfWeek} at {TimeOfDay} delete {PickupName} pickup
 DeletePickupIntent at {TimeOfDay} on {DayOfWeek} delete {PickupName} pickup
+
+DeleteWeeklyPickupIntent delete weekly {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+DeleteWeeklyPickupIntent delete weekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+DeleteWeeklyPickupIntent to delete weekly {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+DeleteWeeklyPickupIntent to delete weekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+DeleteWeeklyPickupIntent on {DayOfWeek} at {TimeOfDay} delete weekly {PickupName} pickup
+DeleteWeeklyPickupIntent at {TimeOfDay} on {DayOfWeek} delete weekly {PickupName} pickup
+
+DeleteBiWeeklyPickupIntent delete biweekly {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+DeleteBiWeeklyPickupIntent delete biweekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+DeleteBiWeeklyPickupIntent to delete biweekly {PickupName} pickup on {DayOfWeek} at {TimeOfDay}
+DeleteBiWeeklyPickupIntent to delete biweekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek}
+DeleteBiWeeklyPickupIntent on {DayOfWeek} at {TimeOfDay} delete biweekly {PickupName} pickup
+DeleteBiWeeklyPickupIntent at {TimeOfDay} on {DayOfWeek} delete biweekly {PickupName} pickup
+DeleteBiWeeklyPickupIntent delete biweekly {PickupName} pickup on this {DayOfWeek} at {TimeOfDay}
+DeleteBiWeeklyPickupIntent delete biweekly {PickupName} pickup at {TimeOfDay} on this {DayOfWeek}
+DeleteBiWeeklyPickupIntent to delete biweekly {PickupName} pickup on this {DayOfWeek} at {TimeOfDay}
+DeleteBiWeeklyPickupIntent to delete biweekly {PickupName} pickup at {TimeOfDay} on this {DayOfWeek}
+DeleteBiWeeklyPickupIntent on this {DayOfWeek} at {TimeOfDay} delete biweekly {PickupName} pickup
+DeleteBiWeeklyPickupIntent at {TimeOfDay} on this {DayOfWeek} delete biweekly {PickupName} pickup
+DeleteBiWeeklyPickupIntent delete biweekly {PickupName} pickup on next {DayOfWeek} at {TimeOfDay}
+DeleteBiWeeklyPickupIntent delete biweekly {PickupName} pickup at {TimeOfDay} on next {DayOfWeek}
+DeleteBiWeeklyPickupIntent to delete biweekly {PickupName} pickup on next {DayOfWeek} at {TimeOfDay}
+DeleteBiWeeklyPickupIntent to delete biweekly {PickupName} pickup at {TimeOfDay} on next {DayOfWeek}
+DeleteBiWeeklyPickupIntent on next {DayOfWeek} at {TimeOfDay} delete biweekly {PickupName} pickup
+DeleteBiWeeklyPickupIntent at {TimeOfDay} on next {DayOfWeek} delete biweekly {PickupName} pickup
+DeleteBiWeeklyPickupIntent delete biweekly {PickupName} pickup on {DayOfWeek} after next at {TimeOfDay}
+DeleteBiWeeklyPickupIntent delete biweekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek} after next
+DeleteBiWeeklyPickupIntent to delete biweekly {PickupName} pickup on {DayOfWeek} after next at {TimeOfDay}
+DeleteBiWeeklyPickupIntent to delete biweekly {PickupName} pickup at {TimeOfDay} on {DayOfWeek} after next
+DeleteBiWeeklyPickupIntent on {DayOfWeek} after next at {TimeOfDay} delete biweekly {PickupName} pickup
+DeleteBiWeeklyPickupIntent at {TimeOfDay} on {DayOfWeek} after next delete biweekly {PickupName} pickup
+
+DeleteMonthlyPickupIntent delete monthly {PickupName} pickup on the {NthOfMonth} at {TimeOfDay}
+DeleteMonthlyPickupIntent delete monthly {PickupName} pickup at {TimeOfDay} on the {NthOfMonth}
+DeleteMonthlyPickupIntent to delete monthly {PickupName} pickup on the {NthOfMonth} at {TimeOfDay}
+DeleteMonthlyPickupIntent to delete monthly {PickupName} pickup at {TimeOfDay} on the {NthOfMonth}
+DeleteMonthlyPickupIntent on the {NthOfMonth} at {TimeOfDay} delete monthly {PickupName} pickup
+DeleteMonthlyPickupIntent at {TimeOfDay} on the {NthOfMonth} delete monthly {PickupName} pickup
+
+DeleteMonthlyLastDayPickupIntent delete monthly {PickupName} pickup on the last day of the month at {TimeOfDay}
+DeleteMonthlyLastDayPickupIntent delete monthly {PickupName} pickup at {TimeOfDay} on the last day of the month
+DeleteMonthlyLastDayPickupIntent to delete monthly {PickupName} pickup on the last day of the month at {TimeOfDay}
+DeleteMonthlyLastDayPickupIntent to delete monthly {PickupName} pickup at {TimeOfDay} on the last day of the month
+DeleteMonthlyLastDayPickupIntent on the last day of the month at {TimeOfDay} delete monthly {PickupName} pickup
+DeleteMonthlyLastDayPickupIntent at {TimeOfDay} on the last day of the month delete monthly {PickupName} pickup
+
+DeleteMonthlyLastNDayPickupIntent delete monthly {PickupName} pickup {DayOfMonth} days before the end of the month at {TimeOfDay}
+DeleteMonthlyLastNDayPickupIntent delete monthly {PickupName} pickup at {TimeOfDay} {DayOfMonth} days before the end of the month
+DeleteMonthlyLastNDayPickupIntent to delete monthly {PickupName} pickup {DayOfMonth} days before the end of the month at {TimeOfDay}
+DeleteMonthlyLastNDayPickupIntent to delete monthly {PickupName} pickup at {TimeOfDay} {DayOfMonth} days before the end of the month
+DeleteMonthlyLastNDayPickupIntent {DayOfMonth} days before the end of the month at {TimeOfDay} delete monthly {PickupName} pickup
+DeleteMonthlyLastNDayPickupIntent at {TimeOfDay} {DayOfMonth} days before the end of the month delete monthly {PickupName} pickup
+
+DeleteMonthlyLastNDayPickupIntent delete monthly {PickupName} pickup on the {NthOfMonth} day before the end of the month at {TimeOfDay}
+DeleteMonthlyLastNDayPickupIntent delete monthly {PickupName} pickup at {TimeOfDay} on the {NthOfMonth} day before the end of the month
+DeleteMonthlyLastNDayPickupIntent to delete monthly {PickupName} pickup on the {NthOfMonth} day before the end of the month at {TimeOfDay}
+DeleteMonthlyLastNDayPickupIntent to delete monthly {PickupName} pickup at {TimeOfDay} on the {NthOfMonth} day before the end of the month
+DeleteMonthlyLastNDayPickupIntent on the {NthOfMonth} day before the end of the month at {TimeOfDay} delete monthly {PickupName} pickup
+DeleteMonthlyLastNDayPickupIntent at {TimeOfDay} on the {NthOfMonth} day before the end of the month delete monthly {PickupName} pickup
+
+DeleteMonthlyWeekdayPickupIntent delete monthly {PickupName} pickup on the {WeekOfMonth} {DayOfWeek} at {TimeOfDay}
+DeleteMonthlyWeekdayPickupIntent delete monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek}
+DeleteMonthlyWeekdayPickupIntent to delete monthly {PickupName} pickup on the {WeekOfMonth} {DayOfWeek} at {TimeOfDay}
+DeleteMonthlyWeekdayPickupIntent to delete monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek}
+DeleteMonthlyWeekdayPickupIntent on the {WeekOfMonth} {DayOfWeek} at {TimeOfDay} delete monthly {PickupName} pickup
+DeleteMonthlyWeekdayPickupIntent at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek} delete monthly {PickupName} pickup
+
+DeleteMonthlyLastNWeekdayPickupIntent delete monthly {PickupName} pickup on the {WeekOfMonth} to last {DayOfWeek} at {TimeOfDay}
+DeleteMonthlyLastNWeekdayPickupIntent delete monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} to last {DayOfWeek}
+DeleteMonthlyLastNWeekdayPickupIntent to delete monthly {PickupName} pickup on the {WeekOfMonth} to last {DayOfWeek} at {TimeOfDay}
+DeleteMonthlyLastNWeekdayPickupIntent to delete monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} to last {DayOfWeek}
+DeleteMonthlyLastNWeekdayPickupIntent on the {WeekOfMonth} to last {DayOfWeek} at {TimeOfDay} delete monthly {PickupName} pickup
+DeleteMonthlyLastNWeekdayPickupIntent at {TimeOfDay} on the {WeekOfMonth} to last {DayOfWeek} delete monthly {PickupName} pickup
+
+DeleteMonthlyLastNWeekdayPickupIntent delete monthly {PickupName} pickup on the {WeekOfMonth} {DayOfWeek} before the end of the month at {TimeOfDay}
+DeleteMonthlyLastNWeekdayPickupIntent delete monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek} before the end of the month
+DeleteMonthlyLastNWeekdayPickupIntent to delete monthly {PickupName} pickup on the {WeekOfMonth} {DayOfWeek} before the end of the month at {TimeOfDay}
+DeleteMonthlyLastNWeekdayPickupIntent to delete monthly {PickupName} pickup at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek} before the end of the month
+DeleteMonthlyLastNWeekdayPickupIntent on the {WeekOfMonth} {DayOfWeek} before the end of the month at {TimeOfDay} delete monthly {PickupName} pickup
+DeleteMonthlyLastNWeekdayPickupIntent at {TimeOfDay} on the {WeekOfMonth} {DayOfWeek} before the end of the month delete monthly {PickupName} pickup
 
 DeleteEntirePickupIntent delete all {PickupName} pickups
 DeleteEntirePickupIntent delete entire {PickupName} pickup

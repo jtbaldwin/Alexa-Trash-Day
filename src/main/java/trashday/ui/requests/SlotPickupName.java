@@ -17,9 +17,9 @@ public class SlotPickupName implements Slot {
     /** {@link com.amazon.speech.slu.Slot} from the Alexa request. */
 	private com.amazon.speech.slu.Slot slot;
 	/** The slot field name corresponding to the VUI IntentSchema / Sample Utterances */
-    private static final String name = "PickupName";
+    public static final String name = "PickupName";
     /** A printable description of this slot's purpose */
-    private static final String description = "Pickup Name";
+    public static final String description = "Pickup Name";
 	
 	/**
 	 * Handle parsing of a request slot intended to store Pickup Name information
@@ -105,7 +105,7 @@ public class SlotPickupName implements Slot {
         	log.debug("validate Slot is empty");
     		return null;
     	}
-    	String slotString = slot.getValue().trim();
+    	String slotString = slot.getValue().trim().toLowerCase();
     	log.debug("validate slotString={}",slotString);
     	return slotString;
 	}

@@ -7,15 +7,14 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TimeZone;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.amazon.speech.speechlet.IntentRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -79,10 +78,6 @@ public class TestDataRequest {
 	public JsonObject jo;
 	/** Date used in this test request */
 	Date requestDate;
-	/** Test data for request */
-	IntentRequest request;
-
-
 	
 	/**
 	 * Create a Request object with basic data fields filled.
@@ -103,6 +98,20 @@ public class TestDataRequest {
 	public TestDataRequest(String userId) {
 		log.trace("TestDataRequest({})", userId);
 		makeRequest(userId, null);		
+	}
+	
+	/**
+	 * Create a Request object with basic data fields filled.
+	 * 
+	 * @param userId String fills the userId field in the Request
+	 * @param slots Slot information to be added to the Request
+	 */
+	public TestDataRequest(String userId, List<Map<String, String>> slots) {
+		log.trace("TestDataRequest({})", userId);
+		makeRequest(userId, null);
+		for ( Map<String, String> slotInfo : slots) {
+			addRequestIntentSlot(slotInfo.get("name"), slotInfo.get("value"));
+		}
 	}
 	
 	/**

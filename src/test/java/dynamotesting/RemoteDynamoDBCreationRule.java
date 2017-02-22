@@ -3,7 +3,7 @@ package dynamotesting;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import trashday.TrashDaySpeechletRequestStreamHandlerTest;
-import trashday.storage.DynamoDbClient;
+import trashday.storage.DynamoItemPersistence;
 
 import org.junit.rules.ExternalResource;
 import org.slf4j.Logger;
@@ -21,7 +21,9 @@ public class RemoteDynamoDBCreationRule extends ExternalResource {
     /** Connection to the Dynamo DB */
     private AmazonDynamoDBClient amazonDynamoDbClient;
     /** Dynamo DB access for saving and loading user Schedules. */
-    private DynamoDbClient trashDayDbClient;
+    private DynamoItemPersistence trashDayDbClient;
+    /** Override the Dynamo DB Table Name, if defined.  Used for JUnit testing. */
+    private String tableNameOverride = null;
 
     /** Trash Day application will access Amazon Dynamo DB as a specific IAM user. 
      * The {@link AmazonDynamoDBClient} reads user access keys from this credential
@@ -31,18 +33,24 @@ public class RemoteDynamoDBCreationRule extends ExternalResource {
     /** Trash Day application will access Amazon Dynamo DB as a specific IAM user.  The
      * credentials for this user are stored in the credentialFile under this
      * profile name. */
-    private static final String credentialProfileName = "TrashDaySkill";
+    private static final String credentialProfileName = "TrashDayTester";
     
     /**
      * Rule initialization does not need to perform any configuration
      * for Remote Amazon DB access.  No activities performed in this
      * method.
+     * 
+     * @param tableNameOverride String table name used by JUnit tests to ensure they do not
+     * 				write to the Production table name (which is hard-coded using {@literal @}DynamoDBTable in
+     * 				{@link trashday.storage.DynamoItem}).  A null value indicates no override.
+     * 				Any other value is the Dynamo table name to be used.
      */
-    public RemoteDynamoDBCreationRule() {
+    public RemoteDynamoDBCreationRule(String tableNameOverride) {
         // This one should be copied during test-compile time. If project's basedir does not contains a folder
         // named 'native-libs' please try '$ mvn clean install' from command line first
     	// log.info("RemoteDynamoCreationRule setting sqlite4java.library.path");
         // System.setProperty("sqlite4java.library.path", "native-libs");
+    	this.tableNameOverride = tableNameOverride;
     }
 
     /**
@@ -65,7 +73,7 @@ public class RemoteDynamoDBCreationRule extends ExternalResource {
     	 */
     	ProfileCredentialsProvider pcp = new ProfileCredentialsProvider(credentialFile, credentialProfileName);
     	amazonDynamoDbClient = new AmazonDynamoDBClient(pcp);
-    	trashDayDbClient = new DynamoDbClient(amazonDynamoDbClient);
+    	trashDayDbClient = new DynamoItemPersistence(amazonDynamoDbClient, tableNameOverride);
     }
 
     /**
@@ -83,7 +91,7 @@ public class RemoteDynamoDBCreationRule extends ExternalResource {
      * 
      * @return Dynamo DB access for saving and loading user Schedules.
      */
-    public DynamoDbClient getTrashDayDbClient() {
+    public DynamoItemPersistence getTrashDayDbClient() {
     	log.info("RemoteDynamoCreationRule.getTrashDayDbClient()");
         return trashDayDbClient;
     }

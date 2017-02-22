@@ -17,16 +17,18 @@ import trashday.model.NextPickups;
 import trashday.model.Schedule;
 
 /**
- * JUnit tests for the {@link trashday.model.NextPickups} class.
+ * JUnit tests for the {@link trashday.model.NextPickups} class when using the 
+ * {@link trashday.model.Schedule}-based user pickup schedules..
  * 
  * @author J. Todd Baldwin
  */
+@SuppressWarnings("deprecation")
 @RunWith(JUnit4.class)
-public class NextPickupsTest {
+public class NextPickupsScheduleTest {
 	/** Log object for this class */
-    private static final Logger log = LoggerFactory.getLogger(NextPickupsTest.class);
+    private static final Logger log = LoggerFactory.getLogger(NextPickupsScheduleTest.class);
     /** An example schedule for the tests to use */
-	private static Schedule sched;
+	private static Schedule schedule;
 
 	/**
 	 * Before starting tests in this class, create and initialize
@@ -34,9 +36,9 @@ public class NextPickupsTest {
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() {
-		log.info("Load test schedule data.");
-		sched = new Schedule();
-	    sched.initExampleSchedule();
+		schedule = new Schedule();
+	    schedule.initExampleSchedule();
+		log.info("test schedule={}",schedule.toStringPrintable());
 	}
 
 	/**
@@ -44,7 +46,8 @@ public class NextPickupsTest {
 	 * for the example schedule are correct.
 	 */
 	@Test
-	public void testNextPickups() {
+	@Deprecated
+	public void testNextPickupsForSchedule() {
 		//  Test Now = Tuesday 2016-11-22T07:30
 		//	Test Schedule:
 		//	trash:
@@ -62,7 +65,7 @@ public class NextPickupsTest {
 		
 		log.info("testNextPickups: Compute next pickup after 2016-11-22 07:30am.");
 		LocalDateTime ldtTestTime = LocalDateTime.of(2016, 11, 22, 07, 30);  
-		NextPickups pickupsActual = new NextPickups(ldtTestTime, sched, null);
+		NextPickups pickupsActual = new NextPickups(ldtTestTime, schedule, null);
 		
 		List<String> pickupNameListExpected = new ArrayList<String>();
 		pickupNameListExpected.add("lawn waste");
@@ -94,7 +97,8 @@ public class NextPickupsTest {
 	 * representation of those pickups is also correct.
 	 */
 	@Test
-	public void testToStringVerbal() {
+	@Deprecated
+	public void testVerbalNextPickupsForSchedule() {
 		String pickupsExpectedVerbalString = 
 			"Next lawn waste pickup is tomorrow at noon. "+
 			"Next trash pickup is Friday at 6 30 AM. "+
@@ -102,7 +106,7 @@ public class NextPickupsTest {
 		
 		log.info("testToStringVerbal: Compute next pickup after 2016-11-22 07:30am.");
 		LocalDateTime ldtTestTime = LocalDateTime.of(2016, 11, 22, 07, 30);  
-		NextPickups pickupsActual = new NextPickups(ldtTestTime, sched, null);
+		NextPickups pickupsActual = new NextPickups(ldtTestTime, schedule, null);
 		String pickupsActualString = pickupsActual.toStringVerbal();
 		
 		log.info("testToStringVerbal: Expected: {}",pickupsExpectedVerbalString);
@@ -116,7 +120,8 @@ public class NextPickupsTest {
 	 * representation of those pickups is also correct.
 	 */
 	@Test
-	public void testToStringPrintable() {
+	@Deprecated
+	public void testPrintableNextPickupsForSchedule() {
 		String pickupsExpectedPrintableString = 
 			"Next trash pickup is tomorrow at 6:30 AM.\n"+
 			"Next recycling pickup is tomorrow at 6:30 AM.\n"+
@@ -124,12 +129,13 @@ public class NextPickupsTest {
 			
 		log.info("testToStringAbsolute: Compute next pickup after Thursday, 2016-11-24 3:27 pm.");
 		LocalDateTime ldtTestTime = LocalDateTime.of(2016, 11, 24, 15, 27);
-		NextPickups pickupsActual = new NextPickups(ldtTestTime, sched, null);
-		String pickupsActualString = pickupsActual.toStringPrintable(ldtTestTime);
+		NextPickups pickupsActual = new NextPickups(ldtTestTime, schedule, null);
+		String pickupsActualString = pickupsActual.toStringPrintable();
 		
 		log.info("testToStringAbsolute: Expected: {}",pickupsExpectedPrintableString);
 		log.info("testToStringAbsolute: Actual:   {}",pickupsActualString);
 		assertEquals(pickupsExpectedPrintableString, pickupsActualString);
 	}
+
 
 }

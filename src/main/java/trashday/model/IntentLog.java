@@ -19,6 +19,8 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.github.jonpeterson.jackson.module.versioning.JsonVersionedModel;
 import com.github.jonpeterson.jackson.module.versioning.VersioningModule;
 
+import trashday.CoberturaIgnore;
+
 /**
  * Data structure for storing user activity log.
  * <p>
@@ -186,6 +188,7 @@ public class IntentLog {
 	 * than just any String.
 	 */
 	@Deprecated
+	@CoberturaIgnore
 	public String toString() {
 		return toStringPrintable();
 	}

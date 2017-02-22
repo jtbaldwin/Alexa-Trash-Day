@@ -29,6 +29,7 @@ import trashday.model.Schedule;
  * @author J. Todd Baldwin
  */
 @RunWith(JUnit4.class)
+@Deprecated
 public class ScheduleTest {
     @Rule
     public ExpectedException thrown= ExpectedException.none();

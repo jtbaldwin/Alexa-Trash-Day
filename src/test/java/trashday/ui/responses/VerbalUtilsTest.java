@@ -14,10 +14,10 @@ import org.junit.runners.JUnit4;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import trashday.ui.DateTimeOutputUtils;
+import trashday.ui.FormatUtils;
 
 /**
- * JUnit tests for the {@link trashday.ui.DateTimeOutputUtils} class.
+ * JUnit tests for the {@link trashday.ui.FormatUtils} class.
  * 
  * @author J.Todd Baldwin
  *
@@ -28,7 +28,7 @@ public class VerbalUtilsTest {
     private static final Logger log = LoggerFactory.getLogger(VerbalUtilsTest.class);
     
 	/**
-	 * Test method for {@link trashday.ui.DateTimeOutputUtils#verbalTime(java.time.LocalTime)}.
+	 * Test method for {@link trashday.ui.FormatUtils#verbalTime(java.time.LocalTime)}.
 	 */
 	@Test
 	public void testVerbalTimeLocalTime() {
@@ -36,32 +36,32 @@ public class VerbalUtilsTest {
 		
 		LocalTime ltTestTime = LocalTime.of(7, 00);
 		String expectedResult = "7 AM";
-		String actualResult = DateTimeOutputUtils.verbalTime(ltTestTime);
+		String actualResult = FormatUtils.verbalTime(ltTestTime);
 		assertEquals(expectedResult, actualResult);
 		
 		ltTestTime = LocalTime.of(12, 00);
 		expectedResult = "noon";
-		actualResult = DateTimeOutputUtils.verbalTime(ltTestTime);
+		actualResult = FormatUtils.verbalTime(ltTestTime);
 		assertEquals(expectedResult, actualResult);
 		
 		ltTestTime = LocalTime.of(0, 00);
 		expectedResult = "midnight";
-		actualResult = DateTimeOutputUtils.verbalTime(ltTestTime);
+		actualResult = FormatUtils.verbalTime(ltTestTime);
 		assertEquals(expectedResult, actualResult);
 		
 		ltTestTime = LocalTime.of(7, 30);
 		expectedResult = "7 30 AM";
-		actualResult = DateTimeOutputUtils.verbalTime(ltTestTime);
+		actualResult = FormatUtils.verbalTime(ltTestTime);
 		assertEquals(expectedResult, actualResult);
 		
 		ltTestTime = LocalTime.of(15, 30);
 		expectedResult = "3 30 PM";
-		actualResult = DateTimeOutputUtils.verbalTime(ltTestTime);
+		actualResult = FormatUtils.verbalTime(ltTestTime);
 		assertEquals(expectedResult, actualResult);
 	}
 
 	/**
-	 * Test method for {@link trashday.ui.DateTimeOutputUtils#verbalTime(java.time.LocalDateTime)}.
+	 * Test method for {@link trashday.ui.FormatUtils#verbalTime(java.time.LocalDateTime)}.
 	 */
 	@Test
 	public void testVerbalTimeLocalDateTime() {
@@ -69,32 +69,32 @@ public class VerbalUtilsTest {
 		
 		LocalDateTime ldtTestTime = LocalDateTime.of(2016, 11, 24, 7, 0);
 		String expectedResult = "7 AM";
-		String actualResult = DateTimeOutputUtils.verbalTime(ldtTestTime);
+		String actualResult = FormatUtils.verbalTime(ldtTestTime);
 		assertEquals(expectedResult, actualResult);
 		
 		ldtTestTime = LocalDateTime.of(2016, 11, 24, 12, 0);
 		expectedResult = "noon";
-		actualResult = DateTimeOutputUtils.verbalTime(ldtTestTime);
+		actualResult = FormatUtils.verbalTime(ldtTestTime);
 		assertEquals(expectedResult, actualResult);
 		
 		ldtTestTime = LocalDateTime.of(2016, 11, 24, 0, 0);
 		expectedResult = "midnight";
-		actualResult = DateTimeOutputUtils.verbalTime(ldtTestTime);
+		actualResult = FormatUtils.verbalTime(ldtTestTime);
 		assertEquals(expectedResult, actualResult);
 		
 		ldtTestTime = LocalDateTime.of(2016, 11, 24, 7, 30);
 		expectedResult = "7 30 AM";
-		actualResult = DateTimeOutputUtils.verbalTime(ldtTestTime);
+		actualResult = FormatUtils.verbalTime(ldtTestTime);
 		assertEquals(expectedResult, actualResult);
 		
 		ldtTestTime = LocalDateTime.of(2016, 11, 24, 15, 30);
 		expectedResult = "3 30 PM";
-		actualResult = DateTimeOutputUtils.verbalTime(ldtTestTime);
+		actualResult = FormatUtils.verbalTime(ldtTestTime);
 		assertEquals(expectedResult, actualResult);
 	}
 
 	/**
-	 * Test method for {@link trashday.ui.DateTimeOutputUtils#verbalDateAndTimeRelative(java.time.LocalDateTime, java.time.LocalDateTime)}.
+	 * Test method for {@link trashday.ui.FormatUtils#verbalDateAndTimeRelative(java.time.LocalDateTime, java.time.LocalDateTime)}.
 	 */
 	@Test
 	public void testVerbalDateAndTime() {
@@ -131,12 +131,12 @@ public class VerbalUtilsTest {
 			// Range of expectations for: Thursday 1am to Saturday 8am
 			String expectedResult = expectedResultsByDay.get(LocalDate.from(ldtTestRequestTime));
 			if (! expectedResult.equals(priorExpectedResult)) {
-				log.info("NEW Expected Results: {}", expectedResult);
+				log.debug("NEW Expected Results: {}", expectedResult);
 				priorExpectedResult = expectedResult;
 			}
 			
-			String actualResult = DateTimeOutputUtils.verbalDateAndTimeRelative(ldtTestPickupTime, ldtTestRequestTime);
-			log.info("Base: \"{}\",  Occurrence: \"{}\", Actual \"{}\"",ldtTestRequestTime,ldtTestPickupTime,actualResult);
+			String actualResult = FormatUtils.verbalDateAndTimeRelative(ldtTestPickupTime, ldtTestRequestTime);
+			log.debug("Base: \"{}\",  Occurrence: \"{}\", Actual \"{}\"",ldtTestRequestTime,ldtTestPickupTime,actualResult);
 			assertEquals(expectedResult, actualResult);
 		}
 		

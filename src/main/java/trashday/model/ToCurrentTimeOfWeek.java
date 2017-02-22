@@ -19,6 +19,7 @@ import com.github.jonpeterson.jackson.module.versioning.VersionedModelConverter;
  * @see		<a href="https://github.com/jonpeterson/jackson-module-model-versioning">Jackson Module Model Versioning</a>
  *
  */
+@Deprecated
 public class ToCurrentTimeOfWeek implements VersionedModelConverter {
     private static final Logger log = LoggerFactory.getLogger(ToCurrentTimeOfWeek.class);
     

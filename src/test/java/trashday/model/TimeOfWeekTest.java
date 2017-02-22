@@ -25,6 +25,7 @@ import trashday.model.TimeOfWeek;
  * 
  * @author J. Todd Baldwin
  */
+@SuppressWarnings("deprecation")
 @RunWith(JUnit4.class)
 public class TimeOfWeekTest {
 	/** Log object for this class */

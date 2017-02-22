@@ -1,5 +1,6 @@
 package trashday.storage;
 
+import java.io.IOException;
 import java.util.TimeZone;
 
 import org.slf4j.Logger;
@@ -17,7 +18,9 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.github.jonpeterson.jackson.module.versioning.VersioningModule;
-import trashday.TrashDayManager;
+
+import net.fortuna.ical4j.data.ParserException;
+import trashday.model.Calendar;
 import trashday.model.IntentLog;
 import trashday.model.Schedule;
 
@@ -28,12 +31,16 @@ import trashday.model.Schedule;
  * 
  * @author	J. Todd Baldwin
  */
+@SuppressWarnings("deprecation")
 @DynamoDBTable(tableName = "TrashDayScheduleData")
 public class DynamoItem {
 	/** Log object for this class */
-    private static final Logger log = LoggerFactory.getLogger(TrashDayManager.class);
+    private static final Logger log = LoggerFactory.getLogger(DynamoItem.class);
+    
     /** The user's customer id from {@link com.amazon.speech.speechlet.Session#getUser} */
     private String customerId;
+    /** This user's Trash Day calendar. */
+    private Calendar calendar;
     /** The user's intent log. */
     private IntentLog intentLog;
     /** This user's Trash Day schedule. */
@@ -41,6 +48,38 @@ public class DynamoItem {
     /** This user's TimeZone information. */
     private TimeZone timeZone;
     
+	/** A Jackson object mapper configured to handle Java 8 LocalDateTime objects and Jon Peterson's object versioning module. */
+    protected static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()
+ 		   .registerModule(new ParameterNamesModule())
+ 		   .registerModule(new Jdk8Module())
+ 		   .registerModule(new JavaTimeModule())
+ 		   .registerModule(new VersioningModule())
+ 		;
+
+	/**
+	 * Make a new, empty {@link DynamoItem}.
+	 */
+	public DynamoItem() {
+		this.customerId = null;
+		this.calendar = null;
+		this.intentLog = null;
+		this.schedule = null;
+		this.timeZone = null;
+	}
+
+	/**
+	 * Make a shallow copy of the given {@link DynamoItem}.
+	 * 
+	 * @param source DynamoItem to be copied from.
+	 */
+	public DynamoItem(DynamoItem source) {
+		this.customerId = source.customerId;
+		this.calendar = source.calendar;
+		this.intentLog = source.intentLog;
+		this.schedule = source.schedule;
+		this.timeZone = source.timeZone;
+	}
+
     /**
      * Get the customerId attribute.
      * <p>
@@ -52,21 +91,28 @@ public class DynamoItem {
      */
     @DynamoDBHashKey(attributeName = "CustomerId")
     public String getCustomerId() {
-    	log.trace("TrashDayScheduleItem.getCustomerId()={}", customerId);
+    	log.trace("getCustomerId()={}", customerId);
         return customerId;
     }
 
     /**
-     * Set the customerId attribute.  Used to set the correct
-     * id prior to a database save or load request.
+     * Get the schedule attribute.  After {@link DynamoDao#readUserData}
+     * has loaded the correct table item for this user into this
+     * object, use this getter to retrieve the {@link trashday.model.Schedule}
+     * object for this user.
+     * <p>
+     * The DynamoDB directives specify how to serialize the
+     * {@link trashday.model.Schedule} object into the table's "Data" field.
      * 
-     * @param customerId String User's id
+     * @return User's {@link trashday.model.Schedule}
      */
-    public void setCustomerId(String customerId) {
-    	log.trace("TrashDayScheduleItem.setCustomerId()={}", customerId);
-        this.customerId = customerId;
+    @DynamoDBAttribute(attributeName = "Calendar")
+    @DynamoDBTypeConverted(converter = CalendarConverter.class)
+    public Calendar getCalendar() {
+    	log.trace("getCalendar()={}", calendar);
+        return calendar;
     }
-
+    
     /**
      * Get the schedule attribute.  After {@link DynamoDao#readUserData}
      * has loaded the correct table item for this user into this
@@ -81,24 +127,8 @@ public class DynamoItem {
     @DynamoDBAttribute(attributeName = "IntentLog")
     @DynamoDBTypeConverted(converter = IntentLogConverter.class)
     public IntentLog getIntentLog() {
+    	log.trace("getIntentLog()={}", intentLog);
         return intentLog;
-    }
-    
-    /**
-     * Set the intentLog attribute.  Used to set the correct
-     * information before a database save request ({@link DynamoDao#writeUserData}).
-     * 
-     * @param intentLog IntentLog data to be stored
-     */
-    public void setIntentLog(IntentLog intentLog) {
-        this.intentLog = intentLog;
-    }
-    
-    /**
-     * Clear the intentLog attribute.
-     */
-    public void clearIntentLog() {
-    	this.intentLog = null;
     }
     
     /**
@@ -114,25 +144,10 @@ public class DynamoItem {
      */
     @DynamoDBAttribute(attributeName = "Schedule")
     @DynamoDBTypeConverted(converter = ScheduleConverter.class)
+    @Deprecated
     public Schedule getSchedule() {
+    	log.trace("getSchedule()={}", schedule);
         return schedule;
-    }
-    
-    /**
-     * Set the schedule attribute.  Used to set the correct
-     * information before a database save request ({@link DynamoDao#writeUserData}).
-     * 
-     * @param schedule Schedule data to be stored
-     */
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
-    }
-    
-    /**
-     * Clear the schedule attribute.
-     */
-    public void clearSchedule() {
-    	this.schedule = null;
     }
     
     /**
@@ -145,7 +160,70 @@ public class DynamoItem {
      */
     @DynamoDBAttribute(attributeName = "TimeZone")
     public TimeZone getTimeZone() {
+    	log.trace("getTimeZone()={}", timeZone);
     	return timeZone;
+    }
+    
+    /**
+     * Clear the intentLog attribute.
+     */
+    public void clearIntentLog() {
+    	log.trace("clearIntentLog()");
+    	this.intentLog = null;
+    }
+    
+    /**
+     * Clear the schedule attribute.
+     */
+    @Deprecated
+    public void clearSchedule() {
+    	log.trace("clearSchedule()");
+    	this.schedule = null;
+    }
+    
+    /**
+     * Set the customerId attribute.  Used to set the correct
+     * id prior to a database save or load request.
+     * 
+     * @param customerId String User's id
+     */
+    public void setCustomerId(String customerId) {
+    	log.trace("setCustomerId({})", customerId);
+        this.customerId = customerId;
+    }
+
+    /**
+     * Set the calendar attribute.  Used to set the correct
+     * information before a database save request ({@link DynamoDao#writeUserData}).
+     * 
+     * @param calendar Calendar data to be stored
+     */
+    public void setCalendar(Calendar calendar) {
+    	log.trace("setCalendar({})", calendar);
+        this.calendar = calendar;
+    }
+    
+    /**
+     * Set the intentLog attribute.  Used to set the correct
+     * information before a database save request ({@link DynamoDao#writeUserData}).
+     * 
+     * @param intentLog IntentLog data to be stored
+     */
+    public void setIntentLog(IntentLog intentLog) {
+    	log.trace("setIntentLog({})", intentLog);
+        this.intentLog = intentLog;
+    }
+    
+    /**
+     * Set the schedule attribute.  Used to set the correct
+     * information before a database save request ({@link DynamoDao#writeUserData}).
+     * 
+     * @param schedule Schedule data to be stored
+     */
+    @Deprecated
+    public void setSchedule(Schedule schedule) {
+    	log.trace("setSchedule({})", schedule);
+        this.schedule = schedule;
     }
     
     /**
@@ -155,15 +233,46 @@ public class DynamoItem {
      * @param timeZone TimeZone data to be stored
      */
     public void setTimeZone(TimeZone timeZone) {
+    	log.trace("setTimeZone({})", timeZone);
     	this.timeZone = timeZone;
     }
     
     /**
-     * Clear the time zone attribute.
+     * Class to handle serialization for {@link trashday.model.Calendar} objects.
+     * 
+     * @author J. Todd Baldwin
      */
-    public void clearTimeZone() {
-    	this.timeZone = null;
-    }
+    public static class CalendarConverter implements DynamoDBTypeConverter<String, Calendar> {
+    	/**
+    	 * Actually serialize a {@link trashday.model.Calendar} object.
+    	 */
+    	@Override
+    	public String convert(Calendar calendar) {
+			log.trace("convert: {}", calendar);
+			if (calendar.isEmpty()) {
+				return "(empty)";
+			}
+			return calendar.toStringRFC5545();
+    	}
+
+    	/**
+    	 * Actually de-serialize a {@link trashday.model.Calendar} object.
+    	 */
+    	@Override
+    	public Calendar unconvert(String value) {
+			log.trace("unconvert: {}", value);
+			try {
+				if ("(empty)".equals(value.trim())) {
+					return new Calendar();
+				}
+				return new Calendar(value);
+			} catch (IOException ex) {
+    			throw new IllegalStateException("Unable to convert calendar value from storage string."+ex.getMessage());
+			} catch (ParserException ex) {
+    			throw new IllegalStateException("Unable to convert calendar value from storage string."+ex.getMessage());
+			}
+    	}
+   	}    
 
     /**
      * Class to handle serialization for {@link trashday.model.Schedule} objects.
@@ -175,13 +284,6 @@ public class DynamoItem {
      * @see		<a href="https://github.com/jonpeterson/jackson-module-model-versioning">Jackson Module: Model Versioning</a>
      */
     public static class ScheduleConverter implements DynamoDBTypeConverter<String, Schedule> {
-    	/** A Jackson object mapper configured to handle Java 8 LocalDateTime objects and Jon Peterson's object versioning module. */
-        private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()
-     		   .registerModule(new ParameterNamesModule())
-     		   .registerModule(new Jdk8Module())
-     		   .registerModule(new JavaTimeModule())
-     		   .registerModule(new VersioningModule())
-     		;
 
     	/**
     	 * Actually serialize a {@link trashday.model.Schedule} object using the
@@ -222,14 +324,6 @@ public class DynamoItem {
      * @see		<a href="https://github.com/jonpeterson/jackson-module-model-versioning">Jackson Module: Model Versioning</a>
      */
     public static class IntentLogConverter implements DynamoDBTypeConverter<String, IntentLog> {
-    	/** A Jackson object mapper configured to handle Java 8 LocalDateTime objects and Jon Peterson's object versioning module. */
-        private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()
-     		   .registerModule(new ParameterNamesModule())
-     		   .registerModule(new Jdk8Module())
-     		   .registerModule(new JavaTimeModule())
-     		   .registerModule(new VersioningModule())
-     		;
-
     	/**
     	 * Actually serialize a {@link trashday.model.IntentLog} object using the
     	 * Jackson object mapper.

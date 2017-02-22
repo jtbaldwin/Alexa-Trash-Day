@@ -3,6 +3,7 @@ package trashday.storage;
 import static org.junit.Assert.*;
 
 import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
@@ -17,7 +18,8 @@ import org.slf4j.LoggerFactory;
 
 import com.amazon.speech.speechlet.Session;
 
-import trashday.model.Schedule;
+import trashday.model.Calendar;
+import trashday.ui.FormatUtils;
 
 public class SessionDaoTest {
     @Rule
@@ -29,14 +31,6 @@ public class SessionDaoTest {
     private static Session testSession;
     /** Test Data */
     private static SessionDao testSessionDao;
-    /** {@link Session} attribute key to store user's {@link trashday.model.Schedule} */
-	public static final String SESSION_ATTR_SCHEDULE = "trashDaySchedule";
-    /** {@link Session} attribute key to store user's {@link java.util.TimeZone} */
-	public static final String SESSION_ATTR_TIMEZONE = "trashDayTimeZone";
-    ///** {@link com.amazon.speech.speechlet.Session Session}  attribute key to store intent names that require a Yes/No confirmation */
-	//private static final String SESSION_ATTR_CONFIRM_INTENT = "trashDayConfirmIntent";
-    ///** {@link com.amazon.speech.speechlet.Session Session} attribute key to store user text description of actions that require a Yes/No confirmation */
-	//private static final String SESSION_ATTR_CONFIRM_DESC = "trashDayConfirmAction";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -51,50 +45,50 @@ public class SessionDaoTest {
 	@Before
 	public void setUp() throws Exception {
 	}
-
+	
 	@Test
-	public void testScheduleAccessors() {		
-		log.trace("testScheduleAccessors");
+	public void testCalendarAccessors() {
+		log.trace("testCalendarAccessors");
 		
 		// Schedule does not yet exist in session.
-		Schedule expectedSchedule = null;
-		Schedule actualSchedule = testSessionDao.getSchedule();
-		assertEquals(expectedSchedule, actualSchedule);
+		Calendar expectedCalendar = null;
+		Calendar actualCalendar = testSessionDao.getCalendar();
+		assertEquals(expectedCalendar, actualCalendar);
 		
 		// Set and Retrieve the schedule to the Session.
-		expectedSchedule = new Schedule();
-		expectedSchedule.initExampleSchedule();
-		testSessionDao.setSchedule(expectedSchedule);
-		actualSchedule = testSessionDao.getSchedule();
-		assertNotNull(actualSchedule);
-		assertEquals(expectedSchedule.toStringPrintable(), actualSchedule.toStringPrintable());
+		LocalDateTime ldtRequest = LocalDateTime.now();
+		expectedCalendar = new Calendar();
+		expectedCalendar.initComplexExampleCalendar();
+		testSessionDao.setCalendar(expectedCalendar);
+		actualCalendar = testSessionDao.getCalendar();
+		assertNotNull(actualCalendar);
+		assertEquals(FormatUtils.printableCalendar(expectedCalendar, ldtRequest), FormatUtils.printableCalendar(actualCalendar, ldtRequest));
 		
 		// Clear the schedule from the Session.
-		expectedSchedule = null;
-		testSessionDao.clearSchedule();
-		actualSchedule = testSessionDao.getSchedule();
-		assertEquals(expectedSchedule, actualSchedule);
+		expectedCalendar = null;
+		testSessionDao.clearCalendar();
+		actualCalendar = testSessionDao.getCalendar();
+		assertEquals(expectedCalendar, actualCalendar);
 		
 		// If Session is read from Alexa, it may have the schedule
 		// data stored in some other object type instead of the
 		// trashday.model.Schedule.  In this case, test how to handle if
 		// it is a String.
-		expectedSchedule = new Schedule();
-		expectedSchedule.initExampleSchedule();
-		testSession.setAttribute(SESSION_ATTR_SCHEDULE, expectedSchedule.toJson());
-		actualSchedule = testSessionDao.getSchedule();
-		assertNotNull(actualSchedule);
-		assertEquals(expectedSchedule.toStringPrintable(), actualSchedule.toStringPrintable());
+		expectedCalendar = new Calendar();
+		expectedCalendar.initComplexExampleCalendar();
+		testSession.setAttribute(SessionDao.SESSION_ATTR_CALENDAR, expectedCalendar.toStringRFC5545());
+		actualCalendar = testSessionDao.getCalendar();
+		assertNotNull(actualCalendar);
+		assertEquals(FormatUtils.printableCalendar(expectedCalendar, ldtRequest), FormatUtils.printableCalendar(actualCalendar, ldtRequest));
 
 		// If Session is read from Alexa, it may have the session
 		// data stored in some other object type instead of the
-		// trashday.model.Schedule.  In this case, test how to handle if
-		// an Object we don't know how to convert to Schedule.
-		expectedSchedule = null;
-		testSession.setAttribute(SESSION_ATTR_SCHEDULE, DayOfWeek.MONDAY);
-		actualSchedule = testSessionDao.getSchedule();
-		assertEquals(expectedSchedule, actualSchedule);
-		
+		// trashday.model.Calendar.  In this case, test how to handle if
+		// an Object we don't know how to convert to Calendar.
+		expectedCalendar = null;
+		testSession.setAttribute(SessionDao.SESSION_ATTR_CALENDAR, DayOfWeek.MONDAY);
+		actualCalendar = testSessionDao.getCalendar();
+		assertEquals(expectedCalendar, actualCalendar);
 	}
 
 	@Test
@@ -123,7 +117,7 @@ public class SessionDaoTest {
 		// java.util.TimeZone.  In this case, test how to handle if
 		// it is a String.
 		expectedTimeZone = TimeZone.getTimeZone("US/Central");
-		testSession.setAttribute(SESSION_ATTR_TIMEZONE, "US/Central");
+		testSession.setAttribute(SessionDao.SESSION_ATTR_TIMEZONE, "US/Central");
 		actualTimeZone = testSessionDao.getTimeZone();
 		assertEquals(expectedTimeZone, actualTimeZone);
 
@@ -132,7 +126,7 @@ public class SessionDaoTest {
 		// java.util.TimeZone.  In this case, test how to handle if
 		// an Object we don't know how to convert to TimeZone.
 		expectedTimeZone = null;
-		testSession.setAttribute(SESSION_ATTR_TIMEZONE, DayOfWeek.MONDAY);
+		testSession.setAttribute(SessionDao.SESSION_ATTR_TIMEZONE, DayOfWeek.MONDAY);
 		actualTimeZone = testSessionDao.getTimeZone();
 		assertEquals(expectedTimeZone, actualTimeZone);		
 	}

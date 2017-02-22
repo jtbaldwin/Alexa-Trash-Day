@@ -23,9 +23,9 @@ public class SlotTimeZone implements Slot {
     /** {@link com.amazon.speech.slu.Slot} from the Alexa request. */
 	private com.amazon.speech.slu.Slot slot;
 	/** The slot field name corresponding to the VUI IntentSchema / Sample Utterances */
-    private static final String name = "TimeZone";
+	public static final String name = "TimeZone";
     /** A printable description of this slot's purpose */
-    private static final String description = "Time Zone";
+    public static final String description = "Time Zone";
     /** Regex pattern used for removing dots from abbreviations like: U.S. and E.D.T. */
     private static final Pattern p = Pattern.compile("([A-Z].)+");
 
@@ -293,6 +293,18 @@ public class SlotTimeZone implements Slot {
     			.replaceAll(" ", "_")
 				;
 		return javaTimeZoneName;
+	}
+	
+	public boolean isOther() {
+    	log.trace("isOther()", slot);
+
+    	// Did we get a good time zone value?
+    	if (isEmpty()) {
+        	return false;
+    	}
+    	String slotValue = slot.getValue().trim().toLowerCase();
+    	log.debug("isOther({})", slotValue);
+    	return "other".equals(slotValue);
 	}
 
 	/**

@@ -1,6 +1,18 @@
 {
   "intents": [
     {
+      "intent": "TellNextPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        }
+      ]
+    },
+    {
+      "intent": "TellScheduleIntent"
+    },
+    {
       "intent": "UpdateScheduleIntent"
     },
     {
@@ -30,11 +42,282 @@
       ]
     },
     {
+      "intent": "AddWeeklyPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "AddThisBiWeeklyPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "AddFollowingBiWeeklyPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "AddMonthlyPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "NthOfMonth",
+          "type": "NTH_OF_MONTH"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "AddMonthlyLastDayPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "AddMonthlyLastNDayPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfMonth",
+          "type": "AMAZON.NUMBER"
+        },
+        {
+          "name": "NthOfMonth",
+          "type": "NTH_OF_MONTH"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "AddMonthlyWeekdayPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "WeekOfMonth",
+          "type": "WEEK_OF_MONTH"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "AddMonthlyLastNWeekdayPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "WeekOfMonth",
+          "type": "WEEK_OF_MONTH"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
       "intent": "DeletePickupIntent",
       "slots": [
         {
           "name": "PickupName",
           "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "DeleteWeeklyPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "DeleteBiWeeklyPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "DeleteMonthlyPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "NthOfMonth",
+          "type": "NTH_OF_MONTH"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "DeleteMonthlyLastDayPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "DeleteMonthlyLastNDayPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "DayOfMonth",
+          "type": "AMAZON.NUMBER"
+        },
+        {
+          "name": "NthOfMonth",
+          "type": "NTH_OF_MONTH"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "DeleteMonthlyWeekdayPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "WeekOfMonth",
+          "type": "WEEK_OF_MONTH"
+        },
+        {
+          "name": "DayOfWeek",
+          "type": "DAYS_OF_WEEK"
+        },
+        {
+          "name": "TimeOfDay",
+          "type": "AMAZON.TIME"
+        }
+      ]
+    },
+    {
+      "intent": "DeleteMonthlyLastNWeekdayPickupIntent",
+      "slots": [
+        {
+          "name": "PickupName",
+          "type": "COMMON_PICKUP_NAMES"
+        },
+        {
+          "name": "WeekOfMonth",
+          "type": "WEEK_OF_MONTH"
         },
         {
           "name": "DayOfWeek",
@@ -57,18 +340,6 @@
     },
     {
       "intent": "DeleteEntireScheduleIntent"
-    },
-    {
-      "intent": "TellScheduleIntent"
-    },
-    {
-      "intent": "TellNextPickupIntent",
-      "slots": [
-        {
-          "name": "PickupName",
-          "type": "COMMON_PICKUP_NAMES"
-        }
-      ]
     },
     {
       "intent": "AMAZON.YesIntent"
