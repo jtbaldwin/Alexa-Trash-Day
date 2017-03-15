@@ -1,12 +1,12 @@
 # Alexa Trash Day Skill
 
 ## Important Links
-[Trash Day Skill](https://www.amazon.com/dp/B01MRAXTN8)
-[Trash Day Help](https://s3.amazonaws.com/trash-day-docs/Help.html)
+- [Trash Day Skill](https://www.amazon.com/dp/B01MRAXTN8)
+- [Trash Day Help](https://s3.amazonaws.com/trash-day-docs/Help.html)
 
-[Source Code](https://github.com/jtbaldwin/Alexa-Trash-Day)
-[Javadoc](https://jtbaldwin.github.io/Alexa-Trash-Day/apidocs/)
-[Cobertura Test Coverage Report](https://jtbaldwin.github.io/Alexa-Trash-Day/cobertura/)
+- [Source Code](https://github.com/jtbaldwin/Alexa-Trash-Day)
+- [Javadoc](https://jtbaldwin.github.io/Alexa-Trash-Day/apidocs/)
+- [Cobertura Test Coverage Report](https://jtbaldwin.github.io/Alexa-Trash-Day/cobertura/)
 
 ## Skill Description
 A small Alexa skill to help users remember if the trash needs to go out or not.
