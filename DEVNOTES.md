@@ -69,7 +69,13 @@ Would like to have something that allows a graphical representation of the dialo
 - https://github.com/libgdx/gdx-ai/wiki/Behavior-Trees
 - http://alistapart.com/article/all-talk-and-no-buttons-the-conversational-ui
 
+### Conversation Library Options
+
+Create a "conversation" and "data-gathering-conversation" object.  Store the conversation state in the session and use it in the Speechlet for routing certain intents to the correct (just one "open") conversation.  Make every conversation a state machine and a separate session variable to indicate a stack of currently open "conversations."  Each conversation may handle a (possibly overlapping) set of Intents.  A conversation may have a default handler if the user gives Intent not in open conversation's list.
+
+- https://freebusy.io/blog/building-conversational-alexa-apps-for-amazon-echo
+
 ### Phrase Handling
 
-The trashday.ui.responses.Phrase class keeps most of the hard-coded text for spoken phrases and cards.  Need to look at if expading to something with parameters makes sense.  Should be better than having multiple phrases for "add weekly", "add biweekly", "add monthly", "delete weekly", "delete biweekly", "delete monthly".
+The trashday.ui.responses.Phrase class keeps most of the hard-coded text for spoken phrases and cards.  Need to look at if expanding to something with parameters makes sense.  Should be better than having multiple phrases for "add weekly", "add biweekly", "add monthly", "delete weekly", "delete biweekly", "delete monthly".
 

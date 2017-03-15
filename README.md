@@ -1,6 +1,14 @@
 # Alexa Trash Day Skill
 
-## Description
+## Important Links
+[Trash Day Skill](https://www.amazon.com/dp/B01MRAXTN8)
+[Trash Day Help](https://s3.amazonaws.com/trash-day-docs/Help.html)
+
+[Source Code](https://github.com/jtbaldwin/Alexa-Trash-Day)
+[Javadoc](https://jtbaldwin.github.io/Alexa-Trash-Day/apidocs/)
+[Cobertura Test Coverage Report](https://jtbaldwin.github.io/Alexa-Trash-Day/cobertura/)
+
+## Skill Description
 A small Alexa skill to help users remember if the trash needs to go out or not.
 
 I can never seem to remember.  Is my trash pickup is Monday/Thursday or is it Tuesday/Friday?  And the recycling and lawn waste pickups happen on different days.  And some days I'm not sure if today is Tuesday or Wednesday anyway.  Alexa, help me!
@@ -12,7 +20,7 @@ device(s).  See instructions at the [Trash Day Skill](https://www.amazon.com/dp/
 
 ### Skill Usage: Setup
 
-Once you have the skill enabled, you have to tell the application your time zone and make a pickup schedule.  This is the most difficult part of using the Trash Day application.  As an example, here's how I setup to use the application in my house:
+Once you have the skill enabled, you have to tell the application your time zone and make a pickup schedule.  This is the most difficult part of using the Trash Day application.  But you only have to do it for initial setup or when your pickup schedule changes.  As an example, here's how I setup to use the application in my house:
 
 - Alexa, open Trash Day
 - Set time zone to Eastern.
@@ -31,7 +39,7 @@ Once you have setup your time zone and pickup schedule, using Trash Day is easy.
 
 - Alexa, ask Trash Day, what's next?
 - Alexa, ask Trash Day, is it trash day?
-- Alexa, ask Trash Day, when is the next recyling pickup?
+- Alexa, ask Trash Day, when is the next recycling pickup?
 - Alexa, ask Trash Day, what is the schedule?
 
 ### Skill Usage: Schedule Updates
@@ -59,7 +67,7 @@ at the top of this page.
 
 ## Source Code Usage
 
-This repository has the complete source code for the skill, along with complete javadocs and Cobertura code testing coverage report:
+This repository has the complete source code for the skill, along with complete Javadoc and Cobertura code testing coverage report:
 
 <dl>
   <dt>apidocs/</dt>
@@ -89,7 +97,7 @@ Project build was accomplished with the following Maven commands:
 - mvn assembly:assembly -DdescriptorId=jar-with-dependencies package
 
 
-## Resources
+## Further Resources
 Here are a few direct links to documentation associated with the project:
 
 - The [Trash Day Skill](https://www.amazon.com/dp/B01MRAXTN8)
